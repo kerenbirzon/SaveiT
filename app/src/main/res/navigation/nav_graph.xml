@@ -21,7 +21,12 @@
         android:id="@+id/addCategoryFragment"
         android:name="com.example.saveit.AddCategoryFragment"
         android:label="fragment_add_category"
-        tools:layout="@layout/fragment_add_category" />
+        tools:layout="@layout/fragment_add_category" >
+        <action
+            android:id="@+id/action_addCategoryFragment_pop"
+            app:popUpTo="@id/categoryListFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.saveit.CategoryFragment"

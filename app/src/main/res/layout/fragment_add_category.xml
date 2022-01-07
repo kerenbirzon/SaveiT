@@ -69,25 +69,25 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     android:layout_marginTop="16dp"/>
 
 
-<Button
-    android:id="@+id/btn_action_ok"
-    style="@style/Widget.MaterialComponents.Button.TextButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/btn_choose_icon"
-    android:layout_alignParentEnd="true"
-    android:layout_marginTop="20dp"
-    android:text="SAVE" />
+    <Button
+        android:id="@+id/btn_action_save"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_choose_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:text="SAVE" />
 
-<Button
-    android:id="@+id/btn_action_cancel_icon_selection"
-    style="@style/Widget.MaterialComponents.Button.TextButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/btn_choose_icon"
-    android:layout_marginTop="20dp"
-    android:layout_toStartOf="@id/btn_action_ok"
-    android:text="CANCEL"
-    android:textColor="@android:color/darker_gray"/>
+    <Button
+        android:id="@+id/btn_action_cancel"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_choose_icon"
+        android:layout_marginTop="20dp"
+        android:layout_toStartOf="@id/btn_action_save"
+        android:text="CANCEL"
+        android:textColor="@android:color/darker_gray" />
 
 </RelativeLayout>

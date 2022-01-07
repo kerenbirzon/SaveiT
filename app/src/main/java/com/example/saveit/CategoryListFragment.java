@@ -17,12 +17,7 @@ public class CategoryListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
-        addCategoryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_categoryList_to_addCategory);
-            }
-        });
+        addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
         return view;
     }
 }
