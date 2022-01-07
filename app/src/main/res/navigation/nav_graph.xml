@@ -26,10 +26,23 @@
             android:id="@+id/action_addCategoryFragment_pop"
             app:popUpTo="@id/categoryListFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_addCategory_to_chooseIcon"
+            app:destination="@id/chooseIconFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.saveit.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/chooseIconFragment"
+        android:name="com.example.saveit.ChooseIconFragment"
+        android:label="fragment_choose_icon"
+        tools:layout="@layout/fragment_choose_icon" >
+        <action
+            android:id="@+id/action_chooseIconFragment_pop"
+            app:popUpTo="@id/addCategoryFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

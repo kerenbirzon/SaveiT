@@ -30,6 +30,9 @@ public class AddCategoryFragment extends Fragment {
         Button cancelNewCategoryBtn = view.findViewById(R.id.btn_action_cancel);
         cancelNewCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategoryFragment_pop));
 
+        Button chooseIconBtn = view.findViewById(R.id.btn_choose_icon);
+        chooseIconBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategory_to_chooseIcon));
+
         return view;
     }
 }
