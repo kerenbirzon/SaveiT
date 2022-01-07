@@ -14,7 +14,7 @@
             android:id="@+id/action_categoryList_to_addCategory"
             app:destination="@id/addCategoryFragment" />
         <action
-            android:id="@+id/action_categoryListFragment_to_categoryFragment"
+            android:id="@+id/action_categoryList_to_category"
             app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
