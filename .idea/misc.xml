@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/data_back.xml" value="0.1" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/ic_insert_icon.xml" value="0.1" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/splash_back.xml" value="0.1" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/activity_main.xml" value="0.165625" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_add_category.xml" value="0.1" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_category.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_category_list.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
