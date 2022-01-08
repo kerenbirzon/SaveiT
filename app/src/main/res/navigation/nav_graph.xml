@@ -34,7 +34,11 @@
         android:id="@+id/categoryFragment"
         android:name="com.example.saveit.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_category_to_document"
+            app:destination="@id/documentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chooseIconFragment"
         android:name="com.example.saveit.ChooseIconFragment"
@@ -45,4 +49,9 @@
             app:popUpTo="@id/addCategoryFragment"
             app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/documentFragment"
+        android:name="com.example.saveit.DocumentFragment"
+        android:label="fragment_document"
+        tools:layout="@layout/fragment_document" />
 </navigation>

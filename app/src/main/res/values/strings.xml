@@ -2,4 +2,8 @@
     <string name="app_name">SaveiT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_image">add image</string>
+    <string name="add_file">add file</string>
+    <string name="added_file_file_name">click to preview document</string>
+
 </resources>
