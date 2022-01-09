@@ -53,5 +53,10 @@
         android:id="@+id/documentFragment"
         android:name="com.example.saveit.DocumentFragment"
         android:label="fragment_document"
-        tools:layout="@layout/fragment_document" />
+        tools:layout="@layout/fragment_document" >
+        <action
+            android:id="@+id/action_documentFragment_pop"
+            app:popUpTo="@id/categoryFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>

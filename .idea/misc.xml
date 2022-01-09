@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/custom_ripple.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/data_back.xml" value="0.1" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/ic_access_time_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.1" />
@@ -13,11 +14,12 @@
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/icon_selection.xml" value="0.1" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/drawable/splash_back.xml" value="0.1" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/activity_main.xml" value="0.165625" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/category_item.xml" value="0.1" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_add_category.xml" value="0.22" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_category.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_category_list.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_choose_icon.xml" value="0.22" />
-        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_document.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_document.xml" value="0.22" />
       </map>
     </option>
   </component>
