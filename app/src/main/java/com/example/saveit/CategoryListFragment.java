@@ -32,7 +32,9 @@ public class CategoryListFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();
+
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),2));
+
         CategoryAdapter categoryAdapter = new CategoryAdapter(categories);
         recyclerView.setAdapter(categoryAdapter);
 
