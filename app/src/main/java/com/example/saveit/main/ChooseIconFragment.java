@@ -1,4 +1,4 @@
-package com.example.saveit;
+package com.example.saveit.main;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.saveit.R;
 
 public class ChooseIconFragment extends Fragment {
     private Drawable highlight;

@@ -1,4 +1,4 @@
-package com.example.saveit;
+package com.example.saveit.main;
 
 /**
  * an interface for a category click listener

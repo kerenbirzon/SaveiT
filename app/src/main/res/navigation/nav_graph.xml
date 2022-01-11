@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/categoryListFragment"
-        android:name="com.example.saveit.CategoryListFragment"
+        android:name="com.example.saveit.main.CategoryListFragment"
         android:label="fragment_category_list"
         tools:layout="@layout/fragment_category_list" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"
-        android:name="com.example.saveit.AddCategoryFragment"
+        android:name="com.example.saveit.main.AddCategoryFragment"
         android:label="fragment_add_category"
         tools:layout="@layout/fragment_add_category" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.saveit.CategoryFragment"
+        android:name="com.example.saveit.category.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" >
         <action
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseIconFragment"
-        android:name="com.example.saveit.ChooseIconFragment"
+        android:name="com.example.saveit.main.ChooseIconFragment"
         android:label="fragment_choose_icon"
         tools:layout="@layout/fragment_choose_icon" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/documentFragment"
-        android:name="com.example.saveit.DocumentFragment"
+        android:name="com.example.saveit.document.DocumentFragment"
         android:label="fragment_document"
         tools:layout="@layout/fragment_document" >
         <action

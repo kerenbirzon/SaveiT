@@ -1,12 +1,8 @@
 package com.example.saveit.model;
 
-
-/**
- * a class that represents a category item
- */
 public class Category {
-    private String title;
-    private int image;
+    public String title;
+    public int image;
 
     public Category() {
     }

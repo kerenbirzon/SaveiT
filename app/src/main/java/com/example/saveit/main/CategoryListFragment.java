@@ -1,17 +1,18 @@
-package com.example.saveit;
+package com.example.saveit.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.saveit.R;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.Model;
 
@@ -37,6 +38,20 @@ public class CategoryListFragment extends Fragment {
 
         CategoryAdapter categoryAdapter = new CategoryAdapter(categories);
         recyclerView.setAdapter(categoryAdapter);
+
+        categoryAdapter.setCategoryClickListener(new CategoryClickListener() {
+            @Override
+            public void onCategoryClicked(int position) {
+                Log.d("category clicked", "category was clicked");
+            }
+        });
+
+        categoryAdapter.setCategoryLongClickListener(new CategoryLongClickListener() {
+            @Override
+            public void onCategoryLongClicked(int position) {
+                Log.d("category long clicked", "category was long clicked");
+            }
+        });
 
 
         return view;

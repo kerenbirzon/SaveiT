@@ -1,4 +1,4 @@
-package com.example.saveit;
+package com.example.saveit.category;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.example.saveit.R;
 
 public class CategoryFragment extends Fragment {
 
