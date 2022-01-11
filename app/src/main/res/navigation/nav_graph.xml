@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_category_to_document"
             app:destination="@id/documentFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/chooseIconFragment"
