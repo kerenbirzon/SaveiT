@@ -8,11 +8,16 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
 
+import java.util.ArrayList;
+
 public class CategoryFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+    private ArrayList<Document> documentList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
