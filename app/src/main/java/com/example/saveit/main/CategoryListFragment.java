@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
 import com.example.saveit.model.Category;
-import com.example.saveit.model.Model;
+import com.example.saveit.model.CategoryModel;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class CategoryListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
-        categories = Model.instance.getCategories();
+        categories = CategoryModel.instance.getCategories();
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();

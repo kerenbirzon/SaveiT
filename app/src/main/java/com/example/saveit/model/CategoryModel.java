@@ -1,15 +1,12 @@
 package com.example.saveit.model;
 
-import android.graphics.ColorSpace;
-import android.view.Display;
-
 import java.util.ArrayList;
 
-public class Model {
+public class CategoryModel {
 
-    public final static Model instance = new Model();
+    public final static CategoryModel instance = new CategoryModel();
 
-    private Model(){
+    private CategoryModel(){
         Category category = new Category();
         category.setTitle("Car");
         categories.add(category);
