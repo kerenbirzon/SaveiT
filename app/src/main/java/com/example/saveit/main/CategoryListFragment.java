@@ -43,6 +43,7 @@ public class CategoryListFragment extends Fragment {
             @Override
             public void onCategoryClicked(int position) {
                 Log.d("category clicked", "category was clicked");
+
             }
         });
 
@@ -50,6 +51,7 @@ public class CategoryListFragment extends Fragment {
             @Override
             public void onCategoryLongClicked(int position) {
                 Log.d("category long clicked", "category was long clicked");
+
             }
         });
 
