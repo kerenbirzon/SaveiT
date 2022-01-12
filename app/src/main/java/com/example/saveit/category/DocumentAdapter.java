@@ -15,9 +15,7 @@ import com.example.saveit.R;
 
 import java.util.ArrayList;
 
-/**
- * adapter for the document list
- */
+
 public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<Document> documents;
@@ -85,18 +83,12 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.documentLongClickListener = documentLongClickListener;
     }
 
-    /**
-     * delete a document from adapter
-     * @param document - the document to delte
-     */
+
     public void deleteDocument(Document document) {
         documents.remove(document);
     }
 }
 
-/**
- * the document holder class for adapter
- */
 class DocumentItemHolder extends RecyclerView.ViewHolder {
     TextView title;
     TextView expirationDate;

@@ -76,9 +76,7 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
     }
 }
 
-    /**
-     * a class for a category holder
-     */
+
     class CategoryItemHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView title;
