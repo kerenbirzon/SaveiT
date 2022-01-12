@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 public class CategoryListFragment extends Fragment {
     private ArrayList<Category> categories;
+    private int lastCategoryPosition;
 
 
     @Override
@@ -29,6 +31,7 @@ public class CategoryListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
+
         categories = CategoryModel.instance.getCategories();
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
@@ -43,6 +46,10 @@ public class CategoryListFragment extends Fragment {
             @Override
             public void onCategoryClicked(int position) {
                 Log.d("category clicked", "category was clicked");
+                lastCategoryPosition = position;
+                Category category = categories.get(position);
+                Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
+
             }
         });
 
@@ -52,6 +59,8 @@ public class CategoryListFragment extends Fragment {
                 Log.d("category long clicked", "category was long clicked");
             }
         });
+
+
 
         return view;
     }

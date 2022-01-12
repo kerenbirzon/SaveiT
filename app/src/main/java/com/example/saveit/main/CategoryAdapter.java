@@ -1,6 +1,7 @@
 package com.example.saveit.main;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("category long clicked", "category was long clicked");
                 if(categoryClickListener != null)
                     categoryClickListener.onCategoryClicked(position);
             }

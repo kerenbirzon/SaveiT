@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
+import com.example.saveit.main.CategoryListFragmentDirections;
 import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.Document;
 import com.example.saveit.model.DocumentModel;
@@ -28,6 +29,9 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_category, container, false);
+
+        String categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getTitle();
+
         Button addDocumentBtn = view.findViewById(R.id.btn_add_doc);
         addDocumentBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_category_to_document));
         documentList = DocumentModel.instance.getDocuments();
@@ -54,6 +58,7 @@ public class CategoryFragment extends Fragment {
                 Log.d("document clicked", "document was clicked");
             }
         });
+
 
         return view;
     }
