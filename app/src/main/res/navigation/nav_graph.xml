@@ -42,12 +42,7 @@
         android:id="@+id/chooseIconFragment"
         android:name="com.example.saveit.main.ChooseIconFragment"
         android:label="fragment_choose_icon"
-        tools:layout="@layout/fragment_choose_icon" >
-        <action
-            android:id="@+id/action_chooseIconFragment_pop"
-            app:popUpTo="@id/addCategoryFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
+        tools:layout="@layout/fragment_choose_icon" />
     <fragment
         android:id="@+id/documentFragment"
         android:name="com.example.saveit.document.DocumentFragment"
