@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
 import com.example.saveit.main.CategoryListFragmentDirections;
+import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.Document;
 import com.example.saveit.model.DocumentModel;
@@ -23,6 +26,11 @@ import java.util.ArrayList;
 public class CategoryFragment extends Fragment {
 
     private ArrayList<Document> documentList;
+    private ImageView docImg;
+    private TextView noDocTxt;
+    private String categoryTitle;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +38,14 @@ public class CategoryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        String categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getTitle();
+        categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getTitle();
+        Category category = CategoryModel.instance.getCategoryByTitle(categoryTitle);
+        TextView titleTxt = view.findViewById(R.id.tv_category_title);
+        titleTxt.setText(categoryTitle);
+        docImg = view.findViewById(R.id.iv_doc_img);
+        noDocTxt = view.findViewById(R.id.tv_no_docs);
+
+
 
         Button addDocumentBtn = view.findViewById(R.id.btn_add_doc);
         addDocumentBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_category_to_document));

@@ -17,4 +17,12 @@ public class CategoryModel {
     public ArrayList<Category> getCategories() {
         return categories;
     }
+
+    public Category getCategoryByTitle(String title) {
+        for(Category c:categories){
+            if(c.getTitle().equals(title))
+                return c;
+        }
+        return null;
+    }
 }
