@@ -26,11 +26,14 @@ public class AddCategoryFragment extends Fragment {
                 //save the category to the model
 
                 //pop back to category list
-                Navigation.findNavController(view).navigate(R.id.action_addCategoryFragment_pop);
+                //Navigation.findNavController(view).navigate(R.id.action_addCategoryFragment_pop);
             }
         });
         Button cancelNewCategoryBtn = view.findViewById(R.id.btn_action_cancel);
-        cancelNewCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategoryFragment_pop));
+        cancelNewCategoryBtn.setOnClickListener((v) -> {
+            Navigation.findNavController(v).navigateUp();
+        });
+        //cancelNewCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategoryFragment_pop));
 
         Button chooseIconBtn = view.findViewById(R.id.btn_choose_icon);
         chooseIconBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategory_to_chooseIcon));
