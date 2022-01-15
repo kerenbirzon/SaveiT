@@ -1,51 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-<TextView
-    android:id="@+id/heading"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_marginTop="16dp"
-    android:gravity="center_horizontal|center_vertical"
-    android:text="Add New Category"
-    android:textColor="#292929"
-    android:textSize="20sp"
-    android:textStyle="bold" />
+    android:layout_height="match_parent">
 
-<Spinner
-    android:id="@+id/spinner_title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/heading"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginLeft="16dp"
 
-    />
-
-<com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/et_title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Category Name"
-    android:visibility="gone"
-    android:layout_below="@id/spinner_title"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="16dp"
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-    <com.google.android.material.textfield.TextInputEditText
+    <TextView
+        android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Add New Category"
+        android:textColor="#292929"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Category Name"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_choose_icon"
@@ -54,40 +43,67 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:layout_height="wrap_content"
         android:layout_below="@id/et_title"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:text="Choose icon"
-        app:icon="@drawable/ic_insert_icon" />
-
-<ImageView
-    android:id="@+id/iv_icon_img_prev"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:layout_below="@id/et_title"
-    android:layout_alignParentEnd="true"
-    android:layout_marginEnd="20dp"
-    android:layout_marginTop="16dp"/>
-
+        app:icon="@drawable/ic_insert_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCategoryFragment_name_tv" />
 
     <Button
         android:id="@+id/btn_action_save"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_choose_icon"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:text="SAVE" />
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:text="SAVE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_action_cancel"
+        app:layout_constraintTop_toBottomOf="@+id/btn_choose_icon" />
 
     <Button
         android:id="@+id/btn_action_cancel"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_choose_icon"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
         android:layout_toStartOf="@id/btn_action_save"
         android:text="CANCEL"
-        android:textColor="@android:color/darker_gray" />
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintEnd_toStartOf="@+id/btn_action_save"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_choose_icon" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/addCategoryFragment_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="New category name:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+    <EditText
+        android:id="@+id/addCategoryFragment_editName_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/addCategoryFragment_name_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addCategoryFragment_name_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
