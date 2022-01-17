@@ -69,7 +69,7 @@
 
 
     <Button
-        android:id="@+id/btn_action_ok"
+        android:id="@+id/btn_action_save"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,15 +79,15 @@
         android:text="SAVE" />
 
     <Button
-        android:id="@+id/btn_action_cancel_icon_selection"
+        android:id="@+id/btn_action_cancel"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_choose_icon"
         android:layout_marginTop="20dp"
-        android:layout_toStartOf="@id/btn_action_ok"
-        android:layout_toLeftOf="@id/btn_action_ok"
+        android:layout_toStartOf="@id/btn_action_save"
+        android:layout_toLeftOf="@id/btn_action_save"
         android:text="CANCEL"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray" />
 
 </RelativeLayout>
