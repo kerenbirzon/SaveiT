@@ -1,8 +1,18 @@
 package com.example.saveit.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.util.ArrayList;
+
+@Entity
 public class Category {
-    public String title;
-    public int image;
+    @PrimaryKey
+    @NonNull
+    private String title;
+    private int image;
+    public ArrayList<Document> docsList;
 
     public Category() {
     }
@@ -33,5 +43,12 @@ public class Category {
         this.image = image;
     }
 
+    public ArrayList<Document> getDocsList() {
+        return docsList;
+    }
+
+    public void setDocsList(ArrayList<Document> docsList) {
+        this.docsList = docsList;
+    }
 
 }

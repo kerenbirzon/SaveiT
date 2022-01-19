@@ -1,11 +1,17 @@
 package com.example.saveit.model;
-
 import android.graphics.Bitmap;
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * the class that represents a document item
  */
+@Entity
 public class Document {
+    @PrimaryKey
+    @NonNull
     private String title;
     private String comment;
     private String expirationDate;
