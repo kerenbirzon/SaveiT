@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'androidx.navigation.safeargs'
-    id 'com.google.gms.google-services'
+    //id 'com.google.gms.google-services'
 }
 
 android {
@@ -48,11 +48,11 @@ dependencies {
 
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
-    implementation platform('com.google.firebase:firebase-bom:29.0.3')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-storage'
+    //implementation platform('com.google.firebase:firebase-bom:29.0.3')
+    //implementation 'com.google.firebase:firebase-analytics'
+    //implementation 'com.google.firebase:firebase-firestore'
+    //implementation 'com.google.firebase:firebase-auth'
+    //implementation 'com.google.firebase:firebase-storage'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
 }

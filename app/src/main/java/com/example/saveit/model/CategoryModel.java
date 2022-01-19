@@ -20,7 +20,7 @@ public class CategoryModel {
     }
 
     public void addCategory(Category category){
-        AppLocalDb.db.categoryDao().insertAll();
+        AppLocalDb.db.categoryDao().insertAll(category);
     }
 
 

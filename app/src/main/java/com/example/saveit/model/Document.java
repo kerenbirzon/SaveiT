@@ -12,6 +12,7 @@ import androidx.room.PrimaryKey;
 public class Document {
     @PrimaryKey
     @NonNull
+
     private String title;
     private String comment;
     private String expirationDate;

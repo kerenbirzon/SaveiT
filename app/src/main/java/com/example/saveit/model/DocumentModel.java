@@ -16,6 +16,6 @@ public class DocumentModel {
     }
 
     public void addDocument(Document document){
-        AppLocalDb.db.documentDao().insertAll();
+        AppLocalDb.db.documentDao().insertAll(document);
     }
 }
