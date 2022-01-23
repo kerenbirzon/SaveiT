@@ -15,9 +15,16 @@ public class CategoryModel {
     ArrayList<Category> categories = new ArrayList<Category>();
 
     public ArrayList<Category> getCategories() {
+        categories = AppLocalDb.db.categoryDao().getAllCategories();
         return categories;
     }
 
+    public void addCategory(Category category){
+        AppLocalDb.db.categoryDao().insertAll(category);
+    }
+
+
+    // todo
     public Category getCategoryByTitle(String title) {
         for(Category c:categories){
             if(c.getTitle().equals(title))
