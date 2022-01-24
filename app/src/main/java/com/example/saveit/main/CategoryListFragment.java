@@ -17,10 +17,10 @@ import com.example.saveit.R;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryListFragment extends Fragment {
-    private ArrayList<Category> categories;
+    private List<Category> categories;
     private int lastCategoryPosition;
 
 

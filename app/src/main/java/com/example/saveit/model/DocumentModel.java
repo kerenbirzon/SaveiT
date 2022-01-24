@@ -1,6 +1,7 @@
 package com.example.saveit.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DocumentModel {
 
@@ -8,10 +9,10 @@ public class DocumentModel {
 
     private DocumentModel(){ }
 
-    ArrayList<Document> documents = new ArrayList<Document>();
+    List<Document> documents = new LinkedList<Document>();
 
-    public ArrayList<Document> getDocuments() {
-        documents = AppLocalDb.db.documentDao().getAllDocuments();
+    public List<Document> getDocuments(String title) {
+        documents = AppLocalDb.db.documentDao().getAllDocuments(title);
         return documents;
     }
 

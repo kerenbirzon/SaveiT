@@ -1,6 +1,7 @@
 package com.example.saveit.model;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
 
 public class CategoryModel {
 
@@ -12,9 +13,9 @@ public class CategoryModel {
         categories.add(category);
     }
 
-    ArrayList<Category> categories = new ArrayList<Category>();
+    List<Category> categories = new LinkedList<Category>();
 
-    public ArrayList<Category> getCategories() {
+    public List<Category> getCategories() {
         categories = AppLocalDb.db.categoryDao().getAllCategories();
         return categories;
     }

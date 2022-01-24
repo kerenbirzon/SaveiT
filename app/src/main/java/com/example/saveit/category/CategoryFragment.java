@@ -21,11 +21,11 @@ import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.Document;
 import com.example.saveit.model.DocumentModel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryFragment extends Fragment {
 
-    private ArrayList<Document> documentList;
+    private List<Document> documentList;
     private ImageView docImg;
     private TextView noDocTxt;
     private String categoryTitle;
@@ -49,7 +49,7 @@ public class CategoryFragment extends Fragment {
 
         Button addDocumentBtn = view.findViewById(R.id.btn_add_doc);
         addDocumentBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_category_to_document));
-        documentList = DocumentModel.instance.getDocuments();
+        documentList = DocumentModel.instance.getDocuments(categoryTitle);
 
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();
