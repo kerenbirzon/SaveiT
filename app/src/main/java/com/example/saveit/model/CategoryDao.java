@@ -6,12 +6,12 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface CategoryDao {
     @Query("select * from Category")
-    ArrayList<Category> getAllCategories();
+    List<Category> getAllCategories();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Category... categories);

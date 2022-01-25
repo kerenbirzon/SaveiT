@@ -17,7 +17,7 @@ public class Document {
     private String comment;
     private String expirationDate;
     private String reminderTime;
-    private Bitmap bitmap;
+    //private Bitmap bitmap;
     private String fileDownloadUri;
     private boolean hasImage;
     private boolean hasFile;
@@ -32,7 +32,7 @@ public class Document {
         this.title = title;
         this.comment = comment;
         this.expirationDate = expirationDate;
-        this.bitmap = bitmap;
+        //this.bitmap = bitmap;
         this.hasImage = hasImage;
     }
 
@@ -40,7 +40,7 @@ public class Document {
         this.title = title;
         this.comment = comment;
         this.expirationDate = expirationDate;
-        this.bitmap = bitmap;
+        //this.bitmap = bitmap;
         this.hasImage = hasImage;
         this.hasFile = hasFile;
         this.hasAlarm = hasAlarm;
@@ -79,13 +79,13 @@ public class Document {
         this.hasAlarm = hasAlarm;
     }
 
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
+    //public Bitmap getBitmap() {
+    //    return bitmap;
+    //}
 
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
+    //public void setBitmap(Bitmap bitmap) {
+    //    this.bitmap = bitmap;
+    //}
 
     public boolean getHasImage() {
         return hasImage;

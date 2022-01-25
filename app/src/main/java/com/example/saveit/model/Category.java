@@ -12,7 +12,7 @@ public class Category {
     @NonNull
     private String title;
     private int image;
-    public ArrayList<Document> docsList;
+    //public ArrayList<Document> docsList;
 
     public Category() {
     }
@@ -43,12 +43,12 @@ public class Category {
         this.image = image;
     }
 
-    public ArrayList<Document> getDocsList() {
-        return docsList;
-    }
+    //public ArrayList<Document> getDocsList() {
+    //    return docsList;
+    //}
 
-    public void setDocsList(ArrayList<Document> docsList) {
-        this.docsList = docsList;
-    }
+    //public void setDocsList(ArrayList<Document> docsList) {
+    //    this.docsList = docsList;
+    //}
 
 }

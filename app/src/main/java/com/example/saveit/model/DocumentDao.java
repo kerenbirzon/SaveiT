@@ -7,11 +7,12 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Dao
 public interface DocumentDao {
-    @Query("select * from Document")
-    ArrayList<Document> getAllDocuments();
+    @Query("select * from Document where title like :t ")
+    List<Document> getAllDocuments(String t);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Document... documents);

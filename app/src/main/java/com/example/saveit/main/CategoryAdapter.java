@@ -14,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.saveit.R;
 import com.example.saveit.model.Category;
 
-import java.util.ArrayList;
+import java.util.List;
 
 class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
-    private ArrayList<Category> categories;
+    private List<Category> categories;
     private static final int[] iconImages = {R.drawable.money, R.drawable.tax, R.drawable.lipstick, R.drawable.id, R.drawable.house, R.drawable.garden, R.drawable.fish, R.drawable.fan, R.drawable.email, R.drawable.dog, R.drawable.car, R.drawable.cake, R.drawable.buy, R.drawable.cat, R.drawable.company};
     private CategoryClickListener categoryClickListener;
     private CategoryLongClickListener categoryLongClickListener;
 
-    CategoryAdapter(ArrayList<Category> items) {
+    CategoryAdapter(List<Category> items) {
         categories = items;
     }
 

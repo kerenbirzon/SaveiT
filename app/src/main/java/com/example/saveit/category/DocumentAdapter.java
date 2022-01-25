@@ -14,15 +14,16 @@ import com.example.saveit.model.Document;
 import com.example.saveit.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Document> documents;
+    private List<Document> documents;
     private DocumentClickListener documentClickListener;
     private DocumentLongClickListener documentLongClickListener;
 
-    DocumentAdapter(ArrayList<Document> items) {
+    DocumentAdapter(List<Document> items) {
         documents = items;
     }
 
