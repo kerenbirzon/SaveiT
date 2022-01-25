@@ -20,7 +20,7 @@ import com.example.saveit.model.CategoryModel;
 import java.util.List;
 
 public class CategoryListFragment extends Fragment {
-    private List<Category> categories;
+    List<Category> categories;
     private int lastCategoryPosition;
 
 
@@ -32,7 +32,11 @@ public class CategoryListFragment extends Fragment {
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
 
-        categories = CategoryModel.instance.getCategories();
+        CategoryModel.instance.getCategories((list) -> {
+            categories = list;
+        });
+
+        //categories = CategoryModel.instance.getCategories();
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();
@@ -49,7 +53,6 @@ public class CategoryListFragment extends Fragment {
                 lastCategoryPosition = position;
                 Category category = categories.get(position);
                 Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
-
             }
         });
 
