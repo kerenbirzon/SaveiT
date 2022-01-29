@@ -13,8 +13,6 @@ import java.util.concurrent.Executors;
 public class DocumentModel {
 
     public final static DocumentModel instance = new DocumentModel();
-    Executor executor = Executors.newFixedThreadPool(1);
-    Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
 
     ModelFirebase modelFirebase = new ModelFirebase();
     private DocumentModel(){ }
