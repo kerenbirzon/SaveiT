@@ -51,5 +51,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:rippleColor="@color/softBlue" />
 
+    <ProgressBar
+        android:id="@+id/category_list_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="131dp"
+        android:layout_height="121dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

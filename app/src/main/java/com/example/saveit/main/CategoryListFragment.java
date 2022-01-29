@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -23,6 +24,7 @@ public class CategoryListFragment extends Fragment {
     List<Category> categories;
     private int lastCategoryPosition;
     CategoryAdapter categoryAdapter;
+    ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +33,9 @@ public class CategoryListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
+
+        progressBar = view.findViewById(R.id.category_list_progressBar);
+        progressBar.setVisibility(View.GONE);
 
         //categories = CategoryModel.instance.getCategories();
 
@@ -63,9 +68,11 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void refresh() {
+        progressBar.setVisibility(View.VISIBLE);
         CategoryModel.instance.getCategories((list)->{
             categories = list;
             categoryAdapter.notifyDataSetChanged();
+            progressBar.setVisibility(View.GONE);
         });
     }
 }

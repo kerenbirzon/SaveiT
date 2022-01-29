@@ -43,8 +43,22 @@ public class CategoryModel {
 //        return categories;
 //    }
 
-    public void addCategory(Category category){
-        AppLocalDb.db.categoryDao().insertAll(category);
+    public interface AddCategoryListener {
+        void OnComplete();
+    }
+    public void addCategory(Category category, AddCategoryListener listener){
+        executor.execute(()->{
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            AppLocalDb.db.categoryDao().insertAll(category);
+            mainThread.post(()->{
+                listener.OnComplete();
+            });
+        });
+
 
     }
 

@@ -64,8 +64,8 @@
         android:layout_height="40dp"
         android:layout_below="@id/et_title"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp" />
 
 
     <Button
@@ -89,5 +89,11 @@
         android:layout_toLeftOf="@id/btn_action_save"
         android:text="CANCEL"
         android:textColor="@android:color/darker_gray" />
+
+    <ProgressBar
+        android:id="@+id/add_category_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
