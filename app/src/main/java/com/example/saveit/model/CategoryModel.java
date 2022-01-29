@@ -1,11 +1,21 @@
 package com.example.saveit.model;
 
+import android.os.Handler;
+import android.os.Looper;
+
+import androidx.core.os.HandlerCompat;
+
 import java.util.List;
 import java.util.LinkedList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class CategoryModel {
 
     public final static CategoryModel instance = new CategoryModel();
+    Executor executor = Executors.newFixedThreadPool(1);
+    Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
+    List<Category> categories = new LinkedList<Category>();
 
     private CategoryModel(){
         Category category = new Category();
@@ -13,11 +23,17 @@ public class CategoryModel {
         categories.add(category);
     }
 
-    List<Category> categories = new LinkedList<Category>();
+    public interface GetAllCategoriesListener{
+        void onComplete(List<Category> list);
+    }
 
-    public List<Category> getCategories() {
-        categories = AppLocalDb.db.categoryDao().getAllCategories();
-        return categories;
+    public void getCategories(GetAllCategoriesListener listener) {
+        executor.execute(()->{
+            List<Category> categoriesList = AppLocalDb.db.categoryDao().getAllCategories();
+            mainThread.post(()->{
+                listener.onComplete(categoriesList);
+            });
+        });
     }
 
     public void addCategory(Category category){

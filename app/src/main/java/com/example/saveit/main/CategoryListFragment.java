@@ -22,7 +22,7 @@ import java.util.List;
 public class CategoryListFragment extends Fragment {
     private List<Category> categories;
     private int lastCategoryPosition;
-
+    CategoryAdapter categoryAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,14 +32,14 @@ public class CategoryListFragment extends Fragment {
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
 
-        categories = CategoryModel.instance.getCategories();
+        //categories = CategoryModel.instance.getCategories();
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();
 
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),2));
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categories);
+        categoryAdapter = new CategoryAdapter(categories);
         recyclerView.setAdapter(categoryAdapter);
 
         categoryAdapter.setCategoryClickListener(new CategoryClickListener() {
@@ -59,9 +59,14 @@ public class CategoryListFragment extends Fragment {
                 Log.d("category long clicked", "category was long clicked");
             }
         });
-
-
-
+        refresh();
         return view;
+    }
+
+    private void refresh() {
+        CategoryModel.instance.getCategories((list)->{
+            categories = list;
+            categoryAdapter.notifyDataSetChanged();
+        });
     }
 }

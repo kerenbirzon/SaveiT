@@ -63,7 +63,12 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
     }
 
     @Override
-    public int getItemCount() { return categories.size(); }
+    public int getItemCount() {
+        if (categories == null) {
+            return 0;
+        }
+        return categories.size();
+    }
 
     public void setCategoryClickListener(CategoryClickListener categoryClickListener) {
         this.categoryClickListener = categoryClickListener;
