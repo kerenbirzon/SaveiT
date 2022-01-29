@@ -16,6 +16,7 @@ public class CategoryModel {
     public final static CategoryModel instance = new CategoryModel();
     Executor executor = Executors.newFixedThreadPool(1);
     Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
+    List<Category> categories = new LinkedList<Category>();
 
     ModelFirebase modelFirebase = new ModelFirebase();
     private CategoryModel(){
@@ -24,15 +25,16 @@ public class CategoryModel {
         categories.add(category);
     }
 
-    List<Category> categories = new LinkedList<Category>();
-
-    public interface getCategoryListener {
+    public interface GetAllCategoriesListener{
         void onComplete(List<Category> list);
     }
 
-    public void getCategories(getCategoryListener listener){
-        executor.execute(() -> {
-            List<Category> list = modelFirebase.getCategories(listener);
+    public void getCategories(GetAllCategoriesListener listener) {
+        executor.execute(()->{
+            List<Category> categoriesList = AppLocalDb.db.categoryDao().getAllCategories();
+            mainThread.post(()->{
+                listener.onComplete(categoriesList);
+            });
         });
     }
 
