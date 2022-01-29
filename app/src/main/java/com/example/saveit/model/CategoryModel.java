@@ -31,7 +31,9 @@ public class CategoryModel {
     }
 
     public void getCategories(getCategoryListener listener){
-        modelFirebase.getCategories(listener);
+        executor.execute(() -> {
+            List<Category> list = modelFirebase.getCategories(listener);
+        });
     }
 
 //    public List<Category> getCategories() {
