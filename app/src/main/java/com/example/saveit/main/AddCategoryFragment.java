@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation;
 
 import com.example.saveit.R;
 import com.example.saveit.model.Category;
+import com.example.saveit.model.CategoryModel;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class AddCategoryFragment extends Fragment {
@@ -30,6 +32,7 @@ public class AddCategoryFragment extends Fragment {
     private Button saveNewCategoryBtn, cancelNewCategoryBtn, chooseIconBtn;
     private Spinner titleSpinner;
     private ImageView iconPrevView;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,12 +46,16 @@ public class AddCategoryFragment extends Fragment {
         titleInput = view.findViewById(R.id.et_title);
         titleSpinner = view.findViewById(R.id.spinner_title);
         titleInput.setVisibility(View.INVISIBLE);
+        progressBar = view.findViewById(R.id.add_category_progressBar);
+        progressBar.setVisibility(View.GONE);
+
 
 
         saveNewCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("clicked", "save new category was clicked");
+                saveCategory();
                 //if (userInputValid()) {
                 //    addNewCategory();
                 //} else {
@@ -68,6 +75,16 @@ public class AddCategoryFragment extends Fragment {
         chooseIconBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategory_to_chooseIcon));
 
         return view;
+    }
+
+    private void saveCategory() {
+        progressBar.setVisibility(View.VISIBLE);
+        saveNewCategoryBtn.setEnabled(false);
+        cancelNewCategoryBtn.setEnabled(false);
+        Category category = new Category(); // need to change the function
+        CategoryModel.instance.addCategory(category,()->{
+            Navigation.findNavController(titleInput).navigateUp();
+        });
     }
 
 }
