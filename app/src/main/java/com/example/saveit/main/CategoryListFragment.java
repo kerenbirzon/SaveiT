@@ -20,7 +20,7 @@ import com.example.saveit.model.CategoryModel;
 import java.util.List;
 
 public class CategoryListFragment extends Fragment {
-    private List<Category> categories;
+    List<Category> categories;
     private int lastCategoryPosition;
     CategoryAdapter categoryAdapter;
 
@@ -49,7 +49,6 @@ public class CategoryListFragment extends Fragment {
                 lastCategoryPosition = position;
                 Category category = categories.get(position);
                 Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
-
             }
         });
 

@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import androidx.core.os.HandlerCompat;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.concurrent.Executor;
@@ -17,6 +18,7 @@ public class CategoryModel {
     Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
     List<Category> categories = new LinkedList<Category>();
 
+    ModelFirebase modelFirebase = new ModelFirebase();
     private CategoryModel(){
         Category category = new Category();
         category.setTitle("Car");
@@ -36,17 +38,33 @@ public class CategoryModel {
         });
     }
 
-    public void addCategory(Category category){
-        AppLocalDb.db.categoryDao().insertAll(category);
+//    public List<Category> getCategories() {
+//        categories = AppLocalDb.db.categoryDao().getAllCategories();
+//        return categories;
+//    }
+
+    public interface addCategoryListener {
+        void onComplete();
     }
 
+    public void addCategory(Category category, addCategoryListener listener){
+        modelFirebase.addCategory(category,listener);
+    }
+//    public void addCategory(Category category){
+//        //AppLocalDb.db.categoryDao().insertAll(category);
+//
+//    }
 
-    // todo
-    public Category getCategoryByTitle(String title) {
-        for(Category c:categories){
-            if(c.getTitle().equals(title))
-                return c;
-        }
+    public Category getCategoryByTitle(String title){
+        modelFirebase.getCategoryByTitle(title);
         return null;
     }
+//    // todo
+//    public Category getCategoryByTitle(String title) {
+//        for(Category c:categories){
+//            if(c.getTitle().equals(title))
+//                return c;
+//        }
+//        return null;
+//    }
 }
