@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 public class Category {
@@ -41,6 +43,13 @@ public class Category {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public Map<String, Object> toJson() {
+        Map<String, Object> json = new HashMap<String, Object>();
+        json.put("title",title);
+        json.put("image",image);
+        return json;
     }
 
     //public ArrayList<Document> getDocsList() {
