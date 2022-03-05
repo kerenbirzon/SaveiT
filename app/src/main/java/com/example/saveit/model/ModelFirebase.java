@@ -5,6 +5,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class ModelFirebase {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    public void getCategories(CategoryModel.GetAllCategoriesListener listener) {
+
+    }
+
+    public void addCategory(Category category, CategoryModel.AddCategoryListener listener) {
+
+    }
+
 //    public void addCategory(Category category, CategoryModel.addCategoryListener listener) {
 //
 //    }
