@@ -10,6 +10,7 @@ import java.util.Map;
 
 @Entity
 public class Category {
+    final public static String COLLECTION_NAME = "categories";
     @PrimaryKey
     @NonNull
     private String title;
@@ -26,6 +27,14 @@ public class Category {
     public Category(String title, int image) {
         this.title = title;
         this.image = image;
+    }
+
+    public static Category create(Map<String, Object> json) {
+        String title = (String) json.get("title");
+        int image = (Integer) json.get("image");
+
+        Category category = new Category(title,image);
+        return category;
     }
 
     //getters and setters
