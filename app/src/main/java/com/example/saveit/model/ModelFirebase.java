@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -50,7 +51,20 @@ public class ModelFirebase {
                 .addOnFailureListener(e -> listener.OnComplete());
     }
 
-//    public void getCategoryByTitle(String title) {
-//
-//    }
+    public void getCategoryByTitle(String title, CategoryModel.GetCategoryByTitle listener) {
+        db.collection(Category.COLLECTION_NAME)
+                .document(title)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        Category category = null;
+                        if (task.isSuccessful() & task.getResult()!= null){
+                            category = Category.create(task.getResult().getData());
+                        }
+                        listener.OnComplete(category);
+                    }
+                });
+
+    }
 }

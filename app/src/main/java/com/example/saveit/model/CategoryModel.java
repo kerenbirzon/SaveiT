@@ -67,12 +67,17 @@ public class CategoryModel {
 //        return null;
 //    }
 
-    // todo
-    public Category getCategoryByTitle(String title) {
-        for(Category c:categories){
-            if(c.getTitle().equals(title))
-                return c;
-        }
+    public interface GetCategoryByTitle {
+        void OnComplete(Category category);
+    }
+
+    public Category getCategoryByTitle(String title, GetCategoryByTitle listener) {
+        modelFirebase.getCategoryByTitle(title,listener);
+
+//        for(Category c:categories){
+//            if(c.getTitle().equals(title))
+//                return c;
+//        }
         return null;
     }
 }

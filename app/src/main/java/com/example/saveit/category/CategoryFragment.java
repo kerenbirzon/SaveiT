@@ -27,7 +27,7 @@ public class CategoryFragment extends Fragment {
 
     private List<Document> documentList;
     private ImageView docImg;
-    private TextView noDocTxt;
+    private TextView noDocTxt, titleTxt;
     private String categoryTitle;
 
 
@@ -39,9 +39,15 @@ public class CategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
         categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getTitle();
-        Category category = CategoryModel.instance.getCategoryByTitle(categoryTitle);
-        TextView titleTxt = view.findViewById(R.id.tv_category_title);
-        titleTxt.setText(categoryTitle);
+
+        CategoryModel.instance.getCategoryByTitle(categoryTitle, new CategoryModel.GetCategoryByTitle() {
+            @Override
+            public void OnComplete(Category category) {
+                titleTxt.setText(categoryTitle);
+            }
+        });
+
+        titleTxt = view.findViewById(R.id.tv_category_title);
         docImg = view.findViewById(R.id.iv_doc_img);
         noDocTxt = view.findViewById(R.id.tv_no_docs);
 
