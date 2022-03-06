@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.saveit.R;
 import com.example.saveit.model.Category;
@@ -24,7 +25,7 @@ public class CategoryListFragment extends Fragment {
     List<Category> categories;
     private int lastCategoryPosition;
     CategoryAdapter categoryAdapter;
-    ProgressBar progressBar;
+    SwipeRefreshLayout swipeRefresh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,10 +35,11 @@ public class CategoryListFragment extends Fragment {
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
 
-        progressBar = view.findViewById(R.id.category_list_progressBar);
-        progressBar.setVisibility(View.GONE);
 
         //categories = CategoryModel.instance.getCategories();
+
+        swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
+        swipeRefresh.setOnRefreshListener(() -> refresh());
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();
@@ -68,11 +70,11 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void refresh() {
-        progressBar.setVisibility(View.VISIBLE);
+        swipeRefresh.setRefreshing(true);
         CategoryModel.instance.getCategories((list)->{
             categories = list;
             categoryAdapter.notifyDataSetChanged();
-            progressBar.setVisibility(View.GONE);
+            swipeRefresh.setRefreshing(false);
         });
     }
 }
