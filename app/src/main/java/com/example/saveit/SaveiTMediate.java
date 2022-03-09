@@ -13,12 +13,9 @@ public class SaveiTMediate extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initializeData(getApplicationContext());
+        appContext = getApplicationContext();
     }
 
-    public void initializeData(Context context) {
-        Log.d("TAG", "started initialize");
-        appContext = context;
-    }
+    public static Context getAppContext() { return appContext; }
 
 }

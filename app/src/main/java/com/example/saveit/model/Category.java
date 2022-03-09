@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FieldValue;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +18,7 @@ public class Category {
     @NonNull
     private String title;
     private int image;
+    Long updateDate = new Long(0);
     //public ArrayList<Document> docsList;
 
     public Category() {
@@ -32,8 +36,11 @@ public class Category {
     public static Category create(Map<String, Object> json) {
         String title = (String) json.get("title");
         int image = (Integer) json.get("image");
+        Timestamp ts = (Timestamp)json.get("updateDate");
+        Long updateDate = ts.getSeconds();
 
         Category category = new Category(title,image);
+        category.setUpdateDate(updateDate);
         return category;
     }
 
@@ -58,7 +65,16 @@ public class Category {
         Map<String, Object> json = new HashMap<String, Object>();
         json.put("title",title);
         json.put("image",image);
+        json.put("updateDate", FieldValue.serverTimestamp());
         return json;
+    }
+
+    public long getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Long updateDate) {
+        this.updateDate = updateDate;
     }
 
     //public ArrayList<Document> getDocsList() {

@@ -1,5 +1,6 @@
 package com.example.saveit.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,10 +25,16 @@ import com.example.saveit.model.CategoryModel;
 import java.util.List;
 
 public class CategoryListFragment extends Fragment {
-    List<Category> categories;
+    CategoryListViewModel viewModel;
     private int lastCategoryPosition;
     CategoryAdapter categoryAdapter;
     SwipeRefreshLayout swipeRefresh;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(this).get(CategoryListViewModel.class);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,14 +48,14 @@ public class CategoryListFragment extends Fragment {
         //categories = CategoryModel.instance.getCategories();
 
         swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
-        swipeRefresh.setOnRefreshListener(() -> refresh());
+        swipeRefresh.setOnRefreshListener(() -> CategoryModel.instance.refreshCategoryList());
 
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();
 
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),2));
 
-        categoryAdapter = new CategoryAdapter(categories);
+        categoryAdapter = new CategoryAdapter(viewModel.getCategories().getValue());
         recyclerView.setAdapter(categoryAdapter);
 
         categoryAdapter.setCategoryClickListener(new CategoryClickListener() {
@@ -54,7 +63,7 @@ public class CategoryListFragment extends Fragment {
             public void onCategoryClicked(int position) {
                 Log.d("category clicked", "category was clicked");
                 lastCategoryPosition = position;
-                Category category = categories.get(position);
+                Category category = viewModel.getCategories().getValue().get(position);
                 Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
             }
         });
@@ -65,16 +74,21 @@ public class CategoryListFragment extends Fragment {
                 Log.d("category long clicked", "category was long clicked");
             }
         });
-        refresh();
+
+        viewModel.getCategories().observe(getViewLifecycleOwner(), categories -> refresh());
+        swipeRefresh.setRefreshing(CategoryModel.instance.getCategoryListLoadingState().getValue() == CategoryModel.CategoryListLoadingState.loading);
+        CategoryModel.instance.getCategoryListLoadingState().observe(getViewLifecycleOwner(), categoryListLoadingState -> {
+            if (categoryListLoadingState == CategoryModel.CategoryListLoadingState.loading){
+                swipeRefresh.setRefreshing(true);
+            }else{
+                swipeRefresh.setRefreshing(false);
+            }
+        });
         return view;
     }
 
     private void refresh() {
-        swipeRefresh.setRefreshing(true);
-        CategoryModel.instance.getCategories((list)->{
-            categories = list;
             categoryAdapter.notifyDataSetChanged();
             swipeRefresh.setRefreshing(false);
-        });
     }
 }
