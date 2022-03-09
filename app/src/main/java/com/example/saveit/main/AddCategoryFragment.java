@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -27,25 +28,20 @@ public class AddCategoryFragment extends Fragment {
     private static final int[] iconImages = {R.drawable.money, R.drawable.tax, R.drawable.lipstick, R.drawable.id, R.drawable.house, R.drawable.garden, R.drawable.fish, R.drawable.fan, R.drawable.email, R.drawable.dog, R.drawable.car, R.drawable.cake, R.drawable.buy, R.drawable.cat, R.drawable.company};
     private String[] categoriesTitles; //categories titles not used for spinner
 
-    //widgets
-    private TextInputLayout titleInput;
+    private EditText categoryNameEt;
     private Button saveNewCategoryBtn, cancelNewCategoryBtn, chooseIconBtn;
-    private Spinner titleSpinner;
     private ImageView iconPrevView;
     private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_category, container, false);
         saveNewCategoryBtn = view.findViewById(R.id.btn_action_save);
         cancelNewCategoryBtn = view.findViewById(R.id.btn_action_cancel);
         chooseIconBtn = view.findViewById(R.id.btn_choose_icon);
         iconPrevView = view.findViewById(R.id.iv_icon_img_prev);
-        titleInput = view.findViewById(R.id.et_title);
-        titleSpinner = view.findViewById(R.id.spinner_title);
-        titleInput.setVisibility(View.INVISIBLE);
+        categoryNameEt = view.findViewById(R.id.add_Category_name_et);
         progressBar = view.findViewById(R.id.add_category_progressBar);
         progressBar.setVisibility(View.GONE);
 
@@ -56,17 +52,9 @@ public class AddCategoryFragment extends Fragment {
             public void onClick(View view) {
                 Log.d("clicked", "save new category was clicked");
                 saveCategory();
-                //if (userInputValid()) {
-                //    addNewCategory();
-                //} else {
-                //    Toast.makeText(getContext(), "invalid title", Toast.LENGTH_LONG).show();
-                //}
-
-                //Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
-
-
             }
         });
+
         cancelNewCategoryBtn.setOnClickListener((v) -> {
             Log.d("AddCategoryFragment", "onClick: closing AddCategoryFragment");
             Navigation.findNavController(v).navigateUp();
@@ -81,9 +69,12 @@ public class AddCategoryFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         saveNewCategoryBtn.setEnabled(false);
         cancelNewCategoryBtn.setEnabled(false);
-        Category category = new Category(); // need to change the function
+        String categoryName = categoryNameEt.getText().toString();
+        int categoryImage = R.drawable.money;
+        Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
+        Category category = new Category(categoryName,categoryImage); // need to change the function
         CategoryModel.instance.addCategory(category,()->{
-            Navigation.findNavController(titleInput).navigateUp();
+            Navigation.findNavController(categoryNameEt).navigateUp();
         });
     }
 

@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -39,13 +40,9 @@ public class CategoryListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
-
-
-        //categories = CategoryModel.instance.getCategories();
 
         swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
         swipeRefresh.setOnRefreshListener(() -> CategoryModel.instance.refreshCategoryList());
@@ -53,7 +50,7 @@ public class CategoryListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.category_recycler);
         recyclerView.hasFixedSize();
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(),2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         categoryAdapter = new CategoryAdapter(viewModel.getCategories().getValue());
         recyclerView.setAdapter(categoryAdapter);

@@ -35,7 +35,7 @@ public class Category {
 
     public static Category create(Map<String, Object> json) {
         String title = (String) json.get("title");
-        int image = (Integer) json.get("image");
+        Integer image = (Integer) json.get("image");
         Timestamp ts = (Timestamp)json.get("updateDate");
         Long updateDate = ts.getSeconds();
 
