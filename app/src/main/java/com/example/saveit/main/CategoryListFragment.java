@@ -57,7 +57,7 @@ public class CategoryListFragment extends Fragment {
 
         categoryAdapter.setCategoryClickListener(new CategoryClickListener() {
             @Override
-            public void onCategoryClicked(int position) {
+            public void onCategoryClicked(View v,int position) {
                 Log.d("category clicked", "category was clicked");
                 lastCategoryPosition = position;
                 Category category = viewModel.getCategories().getValue().get(position);

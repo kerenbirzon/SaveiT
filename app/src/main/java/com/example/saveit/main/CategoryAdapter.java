@@ -44,9 +44,9 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("category long clicked", "category was long clicked");
+                Log.d("TAG", "category was clicked");
                 if(categoryClickListener != null)
-                    categoryClickListener.onCategoryClicked(position);
+                    categoryClickListener.onCategoryClicked(v,position);
             }
         });
 
@@ -82,7 +82,6 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
         categories.remove(category);
     }
 }
-
 
     class CategoryItemHolder extends RecyclerView.ViewHolder {
         ImageView image;
