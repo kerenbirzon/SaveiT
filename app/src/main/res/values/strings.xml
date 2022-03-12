@@ -7,5 +7,9 @@
     <string name="add_file">add file</string>
     <string name="added_file_file_name">click to preview document</string>
     <string name="Category_Name">CategoryName</string>
+    <string name="Login">Welcome to SaveIT!</string>
+    <string name="password">Password</string>
+    <string name="user_name">User Name</string>
+    <string name="login_btn">Login</string>
 
 </resources>

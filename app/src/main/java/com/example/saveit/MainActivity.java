@@ -36,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if  (!super.onOptionsItemSelected(item)) {
+        if (!super.onOptionsItemSelected(item)){
             switch (item.getItemId()){
                 case android.R.id.home:
                     navCtl.navigateUp();
                     return true;
+                default:
+                    NavigationUI.onNavDestinationSelected(item,navCtl);
             }
-        }else {
+        }else{
             return true;
         }
         return false;
