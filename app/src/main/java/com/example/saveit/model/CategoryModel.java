@@ -19,8 +19,8 @@ import java.util.concurrent.Executors;
 public class CategoryModel {
 
     public final static CategoryModel instance = new CategoryModel();
-    Executor executor = Executors.newFixedThreadPool(1);
-    Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
+    public Executor executor = Executors.newFixedThreadPool(1);
+    public Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
     List<Category> categories = new LinkedList<Category>();
 
     public enum CategoryListLoadingState{
@@ -116,5 +116,13 @@ public class CategoryModel {
     public Category getCategoryByTitle(String title, GetCategoryByTitle listener) {
         modelFirebase.getCategoryByTitle(title,listener);
         return null;
+    }
+
+    /**
+     * Authentication
+     */
+
+    public boolean isSignedIn() {
+        return modelFirebase.isSignedIn();
     }
 }
