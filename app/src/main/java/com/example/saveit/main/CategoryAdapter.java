@@ -20,7 +20,6 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
     private List<Category> categories;
     private static final int[] iconImages = {R.drawable.money, R.drawable.tax, R.drawable.lipstick, R.drawable.id, R.drawable.house, R.drawable.garden, R.drawable.fish, R.drawable.fan, R.drawable.email, R.drawable.dog, R.drawable.car, R.drawable.cake, R.drawable.buy, R.drawable.cat, R.drawable.company};
     private CategoryClickListener categoryClickListener;
-    private CategoryLongClickListener categoryLongClickListener;
 
     CategoryAdapter(List<Category> items) {
         categories = items;
@@ -49,17 +48,6 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
                     categoryClickListener.onCategoryClicked(v,position);
             }
         });
-
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (categoryLongClickListener != null) {
-                    categoryLongClickListener.onCategoryLongClicked(position);
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -72,10 +60,6 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
 
     public void setCategoryClickListener(CategoryClickListener categoryClickListener) {
         this.categoryClickListener = categoryClickListener;
-    }
-
-    public void setCategoryLongClickListener(CategoryLongClickListener categoryLongClickListener) {
-        this.categoryLongClickListener = categoryLongClickListener;
     }
 
     public void deleteCategory(Category category) {

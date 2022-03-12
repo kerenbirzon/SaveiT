@@ -19,7 +19,6 @@ public class Category {
     private String title;
     private int image;
     Long updateDate = new Long(0);
-    //public ArrayList<Document> docsList;
 
     public Category() {
     }
@@ -76,13 +75,5 @@ public class Category {
     public void setUpdateDate(Long updateDate) {
         this.updateDate = updateDate;
     }
-
-    //public ArrayList<Document> getDocsList() {
-    //    return docsList;
-    //}
-
-    //public void setDocsList(ArrayList<Document> docsList) {
-    //    this.docsList = docsList;
-    //}
 
 }

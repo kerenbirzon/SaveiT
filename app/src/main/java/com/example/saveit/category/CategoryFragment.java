@@ -66,13 +66,6 @@ public class CategoryFragment extends Fragment {
         DocumentAdapter documentAdapter = new DocumentAdapter(documentList);
         recyclerView.setAdapter(documentAdapter);
 
-        documentAdapter.setDocumentLongClickListener(new DocumentLongClickListener() {
-            @Override
-            public void onDocumentLongClicked(int position) {
-                Log.d("document long clicked", "document was long clicked");
-            }
-        });
-
         documentAdapter.setDocumentClickListener(new DocumentClickListener() {
             @Override
             public void onDocumentClicked(int position) {

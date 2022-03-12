@@ -65,13 +65,6 @@ public class CategoryListFragment extends Fragment {
             }
         });
 
-        categoryAdapter.setCategoryLongClickListener(new CategoryLongClickListener() {
-            @Override
-            public void onCategoryLongClicked(int position) {
-                Log.d("category long clicked", "category was long clicked");
-            }
-        });
-
         viewModel.getCategories().observe(getViewLifecycleOwner(), categories -> refresh());
         swipeRefresh.setRefreshing(CategoryModel.instance.getCategoryListLoadingState().getValue() == CategoryModel.CategoryListLoadingState.loading);
         CategoryModel.instance.getCategoryListLoadingState().observe(getViewLifecycleOwner(), categoryListLoadingState -> {

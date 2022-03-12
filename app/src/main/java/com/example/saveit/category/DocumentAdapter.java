@@ -21,7 +21,6 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private List<Document> documents;
     private DocumentClickListener documentClickListener;
-    private DocumentLongClickListener documentLongClickListener;
 
     DocumentAdapter(List<Document> items) {
         documents = items;
@@ -56,18 +55,6 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             }
         });
-
-        // set long click listener
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (documentLongClickListener != null) {
-                    documentLongClickListener.onDocumentLongClicked(position);
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -79,11 +66,6 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void setDocumentClickListener(DocumentClickListener documentClickListener) {
         this.documentClickListener = documentClickListener;
     }
-
-    public void setDocumentLongClickListener(DocumentLongClickListener documentLongClickListener) {
-        this.documentLongClickListener = documentLongClickListener;
-    }
-
 
     public void deleteDocument(Document document) {
         documents.remove(document);
