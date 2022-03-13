@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/documentFragment"
-        android:name="com.example.saveit.main.DocumentFragment"
+        android:name="com.example.saveit.document.DocumentFragment"
         android:label="fragment_document"
         tools:layout="@layout/fragment_document" >
         <action
