@@ -21,6 +21,7 @@ public class LoginFragment extends Fragment {
 
         Button loginBtn = view.findViewById(R.id.login_login_btn);
         loginBtn.setOnClickListener(v -> {
+            //TODO - connect to model login function
             toFeedActivity();
         });
         return view;
