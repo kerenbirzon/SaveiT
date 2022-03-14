@@ -70,7 +70,7 @@ public class AddCategoryFragment extends Fragment {
         saveNewCategoryBtn.setEnabled(false);
         cancelNewCategoryBtn.setEnabled(false);
         String categoryName = categoryNameEt.getText().toString();
-        int categoryImage = R.drawable.money;
+        Integer categoryImage = R.drawable.money;
         Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
         Category category = new Category(categoryName,categoryImage); // need to change the function
         CategoryModel.instance.addCategory(category,()->{

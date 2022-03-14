@@ -48,7 +48,9 @@ public class CategoryModel {
 
     MutableLiveData<List<Category>> categoryList = new MutableLiveData<List<Category>>();
     public LiveData<List<Category>> getAllCategories(){
-        refreshCategoryList();
+        if (categoryList.getValue() == null){
+            refreshCategoryList();
+        }
         return categoryList;
     }
     public void refreshCategoryList(){
@@ -57,8 +59,13 @@ public class CategoryModel {
         // get local update date
         Long lastUpdateDate = SaveiTMediate.getAppContext().getSharedPreferences("TAG", Context.MODE_PRIVATE).getLong("CategoryLastUpdateDate",0);
 
+        executor.execute(() -> {
+            List<Category> catList = AppLocalDb.db.categoryDao().getAllCategories();
+            categoryList.postValue(catList);
+        });
+
         //firebase get all updates
-        modelFirebase.getCategories(lastUpdateDate, new CategoryModel.GetAllCategoriesListener() {
+        modelFirebase.getCategories(lastUpdateDate, new GetAllCategoriesListener() {
             @Override
             public void onComplete(List<Category> list){
                 executor.execute(new Runnable() {
@@ -106,7 +113,11 @@ public class CategoryModel {
         void OnComplete();
     }
     public void addCategory(Category category, AddCategoryListener listener){
-        modelFirebase.addCategory(category, listener);
+        modelFirebase.addCategory(category, () -> {
+            listener.OnComplete();
+            refreshCategoryList();
+        });
+//        modelFirebase.addCategory(category, listener);
     }
 
     public interface GetCategoryByTitle {

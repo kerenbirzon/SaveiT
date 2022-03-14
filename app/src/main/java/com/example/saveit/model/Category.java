@@ -21,6 +21,7 @@ public class Category {
     Long updateDate = new Long(0);
 
     public Category() {
+
     }
 
     public Category(String title) {
@@ -68,7 +69,7 @@ public class Category {
         return json;
     }
 
-    public long getUpdateDate() {
+    public Long getUpdateDate() {
         return updateDate;
     }
 
