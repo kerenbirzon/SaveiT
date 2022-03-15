@@ -14,6 +14,9 @@
             android:name=".login.RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".category.CategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".IntroActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
