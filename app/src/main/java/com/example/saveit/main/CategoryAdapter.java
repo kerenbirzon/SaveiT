@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
-import com.example.saveit.model.Category;
 
 import java.util.List;
 

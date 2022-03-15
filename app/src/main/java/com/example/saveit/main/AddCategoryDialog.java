@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.saveit.R;
-import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 
 public class AddCategoryDialog extends Fragment {

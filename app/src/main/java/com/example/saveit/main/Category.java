@@ -1,4 +1,4 @@
-package com.example.saveit.model;
+package com.example.saveit.main;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FieldValue;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
