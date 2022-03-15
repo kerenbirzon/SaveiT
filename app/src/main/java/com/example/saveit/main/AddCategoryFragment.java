@@ -5,14 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -20,7 +16,6 @@ import androidx.navigation.Navigation;
 import com.example.saveit.R;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class AddCategoryFragment extends Fragment {
     public static final int DEFAULT_ICON = 13; //R.drawable.buy
@@ -36,7 +31,7 @@ public class AddCategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_category, container, false);
+        View view = inflater.inflate(R.layout.add_category_dialog_fragment, container, false);
         saveNewCategoryBtn = view.findViewById(R.id.btn_action_save);
         cancelNewCategoryBtn = view.findViewById(R.id.btn_action_cancel);
         chooseIconBtn = view.findViewById(R.id.btn_choose_icon);

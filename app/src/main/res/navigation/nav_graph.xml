@@ -18,7 +18,7 @@
         android:id="@+id/addCategoryFragment"
         android:name="com.example.saveit.main.AddCategoryFragment"
         android:label="fragment_add_category"
-        tools:layout="@layout/fragment_add_category" >
+        tools:layout="@layout/add_category_dialog_fragment" >
         <action
             android:id="@+id/action_addCategory_to_chooseIcon"
             app:destination="@id/chooseIconFragment" />
