@@ -1,4 +1,4 @@
-package com.example.saveit.model;
+package com.example.saveit.category;
 import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
