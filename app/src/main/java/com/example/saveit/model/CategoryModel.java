@@ -36,9 +36,6 @@ public class CategoryModel {
 
     ModelFirebase modelFirebase = new ModelFirebase();
     private CategoryModel(){
-//        Category category = new Category();
-//        category.setTitle("Car");
-//        categories.add(category);
         categoryListLoadingState.setValue(CategoryListLoadingState.loaded);
     }
 
@@ -95,19 +92,7 @@ public class CategoryModel {
                 });
             }
         });
-
-//        modelFirebase.getCategories(lastUpdateDate, new GetAllCategoriesListener() {
-//            @Override
-//            public void onComplete(List<Category> list) {
-//                categoryList.setValue(list);
-//                categoryListLoadingState.setValue(CategoryListLoadingState.loaded);
-//            }
-//        });
     }
-
-//    public void getCategories(GetAllCategoriesListener listener) {
-//        modelFirebase.getCategories(listener);
-//    }
 
     public interface AddCategoryListener {
         void OnComplete();
@@ -117,7 +102,6 @@ public class CategoryModel {
             listener.OnComplete();
             refreshCategoryList();
         });
-//        modelFirebase.addCategory(category, listener);
     }
 
     public interface GetCategoryByTitle {

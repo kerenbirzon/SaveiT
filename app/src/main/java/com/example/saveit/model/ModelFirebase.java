@@ -1,8 +1,14 @@
 package com.example.saveit.model;
 
+import android.net.Uri;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.example.saveit.User.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -10,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +31,12 @@ public class ModelFirebase {
                 .build();
         db.setFirestoreSettings(settings);
     }
+
+    /**
+     *
+     * Category
+     *
+     */
 
     public void getCategories(Long lastUpdateDate, CategoryModel.GetAllCategoriesListener listener) {
         db.collection(Category.COLLECTION_NAME)
@@ -66,6 +79,55 @@ public class ModelFirebase {
                             category = Category.create(task.getResult().getData());
                         }
                         listener.OnComplete(category);
+                    }
+                });
+
+    }
+
+    /**
+     * User
+     */
+
+    public void createUser(User user, UserModel.AddUserListener listener) {
+        Map<String, Object> json = user.toJson();
+        db.collection("User")
+                .document(user.getPhoneNumber())
+                .set(json)
+                .addOnSuccessListener(unused -> listener.onComplete())
+                .addOnFailureListener(e -> listener.onComplete());
+    }
+
+    public void addUser(User user,UserModel.AddUserListener listener){
+        db.collection("User")
+                .document(user.getPhoneNumber())
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("tag","user added successfully");
+                        listener.onComplete();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("tag","failed added user");
+                listener.onComplete();
+            }
+        });
+    }
+
+    public void getUserByPhone(String userPhoneNumber, UserModel.GetUserByPhone listener) {
+        db.collection("Designer")
+                .document(userPhoneNumber)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        User user = null;
+                        if (task.isSuccessful() & task.getResult()!= null){
+                            user = User.create(task.getResult().getData());
+                        }
+                        listener.onComplete(user);
                     }
                 });
 
