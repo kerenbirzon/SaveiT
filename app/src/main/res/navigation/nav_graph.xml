@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"
-        android:name="com.example.saveit.main.AddCategoryFragment"
+        android:name="com.example.saveit.main.AddCategoryDialog"
         android:label="fragment_add_category"
         tools:layout="@layout/add_category_dialog_fragment" >
         <action
