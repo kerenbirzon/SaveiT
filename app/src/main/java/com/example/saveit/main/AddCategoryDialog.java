@@ -31,13 +31,10 @@ public class AddCategoryDialog extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_category_dialog_fragment, container, false);
-        saveNewCategoryBtn = view.findViewById(R.id.btn_action_save);
+        saveNewCategoryBtn = view.findViewById(R.id.btn_action_ok);
         cancelNewCategoryBtn = view.findViewById(R.id.btn_action_cancel);
         chooseIconBtn = view.findViewById(R.id.btn_choose_icon);
         iconPrevView = view.findViewById(R.id.iv_icon_img_prev);
-        categoryNameEt = view.findViewById(R.id.add_Category_name_et);
-        progressBar = view.findViewById(R.id.add_category_progressBar);
-        progressBar.setVisibility(View.GONE);
 
 
 
