@@ -22,7 +22,7 @@ import java.net.URLEncoder;
 public class DisplayFileActivity extends AppCompatActivity {
 
     // TODO: FIX URL
-    //public static final String GOOGLE_PREFIX_URL = "https://drive.google.com/viewerng/viewer?embedded=true&url=";
+    public static final String GOOGLE_PREFIX_URL = "https://drive.google.com/viewerng/viewer?embedded=true&url=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

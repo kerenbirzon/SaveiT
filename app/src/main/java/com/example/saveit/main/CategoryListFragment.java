@@ -61,7 +61,7 @@ public class CategoryListFragment extends Fragment {
                 Log.d("category clicked", "category was clicked");
                 lastCategoryPosition = position;
                 Category category = viewModel.getCategories().getValue().get(position);
-                Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
+                //Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
             }
         });
 
