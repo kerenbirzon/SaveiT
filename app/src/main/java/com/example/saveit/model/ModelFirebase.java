@@ -2,6 +2,7 @@ package com.example.saveit.model;
 
 import androidx.annotation.NonNull;
 
+import com.example.saveit.main.Category;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
