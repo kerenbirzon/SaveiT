@@ -40,7 +40,7 @@ public class DisplayFileActivity extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String doc = GOOGLE_PREFIX_URL + url;
+        //String doc = GOOGLE_PREFIX_URL + url;
         final WebView webView = (WebView) findViewById(R.id.webView);
         webView.setVisibility(View.INVISIBLE);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -61,6 +61,6 @@ public class DisplayFileActivity extends AppCompatActivity {
                 }
             }
         });
-        webView.loadUrl(doc);
+        //webView.loadUrl(doc);
     }
 }
