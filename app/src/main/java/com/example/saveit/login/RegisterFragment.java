@@ -15,14 +15,12 @@ import android.widget.TextView;
 
 import com.example.saveit.R;
 import com.example.saveit.User.User;
-import com.example.saveit.main.Category;
-import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.UserModel;
 
 public class RegisterFragment extends Fragment {
 
     EditText userName, password, phoneNumber;
-    TextView allreadySignIn;
+    TextView allreadySignUp;
     Button signUpBtn;
 
     @Override
@@ -34,7 +32,7 @@ public class RegisterFragment extends Fragment {
         userName = view.findViewById(R.id.register_user_name_et);
         password = view.findViewById(R.id.register_password_et);
         phoneNumber = view.findViewById(R.id.register_phone_et);
-        allreadySignIn = view.findViewById(R.id.register_allready_sign_in_btn_tv);
+        allreadySignUp = view.findViewById(R.id.register_allready_sign_up_btn_tv);
         signUpBtn = view.findViewById(R.id.register_sign_up_btn);
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -44,12 +42,18 @@ public class RegisterFragment extends Fragment {
             }
         });
 
-        allreadySignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).popBackStack();
-            }
+//        allreadySignUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).popBackStack();
+//                //?finish
+//            }
+//        });
+
+        allreadySignUp.setOnClickListener((v) -> {
+            Navigation.findNavController(v).navigateUp();
         });
+
 
         return view;
     }
