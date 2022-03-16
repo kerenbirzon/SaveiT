@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.saveit.User.User;
+import com.example.saveit.category.Document;
 import com.example.saveit.main.Category;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -13,7 +14,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -24,13 +27,35 @@ import java.util.List;
 import java.util.Map;
 
 public class ModelFirebase {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static CollectionReference categoriesRef;
+    private static final String TAG = "FirebaseMediate";
+
+
 
     public ModelFirebase(){
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(false)
                 .build();
         db.setFirestoreSettings(settings);
+    }
+
+    public static void removeDocument(String categoryTitle, Document document_to_delete) {
+
+        db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayRemove(document_to_delete)).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "successfully deleted document: " + document_to_delete.getTitle() + " from category " + categoryTitle);
+                } else {
+                    Log.e(TAG, "Error while deleting document " + document_to_delete.getTitle() + " from category" + categoryTitle);
+                }
+            }
+        });
+    }
+
+    public static void addNewDocument(String categoryTitle, Document document) {
+        db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayUnion(document));
     }
 
     /**
