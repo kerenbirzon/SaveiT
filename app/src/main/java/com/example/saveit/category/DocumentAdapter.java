@@ -19,6 +19,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private List<Document> documents;
     private DocumentClickListener documentClickListener;
+    private DocumentLongClickListener documentLongClickListener;
 
     DocumentAdapter(List<Document> items) {
         documents = items;
@@ -67,6 +68,10 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public void deleteDocument(Document document) {
         documents.remove(document);
+    }
+
+    public void setDocumentLongClickListener(DocumentLongClickListener documentLongClickListener) {
+        this.documentLongClickListener = documentLongClickListener;
     }
 }
 

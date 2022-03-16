@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.saveit.R;
 import com.example.saveit.User.User;
-import com.example.saveit.model.Category;
+import com.example.saveit.main.Category;
 import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.UserModel;
 

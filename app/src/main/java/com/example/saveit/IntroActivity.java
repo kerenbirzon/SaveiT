@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.saveit.login.LoginActivity;
+//import com.example.saveit.login.LoginActivity;
 import com.example.saveit.model.CategoryModel;
 
 public class IntroActivity extends AppCompatActivity {
@@ -35,8 +35,8 @@ public class IntroActivity extends AppCompatActivity {
 
     private void toLoginActivity() {
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, LoginActivity.class);
+        //startActivity(intent);
         finish();
     }
 
