@@ -20,7 +20,7 @@ import com.example.saveit.model.UserModel;
 public class RegisterFragment extends Fragment {
 
     EditText userName, password, phoneNumber;
-    TextView allreadySignUp;
+    TextView allreadySignUp, registerTitle;
     Button signUpBtn;
 
     @Override
@@ -34,6 +34,7 @@ public class RegisterFragment extends Fragment {
         phoneNumber = view.findViewById(R.id.register_phone_et);
         allreadySignUp = view.findViewById(R.id.register_allready_sign_up_btn_tv);
         signUpBtn = view.findViewById(R.id.register_sign_up_btn);
+        registerTitle = view.findViewById(R.id.register_title_tv);
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override

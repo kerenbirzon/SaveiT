@@ -8,7 +8,7 @@ import com.example.saveit.SaveiTMediate;
 import com.example.saveit.category.Document;
 import com.example.saveit.main.Category;
 
-@Database(entities = {Category.class, Document.class}, version = 14)
+@Database(entities = {Category.class, Document.class}, version = 16)
 abstract class AppLocalDbRepository extends RoomDatabase {
     public abstract CategoryDao categoryDao();
     public abstract DocumentDao documentDao();

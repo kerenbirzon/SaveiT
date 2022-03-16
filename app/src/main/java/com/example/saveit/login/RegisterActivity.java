@@ -1,21 +1,21 @@
-//package com.example.saveit.login;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//
-//import android.os.Bundle;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//import com.example.saveit.R;
-//import com.example.saveit.User.User;
-//import com.example.saveit.model.UserModel;
-//
-//import org.w3c.dom.Text;
-//
-//public class RegisterActivity extends AppCompatActivity {
+package com.example.saveit.login;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.saveit.R;
+import com.example.saveit.User.User;
+import com.example.saveit.model.UserModel;
+
+import org.w3c.dom.Text;
+
+public class RegisterActivity extends AppCompatActivity {
 
 //    EditText userName, password, phoneNumber;
 //    TextView allreadySignIn;
@@ -62,4 +62,4 @@
 //            });
 //        }
 //    }
-//}
+}

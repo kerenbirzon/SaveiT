@@ -20,7 +20,7 @@ public class LoginFragment extends Fragment {
 
     EditText userName, password;
     Button loginBtn;
-    TextView RegisterationBtn;
+    TextView RegisterationBtn, loginTitle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +31,7 @@ public class LoginFragment extends Fragment {
         password = view.findViewById(R.id.login_password_et);
         loginBtn = view.findViewById(R.id.login_login_btn);
         RegisterationBtn = view.findViewById(R.id.login_sign_up_btn_tv);
+        loginTitle = view.findViewById(R.id.login_title_tv);
 
         RegisterationBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_registerFragment));
 
