@@ -19,17 +19,17 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container,false);
 
-        Button loginBtn = view.findViewById(R.id.login_login_btn);
-        loginBtn.setOnClickListener(v -> {
-            //TODO - connect to model login function
-            toFeedActivity();
-        });
+//        Button loginBtn = view.findViewById(R.id.login_login_btn);
+//        loginBtn.setOnClickListener(v -> {
+//            //TODO - connect to model login function
+//            toFeedActivity();
+//        });
         return view;
     }
 
-    private void toFeedActivity() {
-        Intent intent = new Intent(getContext(), MainActivity.class);
-        startActivity(intent);
-        getActivity().finish();
-    }
+//    private void toFeedActivity() {
+//        Intent intent = new Intent(getContext(), MainActivity.class);
+//        startActivity(intent);
+//        getActivity().finish();
+//    }
 }
