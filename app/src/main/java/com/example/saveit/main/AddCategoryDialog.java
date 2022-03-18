@@ -46,10 +46,10 @@ public class AddCategoryDialog extends Fragment {
             }
         });
 
-        cancelNewCategoryBtn.setOnClickListener((v) -> {
-            Log.d("AddCategoryFragment", "onClick: closing AddCategoryFragment");
-            Navigation.findNavController(v).navigateUp();
-        });
+//        cancelNewCategoryBtn.setOnClickListener((v) -> {
+//            Log.d("AddCategoryFragment", "onClick: closing AddCategoryFragment");
+//            Navigation.findNavController(v).navigateUp();
+//        });
 
         chooseIconBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategory_to_chooseIcon));
 
