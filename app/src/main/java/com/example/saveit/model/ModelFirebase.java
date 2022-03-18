@@ -1,5 +1,7 @@
 package com.example.saveit.model;
 
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
@@ -23,7 +25,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +36,8 @@ public class ModelFirebase {
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static CollectionReference categoriesRef;
     private static final String TAG = "FirebaseMediate";
+    private static StorageReference storageReference;
+
 
 
 
@@ -171,4 +177,28 @@ public class ModelFirebase {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         return (currentUser != null);
     }
+
+    public static void uploadImageToFirebaseStorageDB(Bitmap bitmap, Context context, String categoryTitle, String documentTitle, String imageType) {
+        // Get the data from an ImageView as bytes
+        StorageReference ref = storageReference.child("Files").
+                child(MyPreferences.getUserDocumentPathFromPreferences(context)).child(categoryTitle).child(documentTitle).child("image");
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = ref.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e(TAG, "filed to upload the document image to the storage DB");
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.d(TAG, "successfully uploaded the document image to the storage DB");
+            }
+        });
+    }
+
 }

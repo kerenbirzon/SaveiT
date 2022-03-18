@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 import com.example.saveit.R;
 import com.example.saveit.category.Document;
+import com.example.saveit.model.ModelFirebase;
 import com.example.saveit.model.MyPreferences;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -360,7 +361,7 @@ public class DocumentActivity extends AppCompatActivity {
         }
 
         if (curDocument.getHasImage() && changedImage) {
-            FirebaseMediate.uploadImageToFirebaseStorageDB(curDocument.getBitmap(), getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
+            ModelFirebase.uploadImageToFirebaseStorageDB(curDocument.getBitmap(), getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
         }
 
         Intent intentBack = new Intent(DocumentActivity.this, CategoryActivity.class);

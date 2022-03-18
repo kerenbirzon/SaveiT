@@ -135,4 +135,9 @@ public class Document {
         this.bitmap = bitmap;
     }
 
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+
 }
