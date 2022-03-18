@@ -35,17 +35,17 @@ public class LoginFragment extends Fragment {
 
         RegisterationBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_registerFragment));
 
-//        Button loginBtn = view.findViewById(R.id.login_login_btn);
-//        loginBtn.setOnClickListener(v -> {
-//            //TODO - connect to model login function
-//            toFeedActivity();
-//        });
+        Button loginBtn = view.findViewById(R.id.login_login_btn);
+        loginBtn.setOnClickListener(v -> {
+            //TODO - connect to model login function
+            toFeedActivity();
+        });
         return view;
     }
 
-//    private void toFeedActivity() {
-//        Intent intent = new Intent(getContext(), MainActivity.class);
-//        startActivity(intent);
-//        getActivity().finish();
-//    }
+    private void toFeedActivity() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        startActivity(intent);
+        getActivity().finish();
+    }
 }
