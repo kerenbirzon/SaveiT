@@ -122,50 +122,50 @@ public class ModelFirebase {
      * User
      */
 
-    public void createUser(User user, UserModel.AddUserListener listener) {
-        Map<String, Object> json = user.toJson();
-        db.collection("User")
-                .document(user.getPhoneNumber())
-                .set(json)
-                .addOnSuccessListener(unused -> listener.onComplete())
-                .addOnFailureListener(e -> listener.onComplete());
-    }
+//    public void createUser(User user, UserModel.AddUserListener listener) {
+//        Map<String, Object> json = user.toJson();
+//        db.collection("User")
+//                .document(user.getPhoneNumber())
+//                .set(json)
+//                .addOnSuccessListener(unused -> listener.onComplete())
+//                .addOnFailureListener(e -> listener.onComplete());
+//    }
 
-    public void addUser(User user,UserModel.AddUserListener listener){
-        db.collection("User")
-                .document(user.getPhoneNumber())
-                .set(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.d("tag","user added successfully");
-                        listener.onComplete();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("tag","failed added user");
-                listener.onComplete();
-            }
-        });
-    }
+//    public void addUser(User user,UserModel.AddUserListener listener){
+//        db.collection("User")
+//                .document(user.getPhoneNumber())
+//                .set(user)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void unused) {
+//                        Log.d("tag","user added successfully");
+//                        listener.onComplete();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Log.d("tag","failed added user");
+//                listener.onComplete();
+//            }
+//        });
+//    }
 
-    public void getUserByPhone(String userPhoneNumber, UserModel.GetUserByPhone listener) {
-        db.collection("Designer")
-                .document(userPhoneNumber)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        User user = null;
-                        if (task.isSuccessful() & task.getResult()!= null){
-                            user = User.create(task.getResult().getData());
-                        }
-                        listener.onComplete(user);
-                    }
-                });
-
-    }
+//    public void getUserByPhone(String userPhoneNumber, UserModel.GetUserByPhone listener) {
+//        db.collection("Designer")
+//                .document(userPhoneNumber)
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                        User user = null;
+//                        if (task.isSuccessful() & task.getResult()!= null){
+//                            user = User.create(task.getResult().getData());
+//                        }
+//                        listener.onComplete(user);
+//                    }
+//                });
+//
+//    }
 
     /**
      * Authentication
