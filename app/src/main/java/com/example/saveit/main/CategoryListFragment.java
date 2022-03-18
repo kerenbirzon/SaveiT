@@ -1,12 +1,14 @@
 package com.example.saveit.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,14 +18,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.saveit.MainActivity;
 import com.example.saveit.R;
+import com.example.saveit.login.LoginActivity;
 import com.example.saveit.model.CategoryModel;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class CategoryListFragment extends Fragment {
     CategoryListViewModel viewModel;
     private int lastCategoryPosition;
     CategoryAdapter categoryAdapter;
     SwipeRefreshLayout swipeRefresh;
+    FirebaseAuth categoryListmAuth;
+    Button addCategoryBtn,signOutBtn;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -35,8 +42,10 @@ public class CategoryListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
-        Button addCategoryBtn = view.findViewById(R.id.btn_add_category);
+        addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
+        signOutBtn = view.findViewById(R.id.btn_sign_out);
+        categoryListmAuth = FirebaseAuth.getInstance();
 
         swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
         swipeRefresh.setOnRefreshListener(() -> CategoryModel.instance.refreshCategoryList());
@@ -66,6 +75,16 @@ public class CategoryListFragment extends Fragment {
                 swipeRefresh.setRefreshing(true);
             }else{
                 swipeRefresh.setRefreshing(false);
+            }
+        });
+
+        signOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (categoryListmAuth != null){
+                    categoryListmAuth.signOut();
+                    startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                }
             }
         });
         return view;
