@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.save.saveme.R;
+import com.example.saveit.R;
 
 /**
  * a dialog for the expiration date. This dialog present the found expiration dates from
