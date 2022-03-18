@@ -11,9 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveiT" >
         <activity
-            android:name=".login.RegisterActivity"
-            android:exported="false" />
-        <activity
             android:name=".category.CategoryActivity"
             android:exported="false" />
         <activity
