@@ -1,25 +1,34 @@
 package com.example.saveit.main;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import com.example.saveit.R;
-import com.example.saveit.model.CategoryModel;
+import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class AddCategoryDialog extends Fragment {
+import com.example.saveit.model.CategoryModel;
+import androidx.navigation.Navigation;
+// TODO: FIX NAVIGATION
+
+public class AddCategoryDialog extends DialogFragment {
     public static final int DEFAULT_ICON = 13; //R.drawable.buy
     private static final int CATEGORY_ICON_REQUEST_CODE = 111;
     private int iconImageValue = DEFAULT_ICON; //initialized to default icon
@@ -81,22 +90,139 @@ public class AddCategoryDialog extends Fragment {
         });
 
 
-        chooseIconBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_addCategory_to_chooseIcon));
+        chooseIconBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: chooseIconButton");
+                ChooseIconFragment chooseIconFragment = new ChooseIconFragment();
+                chooseIconFragment.setTargetFragment(AddCategoryDialog.this, 111);
+                chooseIconFragment.show(getFragmentManager(), "dialog");
+            }
+        });
 
         return view;
     }
 
-    private void saveCategory() {
-        progressBar.setVisibility(View.VISIBLE);
-        saveNewCategoryBtn.setEnabled(false);
-        cancelNewCategoryBtn.setEnabled(false);
-        String categoryName = categoryNameEt.getText().toString();
-        Integer categoryImage = R.drawable.money;
-        Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
-        Category category = new Category(categoryName,categoryImage); // need to change the function
-        CategoryModel.instance.addCategory(category,()->{
-            Navigation.findNavController(categoryNameEt).navigateUp();
+    /*
+     * checks if user input is valid
+     */
+    private boolean userInputValid() {
+        return isCategoryTitleValid();
+    }
+
+    /*
+     * checks if category title is valid
+     */
+    private boolean isCategoryTitleValid() {
+        String title = titleInput.getEditText().getText().toString();
+        boolean isTitleChosen = false;
+        if (title.equals("")) {
+            title = titleSpinner.getSelectedItem().toString();
+            if (!title.equals("Choose Name…") && !title.equals("Other")) {
+                isTitleChosen = true;
+            }
+        }
+        return isCategoryTitleValid || isTitleChosen;
+    }
+    /*
+     * add a new category method
+     */
+    private void addNewCategory() {
+        String title = titleInput.getEditText().getText().toString();
+        if (title == null || title.equals("")) {
+            title = titleSpinner.getSelectedItem().toString();
+        }
+        mOnInputListener.sendInput(title, iconImageValue);
+        getDialog().dismiss();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mOnInputListener = (OnInputListener) getActivity();
+        } catch (ClassCastException e) {
+            Log.e(TAG, "onAttach: ClassCastException: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Handles the event where the user chooses a category name
+     */
+    private void setCategoryTitle() {
+        final ArrayAdapter<String> titlesAdapter = new ArrayAdapter<>(AddCategoryDialog.this.getActivity(), android.R.layout.simple_list_item_1, categoriesTitles);
+        titlesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        titleSpinner.setAdapter(titlesAdapter);
+        titleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                titleSpinner.setSelection(position);
+                String title = titlesAdapter.getItem(position);
+                if (title.equals("Other")) {
+                    titleInput.setVisibility(View.VISIBLE);
+                    validateCategoryTitle();
+                } else {
+                    titleInput.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CATEGORY_ICON_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                iconImageValue = data.getIntExtra("iconIntValue", DEFAULT_ICON);
+                iconPrevView.setVisibility(View.VISIBLE);
+                iconPrevView.setImageResource(iconImages[iconImageValue]);
+                Log.d(TAG, "set icon image to value: " + Integer.toString(iconImageValue));
+            }
+        }
+    }
+
+    /**
+     * validate the entered category title.
+     */
+    private void validateCategoryTitle() {
+        setIsDocumentTitleValidToTrueIfValid();
+        titleInput.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isCategoryTitleValid = false;
+                int inputLength = titleInput.getEditText().getText().toString().length();
+                if (inputLength >= MAX_CATEGORY_NAME_LENGTH) {
+                    titleInput.setError("Maximum Limit Reached!");
+                } else if (inputLength == 0) {
+                    titleInput.setError("Category title is required!");
+                } else {
+                    titleInput.setError(null);
+                    isCategoryTitleValid = true;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    /**
+     * set isDocumentTitleValid to true if document title is valid
+     */
+    private void setIsDocumentTitleValidToTrueIfValid() {
+        int inputLength = titleInput.getEditText().getText().toString().length();
+        if (inputLength < MAX_CATEGORY_NAME_LENGTH && inputLength > 0) {
+            isCategoryTitleValid = true;
+        }
     }
 
 }

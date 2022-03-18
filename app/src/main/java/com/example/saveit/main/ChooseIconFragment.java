@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -71,4 +72,6 @@ public class ChooseIconFragment extends Fragment {
         return view;
     }
 
+    public void show(FragmentManager fragmentManager, String dialog) {
+    }
 }
