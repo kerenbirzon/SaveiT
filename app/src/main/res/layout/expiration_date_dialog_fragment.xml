@@ -55,7 +55,7 @@
         android:layout_below="@id/et_title"
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:text="@string/save" />
+        android:text="SAVE" />
 
     <Button
         android:id="@+id/btn_action_cancel_icon_selection"
@@ -66,7 +66,7 @@
         android:layout_marginTop="20dp"
         android:layout_toStartOf="@id/btn_action_ok"
         android:layout_toLeftOf="@id/btn_action_ok"
-        android:text="@string/cancel"
+        android:text="CANCEL"
         android:textColor="@android:color/darker_gray"/>
 
 </RelativeLayout>

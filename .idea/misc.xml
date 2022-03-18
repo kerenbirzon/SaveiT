@@ -23,19 +23,12 @@
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_category_list.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_choose_icon.xml" value="0.22" />
         <entry key="..\:/Users/97253/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_document.xml" value="0.22" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/drawable/ic_add.xml" value="0.3541666666666667" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/drawable/ic_person_signin.xml" value="0.3541666666666667" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/drawable/ic_security.xml" value="0.3541666666666667" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/drawable/ic_settings.xml" value="0.3651041666666667" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/drawable/icon_password.xml" value="0.3651041666666667" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/drawable/icon_selection.xml" value="0.3541666666666667" />
-=======
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable-v24/ic_alarm_on.xml" value="0.1825" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1825" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_access_time_black_24dp.xml" value="0.1825" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.1825" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_date.xml" value="0.1825" />
+        <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_event_busy.xml" value="0.1" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_image.xml" value="0.1825" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_insert_file.xml" value="0.1825" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/drawable/ic_insert_icon.xml" value="0.1825" />
@@ -47,17 +40,16 @@
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/activity_intro.xml" value="0.14855072463768115" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/activity_login.xml" value="0.14855072463768115" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/activity_main.xml" value="0.14855072463768115" />
+        <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/expiration_date_dialog_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/fragment_add_category.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/fragment_category.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/fragment_category_list.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/fragment_choose_icon.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/fragment_document.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/Taranis/StudioProjects/SaveiT/app/src/main/res/layout/fragment_login.xml" value="0.14855072463768115" />
->>>>>>> 53eff093a2e656395f7c7c36fc2d8e0d1c5c76df
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/activity_intro.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/activity_login.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/activity_main.xml" value="0.2755208333333333" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/activity_register.xml" value="0.353125" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/category_item.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/document_item.xml" value="0.3380208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_add_category.xml" value="0.3385416666666667" />
@@ -66,7 +58,6 @@
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_choose_icon.xml" value="0.3380208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_document.xml" value="0.3380208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_login.xml" value="0.2755208333333333" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_register.xml" value="0.3875" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/menu/basic_menu.xml" value="0.3385416666666667" />
         <entry key="..\:/Users/tamir/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_add_category.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/tamir/AndroidStudioProjects/SaveiT/app/src/main/res/layout/fragment_category.xml" value="0.36666666666666664" />
