@@ -32,7 +32,7 @@ public class Document {
         this.title = title;
         this.comment = comment;
         this.expirationDate = expirationDate;
-        //this.bitmap = bitmap;
+        this.bitmap = bitmap;
         this.hasImage = hasImage;
     }
 
@@ -40,7 +40,7 @@ public class Document {
         this.title = title;
         this.comment = comment;
         this.expirationDate = expirationDate;
-        //this.bitmap = bitmap;
+        this.bitmap = bitmap;
         this.hasImage = hasImage;
         this.hasFile = hasFile;
         this.hasAlarm = hasAlarm;
@@ -78,14 +78,6 @@ public class Document {
     public void setHasAlarm(boolean hasAlarm) {
         this.hasAlarm = hasAlarm;
     }
-
-    //public Bitmap getBitmap() {
-    //    return bitmap;
-    //}
-
-    //public void setBitmap(Bitmap bitmap) {
-    //    this.bitmap = bitmap;
-    //}
 
     public boolean getHasImage() {
         return hasImage;

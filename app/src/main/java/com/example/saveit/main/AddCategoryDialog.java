@@ -21,6 +21,10 @@ public class AddCategoryDialog extends Fragment {
     private int iconImageValue = DEFAULT_ICON; //initialized to default icon
     private static final int[] iconImages = {R.drawable.money, R.drawable.tax, R.drawable.lipstick, R.drawable.id, R.drawable.house, R.drawable.garden, R.drawable.fish, R.drawable.fan, R.drawable.email, R.drawable.dog, R.drawable.car, R.drawable.cake, R.drawable.buy, R.drawable.cat, R.drawable.company};
     private String[] categoriesTitles; //categories titles not used for spinner
+    private boolean isCategoryTitleValid = false;
+    public static final int MAX_CATEGORY_NAME_LENGTH = 20;
+
+
 
     private EditText categoryNameEt;
     private Button saveNewCategoryBtn, cancelNewCategoryBtn, chooseIconBtn;
