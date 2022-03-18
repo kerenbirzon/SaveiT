@@ -10,6 +10,7 @@
     <string name="Login">Welcome to SaveIT!</string>
     <string name="password">Password</string>
     <string name="user_name">User Name</string>
+    <string name="change_image">change image</string>
     <string name="login_btn">Login</string>
     <string name="title_activity_document">DocumentActivity</string>
     <!-- Strings used for fragments for navigation -->

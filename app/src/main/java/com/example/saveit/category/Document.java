@@ -17,7 +17,7 @@ public class Document {
     private String comment;
     private String expirationDate;
     private String reminderTime;
-    //private Bitmap bitmap;
+    private Bitmap bitmap;
     private String fileDownloadUri;
     private boolean hasImage;
     private boolean hasFile;
@@ -130,4 +130,9 @@ public class Document {
     public void setIsAddEventToPhoneCalender(boolean addEventToPhoneCalender) {
         isAddEventToPhoneCalender = addEventToPhoneCalender;
     }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
 }
