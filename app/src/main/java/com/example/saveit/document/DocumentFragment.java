@@ -25,10 +25,7 @@ public class DocumentFragment extends Fragment {
         saveDocumentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //save the category to the model
-
-                //pop back to category list
-                Navigation.findNavController(view).navigate(R.id.action_documentFragment_pop);
+                Navigation.findNavController(view).navigateUp();
             }
         });
         return view;
