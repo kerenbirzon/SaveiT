@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.saveit.SaveiTMediate;
+import com.example.saveit.main.Category;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -21,7 +22,7 @@ public class CategoryModel {
     public final static CategoryModel instance = new CategoryModel();
     public Executor executor = Executors.newFixedThreadPool(1);
     public Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
-    List<com.example.saveit.model.Category> categories = new LinkedList<com.example.saveit.model.Category>();
+    List<Category> categories = new LinkedList<Category>();
 
     public enum CategoryListLoadingState{
         loading,
@@ -33,13 +34,18 @@ public class CategoryModel {
         return categoryListLoadingState;
     }
 
+
     ModelFirebase modelFirebase = new ModelFirebase();
     private CategoryModel(){
         categoryListLoadingState.setValue(CategoryListLoadingState.loaded);
     }
 
-    MutableLiveData<List<com.example.saveit.model.Category>> categoryList = new MutableLiveData<List<com.example.saveit.model.Category>>();
-    public LiveData<List<com.example.saveit.model.Category>> getAllCategories(){
+    public interface GetAllCategoriesListener{
+        void onComplete(List<Category> list);
+    }
+
+    MutableLiveData<List<Category>> categoryList = new MutableLiveData<List<Category>>();
+    public LiveData<List<Category>> getAllCategories(){
         if (categoryList.getValue() == null){
             refreshCategoryList();
         }
@@ -52,20 +58,20 @@ public class CategoryModel {
         Long lastUpdateDate = SaveiTMediate.getAppContext().getSharedPreferences("TAG", Context.MODE_PRIVATE).getLong("CategoryLastUpdateDate",0);
 
         executor.execute(() -> {
-            List<com.example.saveit.model.Category> catList = AppLocalDb.db.categoryDao().getAllCategories();
+            List<Category> catList = AppLocalDb.db.categoryDao().getAllCategories();
             categoryList.postValue(catList);
         });
 
         //firebase get all updates
-        modelFirebase.getCategories(lastUpdateDate, new ModelFirebase.GetAllCategoriesListener() {
+        modelFirebase.getCategories(lastUpdateDate, new GetAllCategoriesListener() {
             @Override
-            public void onComplete(List<com.example.saveit.model.Category> list){
+            public void onComplete(List<Category> list){
                 executor.execute(new Runnable() {
                     @Override
                     public void run() {
                         Long lastUpdateDate = new Long(0);
                         Log.d("TAG","fireBase returned: " + list.size());
-                        for (com.example.saveit.model.Category category: list){
+                        for (Category category: list){
                             AppLocalDb.db.categoryDao().insertAll(category);
 
                             if (lastUpdateDate < category.getUpdateDate()){
@@ -80,7 +86,7 @@ public class CategoryModel {
                                 .commit();
 
                         //return all data to caller
-                        List<com.example.saveit.model.Category> caList = AppLocalDb.db.categoryDao().getAllCategories();
+                        List<Category> caList = AppLocalDb.db.categoryDao().getAllCategories();
                         categoryList.postValue(caList);
                         categoryListLoadingState.postValue(CategoryListLoadingState.loaded);
                     }
@@ -89,11 +95,10 @@ public class CategoryModel {
         });
     }
 
-
     public interface AddCategoryListener {
         void OnComplete();
     }
-    public void addCategory(com.example.saveit.model.Category category, AddCategoryListener listener){
+    public void addCategory(Category category, AddCategoryListener listener){
         modelFirebase.addCategory(category, () -> {
             listener.OnComplete();
             refreshCategoryList();
@@ -101,10 +106,10 @@ public class CategoryModel {
     }
 
     public interface GetCategoryByTitle {
-        void OnComplete(com.example.saveit.model.Category category);
+        void OnComplete(Category category);
     }
 
-    public com.example.saveit.model.Category getCategoryByTitle(String title, GetCategoryByTitle listener) {
+    public Category getCategoryByTitle(String title, GetCategoryByTitle listener) {
         modelFirebase.getCategoryByTitle(title,listener);
         return null;
     }

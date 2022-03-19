@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +21,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.saveit.MainActivity;
 import com.example.saveit.R;
 import com.example.saveit.login.LoginActivity;
-import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -33,7 +31,6 @@ public class CategoryListFragment extends Fragment {
     SwipeRefreshLayout swipeRefresh;
     FirebaseAuth categoryListmAuth;
     Button addCategoryBtn,signOutBtn;
-    ImageView iconPrevView;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -49,7 +46,6 @@ public class CategoryListFragment extends Fragment {
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
         signOutBtn = view.findViewById(R.id.btn_sign_out);
         categoryListmAuth = FirebaseAuth.getInstance();
-        iconPrevView = view.findViewById(R.id.iv_icon_img_prev);
 
         swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
         swipeRefresh.setOnRefreshListener(() -> CategoryModel.instance.refreshCategoryList());
@@ -95,7 +91,7 @@ public class CategoryListFragment extends Fragment {
     }
 
     private void refresh() {
-        categoryAdapter.notifyDataSetChanged();
-        swipeRefresh.setRefreshing(false);
+            categoryAdapter.notifyDataSetChanged();
+            swipeRefresh.setRefreshing(false);
     }
 }

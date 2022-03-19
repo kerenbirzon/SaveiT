@@ -1,12 +1,11 @@
 package com.example.saveit.main;
 
-import static android.app.Activity.RESULT_OK;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -30,12 +29,12 @@ public class ChooseIconFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_choose_icon, container, false);
         highlight = getResources().getDrawable(R.drawable.icon_selection);
+        //setButtonsOnClickMethods(view);
 
         GridLayout grid = view.findViewById(R.id.gl_choose_icon);
         int childCount = grid.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final ImageView currentImage = (ImageView) grid.getChildAt(i);
-
             final int finalI = i;
             currentImage.setOnClickListener(new ImageView.OnClickListener() {
                 @Override
@@ -56,19 +55,13 @@ public class ChooseIconFragment extends Fragment {
         saveIconBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("clicked", "lastImageToBeSelected" + lastImageToBeSelected);
+                Log.d("clicked", "actionSaveButton");
 
-//                Bundle bundle = new Bundle();
-//                bundle.putInt("icon",lastImageToBeSelected);
-//                AddCategoryFragment fragment = new AddCategoryFragment();
-//                fragment.setArguments(bundle);
-                Navigation.findNavController(v).navigateUp();
-//                Intent intent = new Intent(ChooseIconFragment.this.getContext(),AddCategoryFragment.class);
-//                intent.putExtra("iconIntValue", lastImageToBeSelected);
-//
-//                getTargetFragment().onActivityResult(getTargetRequestCode(), RESULT_OK, intent);
-                //go back
+                //Intent intent = new Intent(ChooseIconFragment.this.getContext(),AddCategoryFragment.class);
+                //intent.putExtra("iconIntValue", lastImageToBeSelected);
 
+                //Navigation.findNavController(view).navigate(ChooseIconFragmentDirections.actionChooseIconFragmentPop());
+                // need to continue here!!!!!!
             }
         });
 
@@ -79,4 +72,6 @@ public class ChooseIconFragment extends Fragment {
         return view;
     }
 
+    public void show(FragmentManager fragmentManager, String dialog) {
+    }
 }
