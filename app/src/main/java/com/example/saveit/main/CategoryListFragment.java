@@ -83,7 +83,10 @@ public class CategoryListFragment extends Fragment {
             @Override
             public void onItemClick(View v,int position) {
                 String categoryTitle = viewModel.getCategories().getValue().get(position).getTitle();
-                Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(categoryTitle));
+                executor.execute(() -> {
+                    Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(categoryTitle));
+                });
+
 
             }
         });

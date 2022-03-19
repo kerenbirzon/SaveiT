@@ -66,24 +66,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sep_line1">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_add_doc_image"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="12dp"
-                android:text="@string/add_image"
-                app:icon="@drawable/ic_image"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_add_doc_file"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add_file"
-                app:icon="@drawable/ic_insert_file"
-                app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
 
         <ImageView
@@ -107,37 +89,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/add_doc_buttons">
-
-            <ImageView
-                android:id="@+id/iv_doc_file"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.6"
-                android:paddingRight="8dp"
-                android:src="@drawable/ic_insert_file"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_doc_buttons" />
-
-            <TextView
-                android:id="@+id/tv_doc_file_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/added_file_file_name"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/fileProgressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ll_doc_file_prev"
-            app:layout_constraintTop_toBottomOf="@+id/add_doc_buttons" />
+            app:layout_constraintTop_toBottomOf="@id/add_doc_buttons"/>
 
         <View
             android:id="@+id/sep_line2"
@@ -272,6 +224,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/checkbox_calendar1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_doc_image"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:text="@string/add_image"
+            app:icon="@drawable/ic_image"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="207dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
