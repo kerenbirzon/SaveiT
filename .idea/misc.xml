@@ -59,7 +59,15 @@
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_document.xml" value="0.3380208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/layout/fragment_login.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/SaveiT/app/src/main/res/menu/basic_menu.xml" value="0.3385416666666667" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/ic_insert_file.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/ic_insert_icon.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3302083333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/icon_adding.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/icon_password.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/icon_selection.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/icon_settings.xml" value="0.3302083333333333" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/drawable/icon_user_name.xml" value="0.3302083333333333" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/activity_intro.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/activity_login.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/activity_main.xml" value="0.31929347826086957" />
@@ -67,7 +75,7 @@
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/document_item.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_about.xml" value="0.31929347826086957" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_add_category.xml" value="0.21" />
-        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_category.xml" value="0.18206521739130435" />
+        <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_category.xml" value="0.25" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_category_list.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_choose_icon.xml" value="0.2791666666666667" />
         <entry key="..\:/Users/tamir.amar/Android studio projects/saveitTamir/app/src/main/res/layout/fragment_document.xml" value="0.33" />
