@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/document_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -41,6 +42,7 @@
             app:layout_constraintTop_toBottomOf="@id/et_document_title">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/document_comment_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -226,7 +228,7 @@
             app:layout_constraintTop_toBottomOf="@id/checkbox_calendar1" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add_doc_image"
+            android:id="@+id/document_add_img_btn"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
