@@ -1,5 +1,8 @@
 package com.example.saveit.main;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,9 +27,10 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class AddCategoryFragment extends Fragment {
     public static final int DEFAULT_ICON = 13; //R.drawable.buy
+    private static final int CATEGORY_ICON_REQUEST_CODE = 111;
     private int iconImageValue = DEFAULT_ICON; //initialized to default icon
     private static final int[] iconImages = {R.drawable.money, R.drawable.tax, R.drawable.lipstick, R.drawable.id, R.drawable.house, R.drawable.garden, R.drawable.fish, R.drawable.fan, R.drawable.email, R.drawable.dog, R.drawable.car, R.drawable.cake, R.drawable.buy, R.drawable.cat, R.drawable.company};
-    private String[] categoriesTitles; //categories titles not used for spinner
+    private String[] categoriesTitles;
 
     private EditText categoryNameEt;
     private Button saveNewCategoryBtn, cancelNewCategoryBtn, chooseIconBtn;
@@ -70,7 +74,7 @@ public class AddCategoryFragment extends Fragment {
         saveNewCategoryBtn.setEnabled(false);
         cancelNewCategoryBtn.setEnabled(false);
         String categoryName = categoryNameEt.getText().toString();
-        Integer categoryImage = R.drawable.money;
+        String categoryImage = String.valueOf((R.drawable.money));
         Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
         Category category = new Category(categoryName,categoryImage); // need to change the function
         CategoryModel.instance.addCategory(category,()->{

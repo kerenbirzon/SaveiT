@@ -38,7 +38,7 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
         Category catItem = categories.get(position);
         CategoryItemHolder catHolder = ((CategoryItemHolder) holder);
         catHolder.title.setText(catItem.getTitle());
-        catHolder.image.setImageResource(iconImages[catItem.getImage()]);
+        catHolder.image.setImageResource(R.drawable.money); //(iconImages[catItem.getImage()]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

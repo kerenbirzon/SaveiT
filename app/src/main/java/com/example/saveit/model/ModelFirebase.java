@@ -25,7 +25,11 @@ public class ModelFirebase {
         db.setFirestoreSettings(settings);
     }
 
-    public void getCategories(Long lastUpdateDate, CategoryModel.GetAllCategoriesListener listener) {
+    public interface GetAllCategoriesListener{
+        void onComplete(List<Category> list);
+    }
+
+    public void getCategories(Long lastUpdateDate, GetAllCategoriesListener listener) {
         db.collection(Category.COLLECTION_NAME)
                 .get()
                 .addOnCompleteListener(task -> {
@@ -45,8 +49,6 @@ public class ModelFirebase {
 
     public void addCategory(Category category, CategoryModel.AddCategoryListener listener) {
         Map<String, Object> json = category.toJson();
-
-        // Add a new document with a generated ID
         db.collection(Category.COLLECTION_NAME)
                 .document(category.getTitle())
                 .set(json)
