@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
+import com.example.saveit.model.Category;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
         Category catItem = categories.get(position);
         CategoryItemHolder catHolder = ((CategoryItemHolder) holder);
         catHolder.title.setText(catItem.getTitle());
-        catHolder.image.setImageResource(iconImages[catItem.getImage()]);
+        catHolder.image.setImageResource(R.drawable.money); //(iconImages[catItem.getImage()]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +67,13 @@ class CategoryAdapter extends RecyclerView.Adapter<CategoryItemHolder> {
     }
 }
 
-    class CategoryItemHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title;
+class CategoryItemHolder extends RecyclerView.ViewHolder {
+    ImageView image;
+    TextView title;
 
-        public CategoryItemHolder(@NonNull View itemView) {
-            super(itemView);
-            image = itemView.findViewById(R.id.category_img);
-            title = itemView.findViewById(R.id.category_title);
-        }
+    public CategoryItemHolder(@NonNull View itemView) {
+        super(itemView);
+        image = itemView.findViewById(R.id.category_img);
+        title = itemView.findViewById(R.id.category_title);
     }
+}

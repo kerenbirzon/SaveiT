@@ -1,4 +1,4 @@
-package com.example.saveit.main;
+package com.example.saveit.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FieldValue;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +16,8 @@ public class Category {
     final public static String COLLECTION_NAME = "categories";
     @PrimaryKey
     @NonNull
-    private String title;
-    private int image;
+    String title;
+    String image;
     Long updateDate = new Long(0);
 
     public Category() {
@@ -27,14 +28,14 @@ public class Category {
         this.title = title;
     }
 
-    public Category(String title, int image) {
+    public Category(String title, String image) {
         this.title = title;
         this.image = image;
     }
 
     public static Category create(Map<String, Object> json) {
         String title = (String) json.get("title");
-        Integer image = (Integer) json.get("image");
+        String image = (String) json.get("image");
         Timestamp ts = (Timestamp)json.get("updateDate");
         Long updateDate = ts.getSeconds();
 
@@ -52,11 +53,11 @@ public class Category {
         this.title = title;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
