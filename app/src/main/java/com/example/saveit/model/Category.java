@@ -10,15 +10,18 @@ import com.google.firebase.firestore.FieldValue;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Entity
 public class Category {
     final public static String COLLECTION_NAME = "categories";
+
     @PrimaryKey
     @NonNull
     String title;
     String image;
     Long updateDate = new Long(0);
+    boolean deleted;
 
     public Category() {
 
@@ -61,11 +64,20 @@ public class Category {
         this.image = image;
     }
 
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
     public Map<String, Object> toJson() {
         Map<String, Object> json = new HashMap<String, Object>();
         json.put("title",title);
         json.put("image",image);
         json.put("updateDate", FieldValue.serverTimestamp());
+        json.put("deleted",deleted);
         return json;
     }
 

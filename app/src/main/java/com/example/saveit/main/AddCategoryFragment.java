@@ -49,7 +49,6 @@ public class AddCategoryFragment extends Fragment {
         categoryNameEt = view.findViewById(R.id.add_Category_name_et);
         progressBar = view.findViewById(R.id.add_category_progressBar);
         progressBar.setVisibility(View.GONE);
-//        iconLocation = AddCategoryFragmentArgs.fromBundle(getArguments());
 
         saveNewCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +72,15 @@ public class AddCategoryFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         saveNewCategoryBtn.setEnabled(false);
         cancelNewCategoryBtn.setEnabled(false);
+        iconLocation = AddCategoryFragmentArgs.fromBundle(getArguments()).getImageView();
+        iconPrevView.setImageResource(iconImages[iconLocation]);
         String categoryName = categoryNameEt.getText().toString();
-        String categoryImage = String.valueOf((R.drawable.money));
+        String categoryImage = String.valueOf(iconImages[iconLocation]);//(R.drawable.money)
         Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
         Category category = new Category(categoryName,categoryImage); // need to change the function
         CategoryModel.instance.addCategory(category,()->{
+            Navigation.findNavController(categoryNameEt).navigateUp();
+            Navigation.findNavController(categoryNameEt).navigateUp();
             Navigation.findNavController(categoryNameEt).navigateUp();
         });
     }
