@@ -19,9 +19,8 @@
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"
-        android:name="com.example.saveit.main.AddCategoryDialog"
-        android:label="fragment_add_category"
-        tools:layout="@layout/add_category_dialog_fragment" >
+        android:name="com.example.saveit.main.AddCategoryFragment"
+        android:label="fragment_add_category">
         <action
             android:id="@+id/action_addCategory_to_chooseIcon"
             app:destination="@id/chooseIconFragment" />
@@ -50,4 +49,10 @@
             android:name="title"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.saveit.common.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <action android:id="@+id/action_global_aboutFragment" app:destination="@id/aboutFragment" />
 </navigation>
