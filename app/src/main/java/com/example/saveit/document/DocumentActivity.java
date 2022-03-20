@@ -48,7 +48,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.saveit.R;
-import com.example.saveit.category.CategoryActivity;
 import com.example.saveit.category.Document;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.storage.FirebaseStorage;

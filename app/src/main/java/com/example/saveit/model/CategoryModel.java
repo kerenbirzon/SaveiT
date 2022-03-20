@@ -10,7 +10,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.saveit.SaveiTMediate;
-import com.example.saveit.main.Category;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -20,7 +19,7 @@ import java.util.concurrent.Executors;
 public class CategoryModel {
 
     public final static CategoryModel instance = new CategoryModel();
-    public Executor executor = Executors.newFixedThreadPool(1);
+    public Executor executor = Executors.newFixedThreadPool(2);
     public Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
     List<Category> categories = new LinkedList<Category>();
 
@@ -34,14 +33,9 @@ public class CategoryModel {
         return categoryListLoadingState;
     }
 
-
     ModelFirebase modelFirebase = new ModelFirebase();
     private CategoryModel(){
         categoryListLoadingState.setValue(CategoryListLoadingState.loaded);
-    }
-
-    public interface GetAllCategoriesListener{
-        void onComplete(List<Category> list);
     }
 
     MutableLiveData<List<Category>> categoryList = new MutableLiveData<List<Category>>();
@@ -63,7 +57,7 @@ public class CategoryModel {
         });
 
         //firebase get all updates
-        modelFirebase.getCategories(lastUpdateDate, new GetAllCategoriesListener() {
+        modelFirebase.getCategories(lastUpdateDate, new ModelFirebase.GetAllCategoriesListener() {
             @Override
             public void onComplete(List<Category> list){
                 executor.execute(new Runnable() {
@@ -94,6 +88,7 @@ public class CategoryModel {
             }
         });
     }
+
 
     public interface AddCategoryListener {
         void OnComplete();

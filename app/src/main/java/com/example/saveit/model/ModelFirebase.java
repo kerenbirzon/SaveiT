@@ -2,20 +2,15 @@ package com.example.saveit.model;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.saveit.User.User;
 import com.example.saveit.category.Document;
-import com.example.saveit.main.Category;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -72,7 +67,11 @@ public class ModelFirebase {
      *
      */
 
-    public void getCategories(Long lastUpdateDate, CategoryModel.GetAllCategoriesListener listener) {
+    public interface GetAllCategoriesListener{
+        void onComplete(List<Category> list);
+    }
+
+    public void getCategories(Long lastUpdateDate, GetAllCategoriesListener listener) {
         db.collection(Category.COLLECTION_NAME)
                 .get()
                 .addOnCompleteListener(task -> {
@@ -92,8 +91,6 @@ public class ModelFirebase {
 
     public void addCategory(Category category, CategoryModel.AddCategoryListener listener) {
         Map<String, Object> json = category.toJson();
-
-        // Add a new document with a generated ID
         db.collection(Category.COLLECTION_NAME)
                 .document(category.getTitle())
                 .set(json)
@@ -178,6 +175,10 @@ public class ModelFirebase {
         return (currentUser != null);
     }
 
+
+    /**
+     * Storage
+     */
     public static void uploadImageToFirebaseStorageDB(Bitmap bitmap, Context context, String categoryTitle, String documentTitle, String imageType) {
         // Get the data from an ImageView as bytes
         StorageReference ref = storageReference.child("Files").

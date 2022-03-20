@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_categoryList_to_addCategory"
             app:destination="@id/addCategoryFragment" />
+        <action
+            android:id="@+id/action_categoryList_to_category"
+            app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"
@@ -22,6 +25,9 @@
         <action
             android:id="@+id/action_addCategory_to_chooseIcon"
             app:destination="@id/chooseIconFragment" />
+        <argument
+            android:name="ImageView"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/chooseIconFragment"
@@ -31,5 +37,17 @@
         <argument
             android:name="ImageView"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_chooseIconFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.saveit.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

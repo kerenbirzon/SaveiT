@@ -6,7 +6,6 @@ import androidx.room.RoomDatabase;
 
 import com.example.saveit.SaveiTMediate;
 import com.example.saveit.category.Document;
-import com.example.saveit.main.Category;
 
 @Database(entities = {Category.class, Document.class}, version = 20)
 abstract class AppLocalDbRepository extends RoomDatabase {
