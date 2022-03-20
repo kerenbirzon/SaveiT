@@ -57,17 +57,8 @@ public class ChooseIconFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("clicked", "lastImageToBeSelected" + lastImageToBeSelected);
-
-                Bundle bundle = new Bundle();
-                bundle.putInt("icon",lastImageToBeSelected);
-                AddCategoryFragment fragment = new AddCategoryFragment();
-                fragment.setArguments(bundle);
-                Navigation.findNavController(v).navigateUp();
-//                Intent intent = new Intent(ChooseIconFragment.this.getContext(),AddCategoryFragment.class);
-//                intent.putExtra("iconIntValue", lastImageToBeSelected);
-//
-//                getTargetFragment().onActivityResult(getTargetRequestCode(), RESULT_OK, intent);
-                //go back
+                Navigation.findNavController(v).navigate(ChooseIconFragmentDirections.actionChooseIconFragmentToAddCategoryFragment(lastImageToBeSelected));
+                //Navigation.findNavController(v).navigateUp();
 
             }
         });

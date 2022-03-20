@@ -1,5 +1,6 @@
 package com.example.saveit.main;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -60,6 +61,7 @@ public class CategoryListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
+
         signOutBtn = view.findViewById(R.id.btn_sign_out);
         categoryListmAuth = FirebaseAuth.getInstance();
         iconPrevView = view.findViewById(R.id.iv_icon_img_prev);
@@ -174,16 +176,16 @@ public class CategoryListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.basic_menu,menu);
+        inflater.inflate(R.menu.category_menu,menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.addCategoryFragment){
-            Log.d("TAG","ADD...");
+        if (item.getItemId() == R.id.category_delete){
             return true;
         }else {
             return super.onOptionsItemSelected(item);
         }
     }
+
 }

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
 import com.example.saveit.main.CategoryListFragmentDirections;
+import com.example.saveit.main.CategoryListViewModel;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.Document;
@@ -30,8 +31,6 @@ public class CategoryFragment extends Fragment {
     private TextView noDocTxt, titleTxt;
     private String categoryTitle;
     Button addDocumentBtn,deleteCategoryBtn;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,8 +51,6 @@ public class CategoryFragment extends Fragment {
         docImg = view.findViewById(R.id.iv_doc_img);
         noDocTxt = view.findViewById(R.id.tv_no_docs);
 
-
-
         addDocumentBtn = view.findViewById(R.id.btn_add_doc);
         addDocumentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +65,10 @@ public class CategoryFragment extends Fragment {
         deleteCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Navigation.findNavController(view).navigateUp();
             }
+
         });
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();

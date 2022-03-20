@@ -36,6 +36,7 @@ public class AddCategoryFragment extends Fragment {
     private Button saveNewCategoryBtn, cancelNewCategoryBtn, chooseIconBtn;
     private ImageView iconPrevView;
     private ProgressBar progressBar;
+    private int iconLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,8 +49,7 @@ public class AddCategoryFragment extends Fragment {
         categoryNameEt = view.findViewById(R.id.add_Category_name_et);
         progressBar = view.findViewById(R.id.add_category_progressBar);
         progressBar.setVisibility(View.GONE);
-
-
+//        iconLocation = AddCategoryFragmentArgs.fromBundle(getArguments());
 
         saveNewCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
