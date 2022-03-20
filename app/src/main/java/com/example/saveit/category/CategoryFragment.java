@@ -29,6 +29,7 @@ public class CategoryFragment extends Fragment {
     private ImageView docImg;
     private TextView noDocTxt, titleTxt;
     private String categoryTitle;
+    Button addDocumentBtn,deleteCategoryBtn;
 
 
 
@@ -53,25 +54,38 @@ public class CategoryFragment extends Fragment {
 
 
 
-        Button addDocumentBtn = view.findViewById(R.id.btn_add_doc);
-        addDocumentBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_category_to_document));
-        documentList = DocumentModel.instance.getDocuments(categoryTitle);
+        addDocumentBtn = view.findViewById(R.id.btn_add_doc);
+        addDocumentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.createNavigateOnClickListener(R.id.action_category_to_document);
+            }
+        });
+        //documentList = DocumentModel.instance.getDocuments(categoryTitle);
 
+
+        deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
+        deleteCategoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigateUp();
+            }
+        });
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        DocumentAdapter documentAdapter = new DocumentAdapter(documentList);
-        recyclerView.setAdapter(documentAdapter);
+        //DocumentAdapter documentAdapter = new DocumentAdapter(documentList);
+        //recyclerView.setAdapter(documentAdapter);
 
-        documentAdapter.setDocumentClickListener(new DocumentClickListener() {
-            @Override
-            public void onDocumentClicked(int position) {
-                Log.d("document clicked", "document was clicked");
-            }
-        });
+//        documentAdapter.setDocumentClickListener(new DocumentClickListener() {
+//            @Override
+//            public void onDocumentClicked(int position) {
+//                Log.d("document clicked", "document was clicked");
+//            }
+//        });
 
 
         return view;

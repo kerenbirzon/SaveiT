@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 public class CategoryModel {
 
     public final static CategoryModel instance = new CategoryModel();
-    public Executor executor = Executors.newFixedThreadPool(1);
+    public Executor executor = Executors.newFixedThreadPool(2);
     public Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
     List<Category> categories = new LinkedList<Category>();
 

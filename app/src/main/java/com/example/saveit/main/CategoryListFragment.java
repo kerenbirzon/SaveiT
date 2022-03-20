@@ -48,9 +48,6 @@ public class CategoryListFragment extends Fragment {
     Button addCategoryBtn,signOutBtn;
     ImageView iconPrevView;
 
-    public Executor executor = Executors.newFixedThreadPool(1);
-    public Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -82,25 +79,11 @@ public class CategoryListFragment extends Fragment {
         categoryAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View v,int position) {
+                Log.d("category clicked", "category was clicked");
                 String categoryTitle = viewModel.getCategories().getValue().get(position).getTitle();
-                executor.execute(() -> {
-                    Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(categoryTitle));
-                });
-
-
+                Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(categoryTitle));
             }
         });
-
-//        categoryAdapter.setOnItemClickListener(new OnItemClickListener() { //setCategoryClickListener CategoryClickListener
-//            @Override
-//            public void onCategoryClicked(View v,int position) {
-//                Log.d("category clicked", "category was clicked");
-//                lastCategoryPosition = position;
-//                Category category = viewModel.getCategories().getValue().get(position);
-//                Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category.getTitle()));
-//
-//            }
-//        });
 
         setHasOptionsMenu(true);
 
