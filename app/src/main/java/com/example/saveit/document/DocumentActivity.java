@@ -68,6 +68,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
+
 public class DocumentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExpirationDateDialog.OnExpirationDateInputListener{
     private static final String TAG = "DocumentActivity";
     private static final long ONE_MEGABYTE = 1024 * 1024;
@@ -107,6 +108,9 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
     private static StorageReference storageReference;
     private FirebaseStorage storage;
     private boolean isUploadingFile = false;
+
+    Bitmap imageBitmap;
+    ImageView avatarImv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -235,7 +239,7 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
                     Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                     Bitmap previewBitmap = Bitmap.createScaledBitmap(bmp, (int) (bmp.getWidth() * 0.5), (int) (bmp.getHeight() * 0.5), true);
                     documentImageView.setImageBitmap(previewBitmap);
-                    curDocument.setBitmap(bmp);
+                    curDocument.setBitmapUri(selectedImage.toString());
                     Log.d(TAG, "successfully fetch document image from firebase storage");
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -540,7 +544,7 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             documentImageView.setImageBitmap(previewBitmap);
             documentImageView.setDrawingCacheEnabled(true);
             documentImageView.buildDrawingCache();
-            curDocument.setBitmap(bitmap);
+            curDocument.setBitmapUri(selectedImage.toString());
             curDocument.setHasImage(true);
             changedImage = true;
             Button btnAddImage = findViewById(R.id.btn_add_doc_image);
