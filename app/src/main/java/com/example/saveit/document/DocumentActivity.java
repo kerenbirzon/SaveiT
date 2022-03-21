@@ -109,8 +109,6 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
     private FirebaseStorage storage;
     private boolean isUploadingFile = false;
 
-    Bitmap imageBitmap;
-    ImageView avatarImv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -373,7 +371,8 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         }
 
         if (curDocument.getHasImage() && changedImage) {
-            ModelFirebase.uploadImageToFirebaseStorageDB(curDocument.getBitmap(), getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), selectedImage);
+            ModelFirebase.uploadImageToFirebaseStorageDB(bitmap, getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
         }
 
         Intent intentBack = new Intent(DocumentActivity.this, CategoryActivity.class);
@@ -382,6 +381,7 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             intentBack.putExtra("document_position", position);
         }
 
+        intentBack.putExtra("bitmap", curDocument.getBitmapUri());
         intentBack.putExtra("has_image", curDocument.getHasImage());
         intentBack.putExtra("file_download_uri", curDocument.getFileDownloadUri());
         intentBack.putExtra("has_file", curDocument.isHasFile());
@@ -553,6 +553,7 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /*

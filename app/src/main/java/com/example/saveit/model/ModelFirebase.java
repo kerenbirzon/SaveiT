@@ -13,15 +13,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +32,13 @@ import java.util.Map;
 public class ModelFirebase {
     private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static CollectionReference categoriesRef;
-    private static final String TAG = "FirebaseMediate";
+    private static final String TAG = "ModelFirebase";
     private static StorageReference storageReference;
-
+    private FirebaseStorage storage;
+    private static DocumentReference userDocumentRef;
+    private static CollectionReference usersCollectionRef;
+    private static Context appContext;
+    private static ArrayList<Category> categories = new ArrayList<>();
 
 
 
@@ -41,6 +48,7 @@ public class ModelFirebase {
                 .build();
         db.setFirestoreSettings(settings);
     }
+
 
     public static void removeDocument(String categoryTitle, Document document_to_delete) {
 
