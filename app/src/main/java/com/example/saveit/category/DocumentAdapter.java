@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
+import com.example.saveit.model.Document;
 
 import java.util.List;
 

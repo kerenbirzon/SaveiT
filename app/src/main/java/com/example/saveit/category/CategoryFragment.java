@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.saveit.R;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
+import com.example.saveit.model.Document;
 //import com.example.saveit.model.Document;
 
 import java.util.List;
