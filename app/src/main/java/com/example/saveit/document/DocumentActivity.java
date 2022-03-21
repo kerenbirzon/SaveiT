@@ -33,6 +33,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import com.example.saveit.category.CategoryFragment;
 import com.example.saveit.model.ModelFirebase;
 import com.example.saveit.model.MyPreferences;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -376,7 +377,8 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             ModelFirebase.uploadImageToFirebaseStorageDB(bitmap, getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
         }
 
-        Intent intentBack = new Intent(DocumentActivity.this, CategoryActivity.class);
+        //Intent intentBack = new Intent(DocumentActivity.this, CategoryActivity.class);
+        Intent intentBack = new Intent(DocumentActivity.this, CategoryFragment.class);
 
         if (callReason.equals("edit_document")) {
             intentBack.putExtra("document_position", position);
