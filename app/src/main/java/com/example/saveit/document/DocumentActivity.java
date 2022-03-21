@@ -365,13 +365,14 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
      *
      * @param view - the view
      */
-    public void onClickSaveDocumentButton(View view) {
+    public void onClickSaveDocumentButton(View view) throws IOException {
         if (!isInputValid()) {
             return;
         }
 
         if (curDocument.getHasImage() && changedImage) {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), selectedImage);
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver()
+                    , selectedImage);
             ModelFirebase.uploadImageToFirebaseStorageDB(bitmap, getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
         }
 
@@ -813,10 +814,12 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
      *
      * @param view - view
      */
-    public void onImageClick(View view) {
+    public void onImageClick(View view) throws IOException {
         final Intent fullScreenIntent = new Intent(this, DisplayImageActivity.class);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        Bitmap bmp = curDocument.getBitmap();
+        Bitmap bmp = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver()
+                , selectedImage);
+        //Bitmap bmp = curDocument.getBitmap();
         Bitmap previewBitmap = Bitmap.createScaledBitmap(bmp, (int) (bmp.getWidth() * 0.5), (int) (bmp.getHeight() * 0.5), true);
         Bitmap compressedBitmap = scaleDownBitmap(previewBitmap, 800, true); //todo check what should be maxImageSize
         compressedBitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
