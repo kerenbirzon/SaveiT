@@ -1,7 +1,6 @@
 package com.example.saveit.category;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
-import com.example.saveit.main.CategoryListFragmentDirections;
-import com.example.saveit.main.CategoryListViewModel;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 //import com.example.saveit.model.Document;
-import com.example.saveit.model.DocumentModel;
 
 import java.util.List;
 

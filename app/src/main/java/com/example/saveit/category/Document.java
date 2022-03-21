@@ -17,7 +17,7 @@ public class Document {
     private String comment;
     private String expirationDate;
     private String reminderTime;
-    private Bitmap bitmap;
+    //private Bitmap bitmap;
     private String fileDownloadUri;
     private boolean hasImage;
     private boolean hasFile;
@@ -28,19 +28,17 @@ public class Document {
     public Document() {
     }
 
-    public Document(String title, String comment, String expirationDate, Bitmap bitmap, boolean hasImage) {
+    public Document(String title, String comment, String expirationDate, boolean hasImage) {
         this.title = title;
         this.comment = comment;
         this.expirationDate = expirationDate;
-        this.bitmap = bitmap;
         this.hasImage = hasImage;
     }
 
-    public Document(String title, String comment, String expirationDate, Bitmap bitmap, boolean hasImage, boolean hasAlarm, boolean hasFile, String fileDownloadUri, String reminderTime, boolean isAddEventToPhoneCalender) {
+    public Document(String title, String comment, String expirationDate, boolean hasImage, boolean hasAlarm, boolean hasFile, String fileDownloadUri, String reminderTime, boolean isAddEventToPhoneCalender) {
         this.title = title;
         this.comment = comment;
         this.expirationDate = expirationDate;
-        this.bitmap = bitmap;
         this.hasImage = hasImage;
         this.hasFile = hasFile;
         this.hasAlarm = hasAlarm;
@@ -123,13 +121,13 @@ public class Document {
         isAddEventToPhoneCalender = addEventToPhoneCalender;
     }
 
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
+//    public void setBitmap(Bitmap bitmap) {
+//        this.bitmap = bitmap;
+//    }
+//
+//    public Bitmap getBitmap() {
+//        return bitmap;
+//    }
 
 
 }

@@ -1,6 +1,7 @@
-package com.example.saveit.model;
+package com.example.saveit.category;
 
-import com.example.saveit.category.Document;
+import com.example.saveit.model.AppLocalDb;
+import com.example.saveit.model.ModelFirebase;
 
 import java.util.LinkedList;
 import java.util.List;
