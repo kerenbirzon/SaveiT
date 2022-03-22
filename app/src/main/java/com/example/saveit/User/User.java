@@ -24,6 +24,7 @@ public class User {
     }
 
     public User() {
+
     }
 
     public String getUserName() {
@@ -78,5 +79,4 @@ public class User {
         user.setUpdateDate(updateDate);
         return user;
     }
-
 }

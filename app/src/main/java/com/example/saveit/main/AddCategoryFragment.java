@@ -77,7 +77,7 @@ public class AddCategoryFragment extends Fragment {
         String categoryName = categoryNameEt.getText().toString();
         String categoryImage = String.valueOf(iconImages[iconLocation]);//(R.drawable.money)
         Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
-        Category category = new Category(categoryName,categoryImage); // need to change the function
+        Category category = new Category(categoryName,categoryImage,false); // need to change the function
         CategoryModel.instance.addCategory(category,()->{
             Navigation.findNavController(categoryNameEt).navigateUp();
             Navigation.findNavController(categoryNameEt).navigateUp();

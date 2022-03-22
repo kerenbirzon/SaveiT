@@ -30,11 +30,11 @@ import java.util.List;
 import java.util.Map;
 
 public class ModelFirebase {
-    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static CollectionReference categoriesRef;
     private static final String TAG = "ModelFirebase";
     private static StorageReference storageReference;
-    private FirebaseStorage storage;
+    private final FirebaseStorage storage = FirebaseStorage.getInstance();
     private static DocumentReference userDocumentRef;
     private static CollectionReference usersCollectionRef;
     private static Context appContext;
@@ -50,7 +50,7 @@ public class ModelFirebase {
     }
 
 
-    public static void removeDocument(String categoryTitle, Document document_to_delete) {
+    public final void removeDocument(String categoryTitle, Document document_to_delete) {
 
         db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayRemove(document_to_delete)).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -64,7 +64,7 @@ public class ModelFirebase {
         });
     }
 
-    public static void addNewDocument(String categoryTitle, Document document) {
+    public final void addNewDocument(String categoryTitle, Document document) {
         db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayUnion(document));
     }
 

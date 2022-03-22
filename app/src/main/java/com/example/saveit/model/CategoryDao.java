@@ -13,6 +13,9 @@ public interface CategoryDao {
     @Query("select * from Category")
     List<Category> getAllCategories();
 
+    @Query("select * from Category where title = :title")
+    Category getCategoryByTitle(String title);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Category... categories);
 

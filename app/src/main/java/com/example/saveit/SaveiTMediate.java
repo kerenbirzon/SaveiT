@@ -13,7 +13,7 @@ public class SaveiTMediate extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        appContext = getApplicationContext();
+        SaveiTMediate.appContext = getApplicationContext();
     }
 
     public static Context getAppContext() { return appContext; }
