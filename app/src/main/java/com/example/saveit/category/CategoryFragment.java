@@ -1,5 +1,6 @@
 package com.example.saveit.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
+import com.example.saveit.document.DocumentActivity;
 import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
@@ -29,6 +31,8 @@ public class CategoryFragment extends Fragment {
     private TextView noDocTxt, titleTxt;
     private String categoryTitle;
     Button addDocumentBtn,deleteCategoryBtn;
+    public static final int NEW_DOCUMENT = 111;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,12 +52,19 @@ public class CategoryFragment extends Fragment {
         titleTxt = view.findViewById(R.id.tv_category_title);
         docImg = view.findViewById(R.id.iv_doc_img);
         noDocTxt = view.findViewById(R.id.tv_no_docs);
+        if (documentList.size() > 0) {
+            docImg.setVisibility(View.GONE);
+            noDocTxt.setVisibility(View.GONE);
+        }
 
         addDocumentBtn = view.findViewById(R.id.btn_add_doc);
         addDocumentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Navigation.createNavigateOnClickListener(R.id.action_category_to_document);
+                Intent intent = new Intent(CategoryFragment.this, DocumentActivity.class);
+                intent.putExtra("call_reason", "new_document");
+                intent.putExtra("category_title", categoryTitle);
+                startActivityForResult(intent, NEW_DOCUMENT);
             }
         });
         //documentList = DocumentModel.instance.getDocuments(categoryTitle);

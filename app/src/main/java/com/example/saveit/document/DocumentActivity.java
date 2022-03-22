@@ -70,11 +70,11 @@ import java.util.Date;
 
 
 
-public class DocumentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ExpirationDateDialog.OnExpirationDateInputListener{
+public class DocumentActivity extends AppCompatActivity {
     private static final String TAG = "DocumentActivity";
     private static final long ONE_MEGABYTE = 1024 * 1024;
     public static final int FILE_REQUEST_CODE = 10;
-    private static int notificationId = 0;
+//    private static int notificationId = 0;
     private TextInputLayout documentTitleET;
     private TextInputLayout documentCommentET;
     private TextInputLayout documentExpirationDateET;
@@ -82,8 +82,8 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
     private String callReason;
     private String categoryTitle;
     private int position;
-    private Spinner reminderSpinner1;
-    private SwitchMaterial reminderSwitch;
+//    private Spinner reminderSpinner1;
+//    private SwitchMaterial reminderSwitch;
     private Document curDocument = new Document();
     private Button addImageBtn, addFileBtn;
     private Uri selectedImage, fileUri, fileDownloadUri;
@@ -91,14 +91,14 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
     private LinearLayout filePreviewLayout;
     private ProgressBar progressBar;
     private boolean changedImage;
-    private boolean changedReminderTime = false;
-    private boolean isAlarm = false;
-    private CheckBox check1;
-    private TimePicker alarmTimePicker1;
-    private DatePicker datePicker;
-    private int alarmBeforeDay = 0;
-    private long alarmBeforeWeek = 0;
-    private int alarmBeforeMonth = 0;
+//    private boolean changedReminderTime = false;
+//    private boolean isAlarm = false;
+//    private CheckBox check1;
+//    private TimePicker alarmTimePicker1;
+//    private DatePicker datePicker;
+//    private int alarmBeforeDay = 0;
+//    private long alarmBeforeWeek = 0;
+//    private int alarmBeforeMonth = 0;
 
     private View v1;
     private View v4;
@@ -119,7 +119,7 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         storageReference = storage.getReference();
         initializeActivityFields();
         filePreviewLayout.setVisibility(View.GONE);
-        setReminderTime();
+        //setReminderTime();
 
         final Intent intentCreatedMe = getIntent();
         categoryTitle = intentCreatedMe.getStringExtra("category_title");
@@ -133,48 +133,48 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             filePreviewLayout.setVisibility(View.VISIBLE);
         }
 
-        documentExpirationDateET.setStartIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePickerDialog();
-            }
-        });
+//        documentExpirationDateET.setStartIconOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDatePickerDialog();
+//            }
+//        });
 
-        documentExpirationDateET.getEditText().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDatePickerDialog();
-            }
-        });
+//        documentExpirationDateET.getEditText().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDatePickerDialog();
+//            }
+//        });
 
-        reminderSwitch.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//        reminderSwitch.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//
+//                if (b) {
+//                    isAlarm = true;
+//                    setFirstRemainderFieldsVisibility(View.VISIBLE);
+//                } else {
+//                    isAlarm = false;
+//                    setFirstRemainderFieldsVisibility(View.GONE);
+//                    v6.setVisibility(View.GONE);
+//                }
+//            }
+//        });
 
-                if (b) {
-                    isAlarm = true;
-                    setFirstRemainderFieldsVisibility(View.VISIBLE);
-                } else {
-                    isAlarm = false;
-                    setFirstRemainderFieldsVisibility(View.GONE);
-                    v6.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        reminderTimeET1.setStartIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showTimePickerDialog1();
-            }
-        });
-
-        reminderTimeET1.getEditText().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showTimePickerDialog1();
-            }
-        });
+//        reminderTimeET1.setStartIconOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showTimePickerDialog1();
+//            }
+//        });
+//
+//        reminderTimeET1.getEditText().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showTimePickerDialog1();
+//            }
+//        });
 
         changedImage = false;
         addImageBtn.setOnClickListener(new View.OnClickListener() {
@@ -194,28 +194,28 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             }
         });
 
-        check1.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    addToCalendar(documentTitleET.getEditText().getText().toString(), alarmTimePicker1);
-                }
-            }
-        });
-        addFieldsValidation();
+//        check1.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (b) {
+//                    addToCalendar(documentTitleET.getEditText().getText().toString(), alarmTimePicker1);
+//                }
+//            }
+//        });
+//        addFieldsValidation();
 
     }
 
     /*
      * make remainder visible
      */
-    private void setFirstRemainderFieldsVisibility(int visibility) {
-        v1.setVisibility(visibility);
-        v4.setVisibility(visibility);
-        v5.setVisibility(visibility);
-        v6.setVisibility(visibility);
-    }
+//    private void setFirstRemainderFieldsVisibility(int visibility) {
+//        v1.setVisibility(visibility);
+//        v4.setVisibility(visibility);
+//        v5.setVisibility(visibility);
+//        v6.setVisibility(visibility);
+//    }
 
     /*
      * when a document is edited
@@ -256,26 +256,26 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             curDocument.setFileDownloadUri(intentCreatedMe.getStringExtra("file_download_uri"));
             fileDownloadUri = Uri.parse(curDocument.getFileDownloadUri());
         }
-        curDocument.setHasAlarm(intentCreatedMe.getBooleanExtra("has_alarm", false));
-        if (curDocument.getHasAlarm()) {
-            isAlarm = true;
-            reminderSwitch.setChecked(true);
-            setFirstRemainderFieldsVisibility(View.VISIBLE);
-            reminderTimeET1.getEditText().setText(intentCreatedMe.getStringExtra("document_reminder_time"));
-            check1.setChecked(intentCreatedMe.getBooleanExtra("is_add_event_to_phone_calender", false));
-        }
+//        curDocument.setHasAlarm(intentCreatedMe.getBooleanExtra("has_alarm", false));
+//        if (curDocument.getHasAlarm()) {
+//            isAlarm = true;
+//            reminderSwitch.setChecked(true);
+//            setFirstRemainderFieldsVisibility(View.VISIBLE);
+//            reminderTimeET1.getEditText().setText(intentCreatedMe.getStringExtra("document_reminder_time"));
+//            check1.setChecked(intentCreatedMe.getBooleanExtra("is_add_event_to_phone_calender", false));
+//        }
         initializeActivityFieldsWithDocumentDataFromDB();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 225 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            selectFile();
-        } else {
-            Toast.makeText(DocumentActivity.this, "please provide permission", Toast.LENGTH_LONG).show();
-        }
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (requestCode == 225 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            selectFile();
+//        } else {
+//            Toast.makeText(DocumentActivity.this, "please provide permission", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
     private void selectFile() {
         Intent fileIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -299,9 +299,9 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         documentTitleET = findViewById(R.id.et_document_title);
         documentCommentET = findViewById(R.id.et_comment);
         reminderTimeET1 = findViewById(R.id.et_time1);
-        reminderSwitch = findViewById(R.id.add_alarm);
-        reminderSpinner1 = findViewById(R.id.spinner_times1);
-        check1 = findViewById(R.id.checkbox_calendar1);
+        //reminderSwitch = findViewById(R.id.add_alarm);
+        //reminderSpinner1 = findViewById(R.id.spinner_times1);
+        //check1 = findViewById(R.id.checkbox_calendar1);
         documentExpirationDateET = findViewById(R.id.et_expiration_date);
         documentImageView = findViewById(R.id.iv_doc);
         filePreviewLayout = findViewById(R.id.ll_doc_file_prev);
@@ -329,37 +329,37 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
     /*
      * show date dialog
      */
-    private void showDatePickerDialog() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, this,
-                Calendar.getInstance().get(Calendar.YEAR),
-                Calendar.getInstance().get(Calendar.MONTH),
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
-
-    }
+//    private void showDatePickerDialog() {
+//        DatePickerDialog datePickerDialog = new DatePickerDialog(this, this,
+//                Calendar.getInstance().get(Calendar.YEAR),
+//                Calendar.getInstance().get(Calendar.MONTH),
+//                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+//        datePickerDialog.show();
+//
+//    }
 
     /*
      * show time picker
      */
-    private void showTimePickerDialog1() {
-        final TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int min) {
-                alarmTimePicker1 = timePicker;
-                String minStr = "" + min;
-                if (min < 10) {
-                    minStr = "0" + min;
-                }
-                String time = hour + ":" + minStr;
-                reminderTimeET1.getEditText().setText(time);
-                changedReminderTime = true;
-            }
-        },
-                Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-                Calendar.getInstance().get(Calendar.MINUTE), true);
-        timePickerDialog.show();
-
-    }
+//    private void showTimePickerDialog1() {
+//        final TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+//            @Override
+//            public void onTimeSet(TimePicker timePicker, int hour, int min) {
+//                alarmTimePicker1 = timePicker;
+//                String minStr = "" + min;
+//                if (min < 10) {
+//                    minStr = "0" + min;
+//                }
+//                String time = hour + ":" + minStr;
+//                reminderTimeET1.getEditText().setText(time);
+//                changedReminderTime = true;
+//            }
+//        },
+//                Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+//                Calendar.getInstance().get(Calendar.MINUTE), true);
+//        timePickerDialog.show();
+//
+//    }
 
     /**
      * when the save button is pressed
@@ -392,8 +392,8 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         intentBack.putExtra("document_comment", documentCommentET.getEditText().getText().toString());
         intentBack.putExtra("document_expiration_date", documentExpirationDateET.getEditText().getText().toString());
         intentBack.putExtra("document_reminder_time", reminderTimeET1.getEditText().getText().toString());
-        intentBack.putExtra("is_alarm", isAlarm);
-        intentBack.putExtra("is_add_event_to_phone_calender", check1.isChecked());
+        //intentBack.putExtra("is_alarm", isAlarm);
+        //intentBack.putExtra("is_add_event_to_phone_calender", check1.isChecked());
 
         setResult(RESULT_OK, intentBack);
         finish();
@@ -408,100 +408,102 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         if (!isDocumentTitleValid) {
             Toast.makeText(getApplicationContext(), "invalid Title", Toast.LENGTH_LONG).show();
             return false;
-        } else if (isAlarm && documentExpirationDateET.getEditText().getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Can't set alarm without expiration date", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (isUploadingFile) {
+        }
+//        else if (isAlarm && documentExpirationDateET.getEditText().getText().toString().equals("")) {
+//            Toast.makeText(getApplicationContext(), "Can't set alarm without expiration date", Toast.LENGTH_LONG).show();
+//            return false;
+//        }
+        else if (isUploadingFile) {
             Toast.makeText(getApplicationContext(), "Can't save document while uploading file", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (changedReminderTime && !reminderTimeET1.getEditText().getText().toString().equals("") && !documentExpirationDateET.getEditText().getText().toString().equals("")) {
-            Log.i("document activity", "valid for alarm");
-            if (setAlarm(alarmTimePicker1) != 0) {
-                Toast.makeText(getApplicationContext(), "This time has passed!", Toast.LENGTH_LONG).show();
-                return false;
-            }
-        }
+//        if (changedReminderTime && !reminderTimeET1.getEditText().getText().toString().equals("") && !documentExpirationDateET.getEditText().getText().toString().equals("")) {
+//            Log.i("document activity", "valid for alarm");
+//            if (setAlarm(alarmTimePicker1) != 0) {
+//                Toast.makeText(getApplicationContext(), "This time has passed!", Toast.LENGTH_LONG).show();
+//                return false;
+//            }
+//        }
         return true;
     }
 
 
-    @Override
-    public void onDateSet(DatePicker datePicker1, int year, int month, int day) {
-        datePicker = datePicker1;
-        month = month + 1;
-        String date = day + "/" + month + "/" + year;
-        documentExpirationDateET.getEditText().setText(date);
-        curDocument.setExpirationDate(date);
-        // todo check the correct dates
-    }
+//    @Override
+//    public void onDateSet(DatePicker datePicker1, int year, int month, int day) {
+//        datePicker = datePicker1;
+//        month = month + 1;
+//        String date = day + "/" + month + "/" + year;
+//        documentExpirationDateET.getEditText().setText(date);
+//        curDocument.setExpirationDate(date);
+//        // todo check the correct dates
+//    }
 
-    private void setReminderTime() {
-        final ArrayAdapter<String> titlesAdapter = new ArrayAdapter<>(DocumentActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.times));
-        titlesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        reminderSpinner1.setAdapter(titlesAdapter);
-        reminderSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                reminderSpinner1.setSelection(position);
-                String title = titlesAdapter.getItem(position);
-
-                switch (title) {
-                    case "day before":
-                        alarmBeforeDay = 1;
-                        break;
-                    case "week before":
-                        alarmBeforeWeek = 604800000;
-                        break;
-                    case "month before":
-                        alarmBeforeMonth = 1;
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });
-    }
+//    private void setReminderTime() {
+//        final ArrayAdapter<String> titlesAdapter = new ArrayAdapter<>(DocumentActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.times));
+//        titlesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        reminderSpinner1.setAdapter(titlesAdapter);
+//        reminderSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+//                reminderSpinner1.setSelection(position);
+//                String title = titlesAdapter.getItem(position);
+//
+//                switch (title) {
+//                    case "day before":
+//                        alarmBeforeDay = 1;
+//                        break;
+//                    case "week before":
+//                        alarmBeforeWeek = 604800000;
+//                        break;
+//                    case "month before":
+//                        alarmBeforeMonth = 1;
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parentView) {
+//            }
+//        });
+//    }
 
 
     /*
      * add expiration date to calendar
      */
-    private void addToCalendar(String docTitle, TimePicker timePicker) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(getExpirationDateYear(), getExpirationDateMonth(), getExpirationDateDay(),
-                getReminderHourTime(timePicker), getReminderMinutesTime(timePicker), 0);
-        long startTime = cal.getTimeInMillis();
-        Intent intent = new Intent(Intent.ACTION_EDIT);
-        intent.setType("vnd.android.cursor.item/event");
-        intent.putExtra("beginTime", startTime);
-        intent.putExtra("allDay", false);
-        intent.putExtra("rrule", "FREQ=YEARLY");
-        intent.putExtra("title", "Reminder! your document: " + docTitle + " is expired");
+//    private void addToCalendar(String docTitle, TimePicker timePicker) {
+//        Calendar cal = Calendar.getInstance();
+//        cal.set(getExpirationDateYear(), getExpirationDateMonth(), getExpirationDateDay(),
+//                getReminderHourTime(timePicker), getReminderMinutesTime(timePicker), 0);
+//        long startTime = cal.getTimeInMillis();
+//        Intent intent = new Intent(Intent.ACTION_EDIT);
+//        intent.setType("vnd.android.cursor.item/event");
+//        intent.putExtra("beginTime", startTime);
+//        intent.putExtra("allDay", false);
+//        intent.putExtra("rrule", "FREQ=YEARLY");
+//        intent.putExtra("title", "Reminder! your document: " + docTitle + " is expired");
+//
+//        startActivity(intent);
+//    }
 
-        startActivity(intent);
-    }
-
-    private Integer getReminderHourTime(TimePicker timePicker) {
-        if (timePicker != null) {
-            return timePicker.getCurrentHour();
-        } else {
-            return Integer.parseInt(reminderTimeET1.getEditText().getText().toString().split(":")[0]);
-        }
-    }
+//    private Integer getReminderHourTime(TimePicker timePicker) {
+//        if (timePicker != null) {
+//            return timePicker.getCurrentHour();
+//        } else {
+//            return Integer.parseInt(reminderTimeET1.getEditText().getText().toString().split(":")[0]);
+//        }
+//    }
 
     /*
      * get remainder time
      */
-    private Integer getReminderMinutesTime(TimePicker timePicker) {
-        if (timePicker != null) {
-            return timePicker.getCurrentMinute();
-        } else {
-            return Integer.parseInt(reminderTimeET1.getEditText().getText().toString().split(":")[1]);
-        }
-    }
+//    private Integer getReminderMinutesTime(TimePicker timePicker) {
+//        if (timePicker != null) {
+//            return timePicker.getCurrentMinute();
+//        } else {
+//            return Integer.parseInt(reminderTimeET1.getEditText().getText().toString().split(":")[1]);
+//        }
+//    }
 
     /**
      * this method opens the gallery to choose image. Activates when user clicks on an upload image
@@ -552,7 +554,7 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             changedImage = true;
             Button btnAddImage = findViewById(R.id.btn_add_doc_image);
             btnAddImage.setText(R.string.change_image);
-            doOCROnImage(bitmap);
+            //doOCROnImage(bitmap);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -561,43 +563,43 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
 
     /*
     check if there is a date in image with OCR
-     */
-    private void doOCROnImage(Bitmap bitmap) {
-        // do OCR for image to check if an expiration date exists
-        TextRecognizer textRecognizer = new TextRecognizer.Builder(this).build();
-        Frame imageFrame = new Frame.Builder().setBitmap(bitmap).build();
-        String imageText = "";
-        SparseArray<TextBlock> textBlocks = textRecognizer.detect(imageFrame);
-        DateFormat inputDateFormat = new SimpleDateFormat("dd/MM/yy");
-        DateFormat outputDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date d;
-        ArrayList<String> possibleDates = new ArrayList<>();
-        for (int i = 0; i < textBlocks.size(); i++) {
-            TextBlock textBlock = textBlocks.get(textBlocks.keyAt(i));
-            imageText = textBlock.getValue();
-            Log.d(TAG, imageText);
-            try {
-                d = inputDateFormat.parse(imageText);
-                possibleDates.add(outputDateFormat.format(d));
-                Log.d(TAG, "the date: " + d.toString());
-                // string contains valid date
-            } catch (ParseException ex) {
-                // string contains invalid date
-                Log.d(TAG, "the date is error");
-            }
-        }
-        if (!possibleDates.isEmpty()) {
-            startExpirationDateDialog(possibleDates);
-        }
-    }
+//     */
+//    private void doOCROnImage(Bitmap bitmap) {
+//        // do OCR for image to check if an expiration date exists
+//        TextRecognizer textRecognizer = new TextRecognizer.Builder(this).build();
+//        Frame imageFrame = new Frame.Builder().setBitmap(bitmap).build();
+//        String imageText = "";
+//        SparseArray<TextBlock> textBlocks = textRecognizer.detect(imageFrame);
+//        DateFormat inputDateFormat = new SimpleDateFormat("dd/MM/yy");
+//        DateFormat outputDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        Date d;
+//        ArrayList<String> possibleDates = new ArrayList<>();
+//        for (int i = 0; i < textBlocks.size(); i++) {
+//            TextBlock textBlock = textBlocks.get(textBlocks.keyAt(i));
+//            imageText = textBlock.getValue();
+//            Log.d(TAG, imageText);
+//            try {
+//                d = inputDateFormat.parse(imageText);
+//                possibleDates.add(outputDateFormat.format(d));
+//                Log.d(TAG, "the date: " + d.toString());
+//                // string contains valid date
+//            } catch (ParseException ex) {
+//                // string contains invalid date
+//                Log.d(TAG, "the date is error");
+//            }
+//        }
+//        if (!possibleDates.isEmpty()) {
+//            startExpirationDateDialog(possibleDates);
+//        }
+//    }
 
     /*
     the method checks if to set the date received from OCR to expiration date
      */
-    private void startExpirationDateDialog(ArrayList<String> possibleDates) {
-        ExpirationDateDialog expirationDateDialog = new ExpirationDateDialog(possibleDates.toArray(new String[0]));
-        expirationDateDialog.show(getSupportFragmentManager(), "ExpirationDateDialog");
-    }
+//    private void startExpirationDateDialog(ArrayList<String> possibleDates) {
+//        ExpirationDateDialog expirationDateDialog = new ExpirationDateDialog(possibleDates.toArray(new String[0]));
+//        expirationDateDialog.show(getSupportFragmentManager(), "ExpirationDateDialog");
+//    }
 
     /*
     the method adds an image to document
@@ -615,76 +617,76 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
     /**
      * set an alarm
      *
-     * @param time - time of alarm
+ //    * @param time - time of alarm
      * @return
      */
-    public int setAlarm(TimePicker time) {
-        Log.i("document activity", "entered setAlarm");
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Date date = new Date();
-        Calendar cal_alarm = Calendar.getInstance();
-        Calendar cal_now = Calendar.getInstance();
-        cal_now.setTime(date);
-        cal_alarm.set(getExpirationDateYear(), getExpirationDateMonth() - alarmBeforeMonth, getExpirationDateDay() - alarmBeforeDay,
-                getReminderHourTime(time), time.getCurrentMinute(), 0);
-
-        if (cal_alarm.before(cal_now)) {
-            return -1;
-        }
-
-        Intent myIntent = new Intent(getApplicationContext(), AlarmReceiver.class);
-        myIntent.putExtra("call_reason", "edit_document");
-        myIntent.putExtra("position", position);
-        myIntent.putExtra("notificationId", notificationId);
-        myIntent.putExtra("document_title", curDocument.getTitle());
-        myIntent.putExtra("category_title", categoryTitle);
-        myIntent.putExtra("document_comment", curDocument.getComment());
-        myIntent.putExtra("document_expiration_date", curDocument.getExpirationDate());
-        myIntent.putExtra("document_reminder_time", curDocument.getReminderTime());
-        myIntent.putExtra("has_image", curDocument.getHasImage());
-        myIntent.putExtra("has_file", curDocument.isHasFile());
-        myIntent.putExtra("file_download_uri", curDocument.getFileDownloadUri());
-        myIntent.putExtra("has_alarm", curDocument.getHasAlarm());
-        myIntent.putExtra("is_add_event_to_phone_calender", curDocument.getIsAddEventToPhoneCalender());
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), notificationId, myIntent, PendingIntent.FLAG_ONE_SHOT);
-        notificationId++;
-        manager.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis() - alarmBeforeWeek, pendingIntent);
-        return 0;
-    }
+//    public int setAlarm(TimePicker time) {
+//        Log.i("document activity", "entered setAlarm");
+//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        Date date = new Date();
+//        Calendar cal_alarm = Calendar.getInstance();
+//        Calendar cal_now = Calendar.getInstance();
+//        cal_now.setTime(date);
+//        cal_alarm.set(getExpirationDateYear(), getExpirationDateMonth() - alarmBeforeMonth, getExpirationDateDay() - alarmBeforeDay,
+//                getReminderHourTime(time), time.getCurrentMinute(), 0);
+//
+//        if (cal_alarm.before(cal_now)) {
+//            return -1;
+//        }
+//
+//        Intent myIntent = new Intent(getApplicationContext(), AlarmReceiver.class);
+//        myIntent.putExtra("call_reason", "edit_document");
+//        myIntent.putExtra("position", position);
+//        myIntent.putExtra("notificationId", notificationId);
+//        myIntent.putExtra("document_title", curDocument.getTitle());
+//        myIntent.putExtra("category_title", categoryTitle);
+//        myIntent.putExtra("document_comment", curDocument.getComment());
+//        myIntent.putExtra("document_expiration_date", curDocument.getExpirationDate());
+//        myIntent.putExtra("document_reminder_time", curDocument.getReminderTime());
+//        myIntent.putExtra("has_image", curDocument.getHasImage());
+//        myIntent.putExtra("has_file", curDocument.isHasFile());
+//        myIntent.putExtra("file_download_uri", curDocument.getFileDownloadUri());
+//        myIntent.putExtra("has_alarm", curDocument.getHasAlarm());
+//        myIntent.putExtra("is_add_event_to_phone_calender", curDocument.getIsAddEventToPhoneCalender());
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), notificationId, myIntent, PendingIntent.FLAG_ONE_SHOT);
+//        notificationId++;
+//        manager.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis() - alarmBeforeWeek, pendingIntent);
+//        return 0;
+//    }
 
     /*
      * get expiration date year
      */
-    private int getExpirationDateYear() {
-        if (datePicker != null) {
-            return datePicker.getYear();
-        } else {
-            return Integer.parseInt(documentExpirationDateET.getEditText().getText().toString().split("/")[2]);
-        }
-    }
+//    private int getExpirationDateYear() {
+//        if (datePicker != null) {
+//            return datePicker.getYear();
+//        } else {
+//            return Integer.parseInt(documentExpirationDateET.getEditText().getText().toString().split("/")[2]);
+//        }
+//    }
 
     /*
      * get expiration date month
      */
-    private int getExpirationDateMonth() {
-        if (datePicker != null) {
-            return datePicker.getMonth();
-        } else {
-            return Integer.parseInt(documentExpirationDateET.getEditText().getText().toString().split("/")[1]);
-        }
-    }
+//    private int getExpirationDateMonth() {
+//        if (datePicker != null) {
+//            return datePicker.getMonth();
+//        } else {
+//            return Integer.parseInt(documentExpirationDateET.getEditText().getText().toString().split("/")[1]);
+//        }
+//    }
 
     /*
      * get expiration date day
      */
-    private int getExpirationDateDay() {
-        if (datePicker != null) {
-            return datePicker.getDayOfMonth();
-        } else {
-            return Integer.parseInt(documentExpirationDateET.getEditText().getText().toString().split("/")[0]);
-        }
-    }
-
+//    private int getExpirationDateDay() {
+//        if (datePicker != null) {
+//            return datePicker.getDayOfMonth();
+//        } else {
+//            return Integer.parseInt(documentExpirationDateET.getEditText().getText().toString().split("/")[0]);
+//        }
+//    }
+//
     /*
      * validate the entered name.
      */
@@ -847,9 +849,9 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
         return newBitmap;
     }
 
-    @Override
-    public void sendInput(String date) {
-        curDocument.setExpirationDate(date);
-        documentExpirationDateET.getEditText().setText(date);
-    }
+//    @Override
+//    public void sendInput(String date) {
+//        curDocument.setExpirationDate(date);
+//        documentExpirationDateET.getEditText().setText(date);
+//    }
 }
