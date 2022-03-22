@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
+import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.Document;
@@ -62,7 +63,13 @@ public class CategoryFragment extends Fragment {
         deleteCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+//                addDocumentBtn.setEnabled(false);
+//                deleteCategoryBtn.setEnabled(false);
+//                new Thread(() -> {
+//                    Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+//                    AppLocalDb.db.CategoryDao.delete(category);
+//                    CategoryModel.instance.deleteCategory(dress, () -> navController.navigateUp());
+//                }).start();
                 Navigation.findNavController(view).navigateUp();
             }
 

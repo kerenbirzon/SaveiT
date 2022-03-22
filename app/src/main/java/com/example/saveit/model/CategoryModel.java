@@ -109,6 +109,15 @@ public class CategoryModel {
         return null;
     }
 
+    public interface UpdateCategoryListener {
+        void OnComplete();
+    }
+
+    public void deleteCategory(Category category, UpdateCategoryListener lis) {
+        category.setDeleted(true);
+        modelFirebase.updateCategory(category, lis);
+    }
+
     /**
      * Authentication
      */

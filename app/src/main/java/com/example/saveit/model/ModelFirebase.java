@@ -122,6 +122,15 @@ public class ModelFirebase {
 
     }
 
+    public void updateCategory(Category category, CategoryModel.UpdateCategoryListener lis) {
+        Map<String, Object> jsonReview = category.toJson();
+        db.collection("Categories")
+                .document(category.getTitle())
+                .update(jsonReview)
+                .addOnSuccessListener(unused -> lis.OnComplete())
+                .addOnFailureListener(e -> lis.OnComplete());
+    }
+
     /**
      * User
      */
