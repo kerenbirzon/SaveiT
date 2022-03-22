@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.saveit.MainActivity;
 import com.example.saveit.R;
 import com.example.saveit.document.DocumentActivity;
 import com.example.saveit.model.AppLocalDb;
@@ -61,7 +62,7 @@ public class CategoryFragment extends Fragment {
         addDocumentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CategoryFragment.this, DocumentActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), DocumentActivity.class);
                 intent.putExtra("call_reason", "new_document");
                 intent.putExtra("category_title", categoryTitle);
                 startActivityForResult(intent, NEW_DOCUMENT);
