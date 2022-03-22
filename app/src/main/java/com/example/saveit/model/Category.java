@@ -1,5 +1,8 @@
 package com.example.saveit.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -13,7 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Entity
-public class Category {
+public class Category implements Parcelable {
     final public static String COLLECTION_NAME = "categories";
 
     @PrimaryKey
@@ -31,18 +34,43 @@ public class Category {
         this.title = title;
     }
 
-    public Category(String title, String image) {
+    public Category(String title, String image, boolean deleted) {
+        this.deleted = false;
         this.title = title;
         this.image = image;
     }
 
+    protected Category(Parcel in) {
+        title = in.readString();
+        image = in.readString();
+        if (in.readByte() == 0) {
+            updateDate = null;
+        } else {
+            updateDate = in.readLong();
+        }
+        deleted = in.readByte() != 0;
+    }
+
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
+
     public static Category create(Map<String, Object> json) {
         String title = (String) json.get("title");
         String image = (String) json.get("image");
+        boolean deleted = (boolean) json.get("deleted");
         Timestamp ts = (Timestamp)json.get("updateDate");
         Long updateDate = ts.getSeconds();
 
-        Category category = new Category(title,image);
+        Category category = new Category(title,image, deleted);
         category.setUpdateDate(updateDate);
         return category;
     }
@@ -89,4 +117,21 @@ public class Category {
         this.updateDate = updateDate;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(title);
+        parcel.writeString(image);
+        if (updateDate == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeLong(updateDate);
+        }
+        parcel.writeByte((byte) (deleted ? 1 : 0));
+    }
 }

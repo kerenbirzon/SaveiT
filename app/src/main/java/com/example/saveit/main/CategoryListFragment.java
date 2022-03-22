@@ -47,7 +47,6 @@ public class CategoryListFragment extends Fragment {
     SwipeRefreshLayout swipeRefresh;
     FirebaseAuth categoryListmAuth;
     Button addCategoryBtn,signOutBtn;
-    ImageView iconPrevView;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -64,7 +63,6 @@ public class CategoryListFragment extends Fragment {
 
         signOutBtn = view.findViewById(R.id.btn_sign_out);
         categoryListmAuth = FirebaseAuth.getInstance();
-        iconPrevView = view.findViewById(R.id.iv_icon_img_prev);
 
         swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
         swipeRefresh.setOnRefreshListener(() -> CategoryModel.instance.refreshCategoryList());
@@ -82,8 +80,8 @@ public class CategoryListFragment extends Fragment {
             @Override
             public void onItemClick(View v,int position) {
                 Log.d("category clicked", "category was clicked");
-                String categoryTitle = viewModel.getCategories().getValue().get(position).getTitle();
-                Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(categoryTitle));
+                Category category = viewModel.getCategories().getValue().get(position);
+                Navigation.findNavController(v).navigate(CategoryListFragmentDirections.actionCategoryListToCategory(category));
             }
         });
 

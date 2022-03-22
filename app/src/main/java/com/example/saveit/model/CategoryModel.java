@@ -66,10 +66,15 @@ public class CategoryModel {
                         Long lastUpdateDate = new Long(0);
                         Log.d("TAG","fireBase returned: " + list.size());
                         for (Category category: list){
-                            AppLocalDb.db.categoryDao().insertAll(category);
-
-                            if (lastUpdateDate < category.getUpdateDate()){
+                            if (category.isDeleted()) {
                                 lastUpdateDate = category.getUpdateDate();
+                                AppLocalDb.db.categoryDao().delete(category);
+                            }
+                            else {
+                                if (lastUpdateDate < category.getUpdateDate()){
+                                    lastUpdateDate = category.getUpdateDate();
+                                    AppLocalDb.db.categoryDao().insertAll(category);
+                                }
                             }
                         }
 

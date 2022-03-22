@@ -46,8 +46,8 @@
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" >
         <argument
-            android:name="title"
-            app:argType="string" />
+            android:name="category"
+            app:argType="com.example.saveit.model.Category" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

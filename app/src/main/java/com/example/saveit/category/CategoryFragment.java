@@ -1,6 +1,7 @@
 package com.example.saveit.category;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class CategoryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getTitle();
+        categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getCategory().getTitle();
 
         CategoryModel.instance.getCategoryByTitle(categoryTitle, new CategoryModel.GetCategoryByTitle() {
             @Override
@@ -60,20 +61,19 @@ public class CategoryFragment extends Fragment {
 
 
         deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
-        deleteCategoryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        deleteCategoryBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //                addDocumentBtn.setEnabled(false);
 //                deleteCategoryBtn.setEnabled(false);
 //                new Thread(() -> {
 //                    Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-//                    AppLocalDb.db.CategoryDao.delete(category);
-//                    CategoryModel.instance.deleteCategory(dress, () -> navController.navigateUp());
+//                    AppLocalDb.db.categoryDao().delete(category);
+//                    CategoryModel.instance.deleteCategory(category, () -> Navigation.findNavController(view).navigateUp());
 //                }).start();
-                Navigation.findNavController(view).navigateUp();
-            }
-
-        });
+//                Navigation.findNavController(view).navigateUp();
+//            }
+//        });
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();
 
@@ -90,7 +90,21 @@ public class CategoryFragment extends Fragment {
 //            }
 //        });
 
+        setDeleteButtonOnClickListener();
 
         return view;
+    }
+
+    private void setDeleteButtonOnClickListener() {
+        deleteCategoryBtn.setOnClickListener(view -> {
+            addDocumentBtn.setEnabled(false);
+            deleteCategoryBtn.setEnabled(false);
+            new Thread(() -> {
+                Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+                Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
+//                AppLocalDb.db.categoryDao().delete(category);
+                CategoryModel.instance.deleteCategory(category, () -> Navigation.findNavController(view).navigateUp());
+            }).start();
+        });
     }
 }

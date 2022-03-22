@@ -6,15 +6,9 @@ import androidx.room.RoomDatabase;
 
 import com.example.saveit.SaveiTMediate;
 
-@Database(entities = {Category.class, Document.class}, version = 39)
-abstract class AppLocalDbRepository extends RoomDatabase {
-    public abstract CategoryDao categoryDao();
-    //public abstract DocumentDao documentDao();
-}
-
-public class AppLocalDb{
+public abstract class AppLocalDb{
     static public AppLocalDbRepository db =
-            Room.databaseBuilder(SaveiTMediate.appContext,
+            Room.databaseBuilder(SaveiTMediate.getAppContext(),
                     AppLocalDbRepository.class,
                     "dbFileName.db")
                     .fallbackToDestructiveMigration()
