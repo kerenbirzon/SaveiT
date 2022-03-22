@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_categoryList_to_category"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_categoryList_to_myCategories"
+            app:destination="@id/myCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"
@@ -55,4 +58,9 @@
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
     <action android:id="@+id/action_global_aboutFragment" app:destination="@id/aboutFragment" />
+    <fragment
+        android:id="@+id/myCategoriesFragment"
+        android:name="com.example.saveit.main.MyCategoriesFragment"
+        android:label="fragment_my_categories"
+        tools:layout="@layout/fragment_my_categories" />
 </navigation>
