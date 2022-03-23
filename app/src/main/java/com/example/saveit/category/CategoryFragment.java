@@ -1,5 +1,6 @@
 package com.example.saveit.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +21,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.saveit.MainActivity;
 import com.example.saveit.R;
+import com.example.saveit.document.DocumentActivity;
 import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
@@ -35,7 +38,7 @@ public class CategoryFragment extends Fragment {
     private ImageView docImg;
     private TextView noDocTxt, titleTxt;
     private String categoryTitle;
-    Button addDocumentBtn,deleteCategoryBtn;
+    Button addDocumentBtn;//deleteCategoryBtn;
     NavController navController;
 
     @Override
@@ -67,7 +70,7 @@ public class CategoryFragment extends Fragment {
         });
         //documentList = DocumentModel.instance.getDocuments(categoryTitle);
 
-        deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
+//        deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();
 
@@ -111,18 +114,20 @@ public class CategoryFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.category_delete){
-            addDocumentBtn.setEnabled(false);
-            deleteCategoryBtn.setEnabled(false);
-            new Thread(() -> {
-                Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-                Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
-                AppLocalDb.db.categoryDao().delete(category);
-                CategoryModel.instance.deleteCategory(category, () -> navController.navigateUp());
-            }).start();
-            return true;
-        }else {
-            return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.category_delete:
+                addDocumentBtn.setEnabled(false);
+                new Thread(() -> {
+                    Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+                    Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
+                    AppLocalDb.db.categoryDao().delete(category);
+                    CategoryModel.instance.deleteCategory(category, () -> navController.navigateUp());
+                }).start();
+                break;
+            case R.id.category_edit:
+                navController.navigate(R.id.action_categoryFragment_to_editCategoryFragment);
+                break;
         }
+        return true;
     }
 }

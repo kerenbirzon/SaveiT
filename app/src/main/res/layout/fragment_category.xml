@@ -78,24 +78,6 @@
         tools:ignore="RtlHardcoded" />
 
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btn_delete_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="onClickAddDocumentButton"
-        android:text="delete category"
-        android:textColor="@android:color/white"
-        app:backgroundTint="@android:color/holo_red_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_add_doc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/softBlue"
-        tools:ignore="RtlHardcoded" />
-
     <ImageView
         android:id="@+id/iv_doc_img"
         android:layout_width="137dp"

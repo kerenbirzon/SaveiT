@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.saveit.R;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FieldValue;
 
@@ -27,11 +28,13 @@ public class Category implements Parcelable {
     boolean deleted;
 
     public Category() {
-
+        this.title = "car";
+        this.image = String.valueOf(R.drawable.car);
     }
 
     public Category(String title) {
         this.title = title;
+        this.image = String.valueOf(R.drawable.car);
     }
 
     public Category(String title, String image, boolean deleted) {
