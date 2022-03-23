@@ -1,5 +1,6 @@
 package com.example.saveit.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.saveit.R;
+import com.example.saveit.document.DocumentActivity;
 import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
@@ -30,6 +32,8 @@ public class CategoryFragment extends Fragment {
     private TextView noDocTxt, titleTxt;
     private String categoryTitle;
     Button addDocumentBtn,deleteCategoryBtn;
+    public static final int NEW_DOCUMENT = 111;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +58,10 @@ public class CategoryFragment extends Fragment {
         addDocumentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), DocumentActivity.class);
+                intent.putExtra("call_reason", "new_document");
+                intent.putExtra("category_title", categoryTitle);
+                startActivityForResult(intent, NEW_DOCUMENT);
                 //Navigation.createNavigateOnClickListener(R.id.action_category_to_document);
             }
         });
