@@ -1,8 +1,5 @@
 package com.example.saveit.main;
 
-import static android.app.Activity.RESULT_OK;
-
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -50,7 +47,7 @@ public class ChooseIconFragment extends Fragment {
             });
         }
 
-        Button cancelIconBtn = view.findViewById(R.id.btn_action_cancel);
+        Button cancelIconBtn = view.findViewById(R.id.btn_change_action_cancel);
         Button saveIconBtn = view.findViewById(R.id.btn_save_category_icon);
 
         saveIconBtn.setOnClickListener(new View.OnClickListener() {

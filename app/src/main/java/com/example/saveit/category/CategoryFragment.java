@@ -4,18 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.saveit.MainActivity;
 import com.example.saveit.R;
+import com.example.saveit.document.DocumentActivity;
+import com.example.saveit.main.CategoryListFragmentDirections;
 import com.example.saveit.document.DocumentActivity;
 import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
@@ -33,6 +42,7 @@ public class CategoryFragment extends Fragment {
     private String categoryTitle;
     Button addDocumentBtn,deleteCategoryBtn;
     public static final int NEW_DOCUMENT = 111;
+    NavController navController;
 
 
     @Override
@@ -67,21 +77,7 @@ public class CategoryFragment extends Fragment {
         });
         //documentList = DocumentModel.instance.getDocuments(categoryTitle);
 
-
-        deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
-//        deleteCategoryBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                addDocumentBtn.setEnabled(false);
-//                deleteCategoryBtn.setEnabled(false);
-//                new Thread(() -> {
-//                    Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-//                    AppLocalDb.db.categoryDao().delete(category);
-//                    CategoryModel.instance.deleteCategory(category, () -> Navigation.findNavController(view).navigateUp());
-//                }).start();
-//                Navigation.findNavController(view).navigateUp();
-//            }
-//        });
+//        deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();
 
@@ -98,21 +94,49 @@ public class CategoryFragment extends Fragment {
 //            }
 //        });
 
-        setDeleteButtonOnClickListener();
+//        setDeleteButtonOnClickListener();
+        setHasOptionsMenu(true);
 
         return view;
     }
 
-    private void setDeleteButtonOnClickListener() {
-        deleteCategoryBtn.setOnClickListener(view -> {
-            addDocumentBtn.setEnabled(false);
-            deleteCategoryBtn.setEnabled(false);
-            new Thread(() -> {
-                Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-                Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
+//    private void setDeleteButtonOnClickListener() {
+//        deleteCategoryBtn.setOnClickListener(view -> {
+//            addDocumentBtn.setEnabled(false);
+//            deleteCategoryBtn.setEnabled(false);
+//            new Thread(() -> {
+//                Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+//                Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
 //                AppLocalDb.db.categoryDao().delete(category);
-                CategoryModel.instance.deleteCategory(category, () -> Navigation.findNavController(view).navigateUp());
-            }).start();
-        });
+//                CategoryModel.instance.deleteCategory(category, () -> Navigation.findNavController(view).navigateUp());
+//            }).start();
+//        });
+//    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.category_list_menu,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.category_delete:
+                addDocumentBtn.setEnabled(false);
+                new Thread(() -> {
+                    Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+                    Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
+                    AppLocalDb.db.categoryDao().delete(category);
+                    CategoryModel.instance.deleteCategory(category, () -> navController.navigateUp());
+                }).start();
+                break;
+            case R.id.category_edit:
+
+                //navController.navigate(R.id.action_categoryFragment_to_editCategoryFragment);
+                navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToEditCategoryFragment(CategoryFragmentArgs.fromBundle(getArguments()).getCategory()));
+                break;
+        }
+        return true;
     }
 }

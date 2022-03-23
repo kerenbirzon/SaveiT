@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_categoryList_to_category"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_categoryList_to_myCategories"
+            app:destination="@id/myCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCategoryFragment"
@@ -38,7 +41,11 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_chooseIconFragment_to_addCategoryFragment"
-            app:destination="@id/addCategoryFragment" />
+            app:destination="@id/addCategoryFragment"
+            app:popUpTo="@id/categoryListFragment" />
+        <action
+            android:id="@+id/action_chooseIconFragment_to_editCategoryFragment"
+            app:destination="@id/editCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
@@ -48,6 +55,9 @@
         <argument
             android:name="category"
             app:argType="com.example.saveit.model.Category" />
+        <action
+            android:id="@+id/action_categoryFragment_to_editCategoryFragment"
+            app:destination="@id/editCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -55,4 +65,20 @@
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
     <action android:id="@+id/action_global_aboutFragment" app:destination="@id/aboutFragment" />
+    <fragment
+        android:id="@+id/myCategoriesFragment"
+        android:name="com.example.saveit.main.MyCategoriesFragment"
+        android:label="fragment_my_categories"
+        tools:layout="@layout/fragment_my_categories" />
+    <fragment
+        android:id="@+id/editCategoryFragment"
+        android:name="com.example.saveit.main.EditCategoryFragment"
+        android:label="EditCategoryFragment" >
+        <action
+            android:id="@+id/action_editCategoryFragment_to_chooseIconFragment"
+            app:destination="@id/chooseIconFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.example.saveit.model.Category" />
+    </fragment>
 </navigation>
