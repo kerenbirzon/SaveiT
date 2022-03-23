@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -80,6 +81,8 @@ public class ModelFirebase {
 
     public void getCategories(Long lastUpdateDate, GetAllCategoriesListener listener) {
         db.collection(Category.COLLECTION_NAME)
+                .whereGreaterThanOrEqualTo("updateDate", new Timestamp(lastUpdateDate, 0))
+                .whereEqualTo("deleted", false)
                 .get()
                 .addOnCompleteListener(task -> {
                     List<Category> list = new LinkedList<Category>();
@@ -124,7 +127,7 @@ public class ModelFirebase {
 
     public void updateCategory(Category category, CategoryModel.UpdateCategoryListener lis) {
         Map<String, Object> jsonReview = category.toJson();
-        db.collection("Categories")
+        db.collection("categories")
                 .document(category.getTitle())
                 .update(jsonReview)
                 .addOnSuccessListener(unused -> lis.OnComplete())

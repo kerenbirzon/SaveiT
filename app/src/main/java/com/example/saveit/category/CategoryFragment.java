@@ -127,13 +127,11 @@ public class CategoryFragment extends Fragment {
                 addDocumentBtn.setEnabled(false);
                 new Thread(() -> {
                     Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-                    Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
                     AppLocalDb.db.categoryDao().delete(category);
                     CategoryModel.instance.deleteCategory(category, () -> navController.navigateUp());
                 }).start();
                 break;
             case R.id.category_edit:
-
                 //navController.navigate(R.id.action_categoryFragment_to_editCategoryFragment);
                 navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToEditCategoryFragment(CategoryFragmentArgs.fromBundle(getArguments()).getCategory()));
                 break;
