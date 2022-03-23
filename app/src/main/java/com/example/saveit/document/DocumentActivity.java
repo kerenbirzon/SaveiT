@@ -380,7 +380,6 @@ public class DocumentActivity extends AppCompatActivity implements DatePickerDia
             ModelFirebase.uploadImageToFirebaseStorageDB(bitmap, getApplicationContext(), categoryTitle, documentTitleET.getEditText().getText().toString(), "image");
         }
 
-        //Intent intentBack = new Intent(DocumentActivity.this, CategoryActivity.class);
         Intent intentBack = new Intent(DocumentActivity.this, CategoryFragment.class);
 
         if (callReason.equals("edit_document")) {
