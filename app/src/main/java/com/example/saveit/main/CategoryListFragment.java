@@ -34,7 +34,7 @@ public class CategoryListFragment extends Fragment {
     CategoryAdapter categoryAdapter;
     SwipeRefreshLayout swipeRefresh;
     FirebaseAuth categoryListmAuth;
-    Button addCategoryBtn,signOutBtn;
+    Button addCategoryBtn;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -49,7 +49,6 @@ public class CategoryListFragment extends Fragment {
         addCategoryBtn = view.findViewById(R.id.btn_add_category);
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
 
-        signOutBtn = view.findViewById(R.id.btn_sign_out);
         categoryListmAuth = FirebaseAuth.getInstance();
 
         swipeRefresh = view.findViewById(R.id.category_swipeRefresh);
@@ -85,15 +84,6 @@ public class CategoryListFragment extends Fragment {
             }
         });
 
-        signOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (categoryListmAuth != null){
-                    categoryListmAuth.signOut();
-                    startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
-                }
-            }
-        });
         return view;
     }
 
@@ -167,12 +157,17 @@ public class CategoryListFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.my_categories){
-
-            return true;
-        }else {
-            return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.my_categories:
+                break;
+            case R.id.category_logout:
+                if (categoryListmAuth != null){
+                    categoryListmAuth.signOut();
+                    startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                }
+                break;
         }
+        return true;
     }
 
 }

@@ -6,4 +6,8 @@
         android:icon="@android:drawable/ic_menu_myplaces"
         android:title="my categories"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/category_logout"
+        android:title="LogOut"
+        app:showAsAction="ifRoom" />
 </menu>

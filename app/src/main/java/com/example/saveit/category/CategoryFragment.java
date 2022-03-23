@@ -60,6 +60,7 @@ public class CategoryFragment extends Fragment {
             }
         });
 
+        navController = NavHostFragment.findNavController(this);
         titleTxt = view.findViewById(R.id.tv_category_title);
         docImg = view.findViewById(R.id.iv_doc_img);
         noDocTxt = view.findViewById(R.id.tv_no_docs);
