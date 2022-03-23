@@ -81,7 +81,6 @@ public class ModelFirebase {
 
     public void getCategories(Long lastUpdateDate, GetAllCategoriesListener listener) {
         db.collection(Category.COLLECTION_NAME)
-                .whereGreaterThanOrEqualTo("updateDate", new Timestamp(lastUpdateDate, 0))
                 .whereEqualTo("deleted", false)
                 .get()
                 .addOnCompleteListener(task -> {
