@@ -40,7 +40,7 @@ public class CategoryFragment extends Fragment {
     private ImageView docImg;
     private TextView noDocTxt, titleTxt;
     private String categoryTitle;
-    Button addDocumentBtn,deleteCategoryBtn;
+    Button addDocumentBtn;
     public static final int NEW_DOCUMENT = 111;
     NavController navController;
 
@@ -78,7 +78,6 @@ public class CategoryFragment extends Fragment {
         });
         //documentList = DocumentModel.instance.getDocuments(categoryTitle);
 
-//        deleteCategoryBtn = view.findViewById(R.id.btn_delete_category);
         RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
         recyclerView.hasFixedSize();
 
@@ -95,24 +94,10 @@ public class CategoryFragment extends Fragment {
 //            }
 //        });
 
-//        setDeleteButtonOnClickListener();
         setHasOptionsMenu(true);
 
         return view;
     }
-
-//    private void setDeleteButtonOnClickListener() {
-//        deleteCategoryBtn.setOnClickListener(view -> {
-//            addDocumentBtn.setEnabled(false);
-//            deleteCategoryBtn.setEnabled(false);
-//            new Thread(() -> {
-//                Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-//                Log.d("TAG","TAMIRTAMIRTAMIR - " + category.getTitle());
-//                AppLocalDb.db.categoryDao().delete(category);
-//                CategoryModel.instance.deleteCategory(category, () -> Navigation.findNavController(view).navigateUp());
-//            }).start();
-//        });
-//    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
