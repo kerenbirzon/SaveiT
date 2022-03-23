@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ModelFirebase {
-    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static CollectionReference categoriesRef;
     private static final String TAG = "ModelFirebase";
     private static StorageReference storageReference;
@@ -51,7 +51,7 @@ public class ModelFirebase {
     }
 
 
-    public final void removeDocument(String categoryTitle, Document document_to_delete) {
+    public static void removeDocument(String categoryTitle, Document document_to_delete) {
 
         db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayRemove(document_to_delete)).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -65,8 +65,13 @@ public class ModelFirebase {
         });
     }
 
-    public final void addNewDocument(String categoryTitle, Document document) {
-        db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayUnion(document));
+    public static void addNewDocument(String categoryTitle, Document document) {
+        //Map<String, Object> json = document.toJson();
+        //db.collection(Category.COLLECTION_NAME)
+        //        .document(document.getTitle())
+        //        .set(json)
+        //        .addOnSuccessListener(unused -> listener.OnComplete())
+        //        .addOnFailureListener(e -> listener.OnComplete());
     }
 
     /**
