@@ -51,7 +51,7 @@ public class EditCategoryFragment extends Fragment {
         saveChangedCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("clicked", "save new category was clicked");
+                Log.d("clicked", "change category was clicked");
                 changeCategory();
             }
         });
@@ -69,14 +69,9 @@ public class EditCategoryFragment extends Fragment {
     private void changeCategory() {
         progressBar.setVisibility(View.VISIBLE);
         newCategory.setTitle(EditCategoryFragmentArgs.fromBundle(getArguments()).getCategory().getTitle());
-//        iconLocation = AddCategoryFragmentArgs.fromBundle(getArguments()).getImageView();
-//        iconPrevView.setImageResource(iconImages[iconLocation]);
-//        saveNewCategoryBtn.setEnabled(false);
-//        cancelNewCategoryBtn.setEnabled(false);
-//        categoryName = categoryNameEt.getText().toString();
-//        categoryImage = String.valueOf(iconImages[iconLocation]);
-//        Log.d("TAG","saved categoryName:" + categoryName +" categoryImage:" + categoryImage);
-//        Category category = new Category(categoryName,categoryImage,false); // need to change the function
+        newCategory.setImage(EditCategoryFragmentArgs.fromBundle(getArguments()).getCategory().getImage());
+        saveChangedCategoryBtn.setEnabled(false);
+        cancelChangedCategoryBtn.setEnabled(false);
 //        CategoryModel.instance.addCategory(category,()->{
 //            Navigation.findNavController(categoryNameEt).navigateUp();
 //        });
