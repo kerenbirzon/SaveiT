@@ -74,8 +74,6 @@ public class AddCategoryFragment extends Fragment {
         Category category = new Category(categoryName,categoryImage,false); // need to change the function
         CategoryModel.instance.addCategory(category,()->{
             Navigation.findNavController(categoryNameEt).navigateUp();
-//            Navigation.findNavController(categoryNameEt).navigateUp();
-//            Navigation.findNavController(categoryNameEt).navigateUp();
         });
     }
 
