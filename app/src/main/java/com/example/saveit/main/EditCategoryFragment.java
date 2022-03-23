@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.saveit.R;
+import com.example.saveit.category.CategoryFragmentArgs;
+import com.example.saveit.model.Category;
 
 
 public class EditCategoryFragment extends Fragment {
@@ -29,6 +31,7 @@ public class EditCategoryFragment extends Fragment {
     private ProgressBar progressBar;
     private ImageView iconPrevViewChanged;
     private int iconLocation;
+    Category newCategory = new Category();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +42,9 @@ public class EditCategoryFragment extends Fragment {
         cancelChangedCategoryBtn = view.findViewById(R.id.btn_change_action_cancel);
         chooseChangedIconBtn = view.findViewById(R.id.btn_change_icon);
         iconPrevViewChanged = view.findViewById(R.id.iv_icon_img_prev_change);
+        iconPrevViewChanged.setImageResource(Integer.parseInt(EditCategoryFragmentArgs.fromBundle(getArguments()).getCategory().getImage()));
         categoryNameEt = view.findViewById(R.id.change_Category_name_et);
+        categoryNameEt.setText(EditCategoryFragmentArgs.fromBundle(getArguments()).getCategory().getTitle());
         progressBar = view.findViewById(R.id.change_category_progressBar);
         progressBar.setVisibility(View.GONE);
 
@@ -63,6 +68,7 @@ public class EditCategoryFragment extends Fragment {
 
     private void changeCategory() {
         progressBar.setVisibility(View.VISIBLE);
+        newCategory.setTitle(EditCategoryFragmentArgs.fromBundle(getArguments()).getCategory().getTitle());
 //        iconLocation = AddCategoryFragmentArgs.fromBundle(getArguments()).getImageView();
 //        iconPrevView.setImageResource(iconImages[iconLocation]);
 //        saveNewCategoryBtn.setEnabled(false);

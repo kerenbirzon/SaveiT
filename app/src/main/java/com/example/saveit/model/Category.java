@@ -30,6 +30,7 @@ public class Category implements Parcelable {
     public Category() {
         this.title = "car";
         this.image = String.valueOf(R.drawable.car);
+        this.deleted = false;
     }
 
     public Category(String title) {

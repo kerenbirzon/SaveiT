@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.saveit.MainActivity;
 import com.example.saveit.R;
 import com.example.saveit.document.DocumentActivity;
+import com.example.saveit.main.CategoryListFragmentDirections;
 import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
@@ -125,7 +126,9 @@ public class CategoryFragment extends Fragment {
                 }).start();
                 break;
             case R.id.category_edit:
-                navController.navigate(R.id.action_categoryFragment_to_editCategoryFragment);
+
+                //navController.navigate(R.id.action_categoryFragment_to_editCategoryFragment);
+                navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToEditCategoryFragment(CategoryFragmentArgs.fromBundle(getArguments()).getCategory()));
                 break;
         }
         return true;
