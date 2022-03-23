@@ -2,6 +2,7 @@ package com.example.saveit.document;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.ui.NavigationUI;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -20,6 +21,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
