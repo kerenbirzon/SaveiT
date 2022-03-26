@@ -27,15 +27,18 @@ import com.example.saveit.model.AppLocalDb;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.example.saveit.model.ModelFirebase;
+import com.squareup.picasso.Picasso;
 //import com.example.saveit.model.Document;
 
 import java.util.List;
 
 public class CategoryFragment extends Fragment {
 
-    private TextView titleTxt;
+    private TextView titleTxt, documentName, documentType, documentComments;
     private String categoryTitle;
+    ImageView categoryImage;
     NavController navController;
+    Category category;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +52,25 @@ public class CategoryFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         titleTxt = view.findViewById(R.id.tv_category_title);
         titleTxt.setText(categoryTitle);
+
+        category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+
+        documentName = view.findViewById(R.id.document_name_et);
+        documentName.setText(category.getDocumentTitle());
+        documentType = view.findViewById(R.id.document_type_et);
+        documentType.setText(category.getDocumentType());
+        documentComments = view.findViewById(R.id.document_comment_et);
+        documentComments.setText(category.getDocumentComments());
+        categoryImage = view.findViewById(R.id.categoryItemImage);
+        if (category.getImageUrl() != null && !category.getImageUrl().isEmpty()) {
+            Picasso.get()
+                    .load(category.getImageUrl())
+                    .into(categoryImage);
+        }
+
+        documentComments.setEnabled(false);
+        documentType.setEnabled(false);
+        documentName.setEnabled(false);
 
         setHasOptionsMenu(true);
 
@@ -72,8 +94,8 @@ public class CategoryFragment extends Fragment {
                 }).start();
                 break;
             case R.id.category_edit:
-                //navController.navigate(R.id.action_categoryFragment_to_editCategoryFragment);
-                //navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToEditCategoryFragment(CategoryFragmentArgs.fromBundle(getArguments()).getCategory()));
+                Category editCategory = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+                navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToAddCategoryFragment());
                 break;
         }
         return true;
