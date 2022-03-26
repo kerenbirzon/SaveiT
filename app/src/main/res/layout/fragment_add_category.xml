@@ -6,7 +6,7 @@
 
 
     <EditText
-        android:id="@+id/add_document_type_et2"
+        android:id="@+id/add_document_comments_et"
         android:layout_width="393dp"
         android:layout_height="59dp"
         android:layout_marginStart="10dp"
@@ -163,7 +163,7 @@
         app:layout_constraintEnd_toStartOf="@+id/gallery_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_document_type_et2"
+        app:layout_constraintTop_toBottomOf="@+id/add_document_comments_et"
         app:srcCompat="@drawable/ic_menu_camera" />
 
     <ImageButton
@@ -174,7 +174,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/camera_btn"
-        app:layout_constraintTop_toBottomOf="@+id/add_document_type_et2"
+        app:layout_constraintTop_toBottomOf="@+id/add_document_comments_et"
         app:srcCompat="@drawable/ic_menu_gallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

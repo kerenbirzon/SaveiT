@@ -56,23 +56,24 @@ public class AddCategoryFragment extends Fragment {
         galleryBtn = view.findViewById(R.id.gallery_btn);
         documentImagePrev = view.findViewById(R.id.document_photo_prev);
         categoryNameEt = view.findViewById(R.id.add_Category_name_et);
-        documentNameEt = view.findViewById(R.id.document_name_et);
-        documentTypeEt = view.findViewById(R.id.document_type_et);
-        documentCommentsEt = view.findViewById(R.id.document_comment_et);
+        documentNameEt = view.findViewById(R.id.add_document_name_et);
+        documentTypeEt = view.findViewById(R.id.add_document_type_et);
+        documentCommentsEt = view.findViewById(R.id.add_document_comments_et);
         progressBar = view.findViewById(R.id.change_category_progressBar);
         progressBar.setVisibility(View.GONE);
 
         cameraBtn.setOnClickListener(v -> openCam());
 
         galleryBtn.setOnClickListener(v -> openGallery());
-//        if (editCategory != null) {
-//            ((TextView) view.findViewById(R.id.main_title)).setText("Edit Category");
-//            categoryNameEt.setText(editCategory.getCategoryTitle());
-//            documentNameEt.setText(editCategory.getDocumentTitle());
-//            documentTypeEt.setText(editCategory.getDocumentType());
-//            documentCommentsEt.setText(editCategory.getDocumentComments());
-//            Picasso.get().load(editCategory.getImageUrl()).into(documentImagePrev);
-//        }
+
+        if (editCategory != null) {
+            ((TextView) view.findViewById(R.id.main_title)).setText("Edit Category");
+            categoryNameEt.setText(editCategory.getCategoryTitle());
+            documentNameEt.setText(editCategory.getDocumentTitle());
+            documentTypeEt.setText(editCategory.getDocumentType());
+            documentCommentsEt.setText(editCategory.getDocumentComments());
+            Picasso.get().load(editCategory.getImageUrl()).into(documentImagePrev);
+        }
 
         saveNewCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +141,7 @@ public class AddCategoryFragment extends Fragment {
             cancelNewCategoryBtn.setEnabled(false);
             galleryBtn.setEnabled(false);
             cameraBtn.setEnabled(false);
+            Log.d("TAG","tamirtamir" + categoryNameEt.getText().toString());
             String categoryTitle = categoryNameEt.getText().toString();
             String documentTitle = documentNameEt.getText().toString();
             String documentType = documentTypeEt.getText().toString();
