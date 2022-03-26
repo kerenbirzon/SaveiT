@@ -207,7 +207,12 @@ public class Category implements Parcelable {
         parcel.writeString(documentTitle);
         parcel.writeString(documentComments);
         parcel.writeString(documentType);
-        parcel.writeString(imageUrl);
+        if (imageUrl == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeString(imageUrl);
+        }
         if (updateDate == null) {
             parcel.writeByte((byte) 0);
         } else {
