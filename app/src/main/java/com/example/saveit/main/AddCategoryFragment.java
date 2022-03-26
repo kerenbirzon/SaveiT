@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -46,8 +47,8 @@ public class AddCategoryFragment extends Fragment {
     Bitmap imageBitmap;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_category, container, false);
         saveNewCategoryBtn = view.findViewById(R.id.btn_change_action_save);
         cancelNewCategoryBtn = view.findViewById(R.id.btn_change_action_cancel);
