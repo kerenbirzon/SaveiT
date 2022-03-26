@@ -27,6 +27,7 @@ import com.example.saveit.login.LoginActivity;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class CategoryListFragment extends Fragment {
     CategoryListViewModel viewModel;
@@ -92,12 +93,12 @@ public class CategoryListFragment extends Fragment {
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView title;
+        TextView categoryTitle;
         ImageView image;
 
         public MyViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
-            title = itemView.findViewById(R.id.category_title);
+            categoryTitle = itemView.findViewById(R.id.category_title);
             image = itemView.findViewById(R.id.category_img);
 
 
@@ -111,8 +112,13 @@ public class CategoryListFragment extends Fragment {
         }
 
         void bind(Category category){
-            title.setText(category.getTitle());
-            image.setImageResource(Integer.parseInt(category.getImage()));
+            categoryTitle.setText(category.getCategoryTitle());
+            image.setImageResource(R.drawable.save_it);
+            if (category.getImageUrl() != null && !category.getImageUrl().isEmpty()) {
+                Picasso.get()
+                        .load(category.getImageUrl())
+                        .into(image);
+            }
         }
     }
 

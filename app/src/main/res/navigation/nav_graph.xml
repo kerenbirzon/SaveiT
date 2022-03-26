@@ -21,25 +21,9 @@
         android:id="@+id/addCategoryFragment"
         android:name="com.example.saveit.main.AddCategoryFragment"
         android:label="SaveIT">
-        <action
-            android:id="@+id/action_addCategory_to_chooseIcon"
-            app:destination="@id/chooseIconFragment" />
         <argument
-            android:name="ImageView"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/chooseIconFragment"
-        android:name="com.example.saveit.main.ChooseIconFragment"
-        android:label="SaveIT"
-        tools:layout="@layout/fragment_choose_icon">
-        <argument
-            android:name="ImageView"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_chooseIconFragment_to_addCategoryFragment"
-            app:destination="@id/addCategoryFragment"
-            app:popUpTo="@id/categoryListFragment" />
+            android:name="editCategory"
+            app:argType="com.example.saveit.model.Category" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"

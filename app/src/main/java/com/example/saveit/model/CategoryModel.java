@@ -1,6 +1,7 @@
 package com.example.saveit.model;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -106,12 +107,27 @@ public class CategoryModel {
         });
     }
 
-    public interface GetCategoryByTitle {
+    public void editCategory(Category category, AddCategoryListener listener) {
+        modelFirebase.editCategory(category, () -> {
+            listener.OnComplete();
+            refreshCategoryList();
+        });
+    }
+
+    public interface GetCategoryById {
         void OnComplete(Category category);
     }
 
-    public Category getCategoryByTitle(String title, GetCategoryByTitle listener) {
-        modelFirebase.getCategoryByTitle(title,listener);
+    public interface SaveImageListener {
+        void OnComplete(String url);
+    }
+
+    public void saveImage(Bitmap imageBitmap, String imageName, SaveImageListener listener) {
+        modelFirebase.saveImage(imageBitmap, imageName, listener);
+    }
+
+    public Category getCategoryById(String id, GetCategoryById listener) {
+        modelFirebase.getCategoryById(id,listener);
         return null;
     }
 

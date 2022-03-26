@@ -2,6 +2,7 @@ package com.example.saveit.model;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -83,15 +84,45 @@ public class ModelFirebase {
     public void addCategory(Category category, CategoryModel.AddCategoryListener listener) {
         Map<String, Object> json = category.toJson();
         db.collection(Category.COLLECTION_NAME)
-                .document(category.getTitle())
+                .document(category.getId())
                 .set(json)
                 .addOnSuccessListener(unused -> listener.OnComplete())
                 .addOnFailureListener(e -> listener.OnComplete());
     }
 
-    public void getCategoryByTitle(String title, CategoryModel.GetCategoryByTitle listener) {
+    public void editCategory(Category category, CategoryModel.AddCategoryListener listener) {
         db.collection(Category.COLLECTION_NAME)
-                .document(title)
+                .document(category.getId())
+                .update(category.toEditJson()).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                new Thread(() -> AppLocalDb.db.categoryDao().update(category.getCategoryTitle(),category.getDocumentTitle(),category.getDocumentType(),category.getDocumentComments() ,category.getImageUrl(), category.getId())).start();
+                listener.OnComplete();
+            }
+        });
+    }
+
+    public void saveImage(Bitmap imageBitmap, String imageName, CategoryModel.SaveImageListener listener) {
+        StorageReference storageRef = storage.getReference();
+        StorageReference imgRef = storageRef.child("user_avatars/" + imageName);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+        UploadTask uploadTask = imgRef.putBytes(data);
+        uploadTask.addOnFailureListener(exception -> listener.OnComplete(null))
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        imgRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                            Uri downloadUrl = uri;
+                            listener.OnComplete(downloadUrl.toString());
+                        });
+                    }
+                });
+    }
+
+    public void getCategoryById(String id, CategoryModel.GetCategoryById listener) {
+        db.collection(Category.COLLECTION_NAME)
+                .document(id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -108,8 +139,8 @@ public class ModelFirebase {
 
     public void updateCategory(Category category, CategoryModel.UpdateCategoryListener lis) {
         Map<String, Object> jsonReview = category.toJson();
-        db.collection("categories")
-                .document(category.getTitle())
+        db.collection(Category.COLLECTION_NAME)
+                .document(category.getId())
                 .update(jsonReview)
                 .addOnSuccessListener(unused -> lis.OnComplete())
                 .addOnFailureListener(e -> lis.OnComplete());

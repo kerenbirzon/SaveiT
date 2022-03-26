@@ -13,11 +13,14 @@ public interface CategoryDao {
     @Query("select * from Category")
     List<Category> getAllCategories();
 
-    @Query("select * from Category where title = :title")
-    Category getCategoryByTitle(String title);
+    @Query("select * from Category where id = :id")
+    Category getCategoryById(String id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Category... categories);
+
+    @Query("UPDATE Category SET categoryTitle=:categoryTitle , documentTitle=:documentTitle ,documentType=:documentType,documentComments=:documentComments,imageUrl=:imageUrl WHERE id = :id")
+    void update(String categoryTitle, String documentTitle, String documentType, String documentComments, String imageUrl, String id);
 
     @Delete
     void delete(Category category);

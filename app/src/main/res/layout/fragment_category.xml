@@ -8,15 +8,41 @@
     android:background="@color/softBlue">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/splash_back"
-        app:layout_constraintBottom_toTopOf="@+id/document_recycler"
+    <TextView
+        android:id="@+id/document_type_tv"
+        android:layout_width="186dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="10dp"
+        android:text="Document Type:"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/document_type_et"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/document_type_et"
+        android:layout_width="144dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/document_type_tv"
+        app:layout_constraintTop_toBottomOf="@+id/document_name_et" />
+
+    <ImageView
+        android:id="@+id/categoryItemImage"
+        android:layout_width="0dp"
+        android:layout_height="305dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="10dp"
+        android:padding="16dp"
+        android:src="@drawable/document_example"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_title" />
 
     <TextView
         android:id="@+id/tv_category_title"
@@ -31,73 +57,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/document_name_tv"
+        android:layout_width="186dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="10dp"
+        android:text="Document Name:"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/document_name_et"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/recycler_back"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/data_back"
-        app:layout_constraintBottom_toBottomOf="@+id/document_recycler"
+    <EditText
+        android:id="@+id/document_name_et"
+        android:layout_width="144dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category_title" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/document_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recycler_back" />
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btn_add_doc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="onClickAddDocumentButton"
-        android:text="add document"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:icon="@drawable/ic_add_black_24dp"
-        android:textColor="@android:color/white"
-        app:iconTint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/softBlue"
-        tools:ignore="RtlHardcoded" />
-
-
-    <ImageView
-        android:id="@+id/iv_doc_img"
-        android:layout_width="137dp"
-        android:layout_height="81dp"
-        android:alpha="0.25"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_doc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView"
-        app:srcCompat="@drawable/doc" />
+        app:layout_constraintStart_toEndOf="@+id/document_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/categoryItemImage" />
 
     <TextView
-        android:id="@+id/tv_no_docs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:alpha="0.5"
-        android:text="You have no uploaded documents yet"
-        android:textSize="16sp"
+        android:id="@+id/document_comment_tv"
+        android:layout_width="188dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:text="Comments: "
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/document_comment_et"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/document_comment_et"
+        android:layout_width="145dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Comments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_doc_img" />
+        app:layout_constraintStart_toEndOf="@+id/document_comment_tv"
+        app:layout_constraintTop_toBottomOf="@+id/document_type_et" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

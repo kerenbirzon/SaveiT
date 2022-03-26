@@ -33,10 +33,8 @@ import java.util.List;
 
 public class CategoryFragment extends Fragment {
 
-    private ImageView docImg;
-    private TextView noDocTxt, titleTxt;
+    private TextView titleTxt;
     private String categoryTitle;
-    Button addDocumentBtn;
     NavController navController;
 
     @Override
@@ -45,25 +43,12 @@ public class CategoryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getCategory().getTitle();
+        categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getCategory().getCategoryTitle();
 
-        CategoryModel.instance.getCategoryByTitle(categoryTitle, new CategoryModel.GetCategoryByTitle() {
-            @Override
-            public void OnComplete(Category category) {
-                titleTxt.setText(categoryTitle);
-            }
-        });
 
         navController = NavHostFragment.findNavController(this);
         titleTxt = view.findViewById(R.id.tv_category_title);
-        docImg = view.findViewById(R.id.iv_doc_img);
-        noDocTxt = view.findViewById(R.id.tv_no_docs);
-
-        RecyclerView recyclerView = view.findViewById(R.id.document_recycler);
-        recyclerView.hasFixedSize();
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext(), RecyclerView.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        titleTxt.setText(categoryTitle);
 
         setHasOptionsMenu(true);
 
