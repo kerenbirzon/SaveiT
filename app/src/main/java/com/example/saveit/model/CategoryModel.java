@@ -68,17 +68,13 @@ public class CategoryModel {
                         Log.d("TAG","fireBase returned: " + list.size());
                         for (Category category: list){
                             AppLocalDb.db.categoryDao().insertAll(category);
-//                            if (category.isDeleted()) {
-//                                lastUpdateDate = category.getUpdateDate();
-//                                AppLocalDb.db.categoryDao().delete(category);
-//                            }
-//                            else {
-                            if (lastUpdateDate < category.getUpdateDate()){
+                            if (category.isDeleted()) {
+                                AppLocalDb.db.categoryDao().delete(category);
+                            }
+                            if (lastUpdateDate < category.getUpdateDate() && !category.isDeleted()){
                                 lastUpdateDate = category.getUpdateDate();
-
                             }
                         }
-//                        }
 
                         //update last local update date
                         SaveiTMediate.getAppContext().getSharedPreferences("TAG",Context.MODE_PRIVATE)

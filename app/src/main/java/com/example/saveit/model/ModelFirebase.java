@@ -51,7 +51,6 @@ public class ModelFirebase {
         db.setFirestoreSettings(settings);
     }
 
-
     /**
      *
      * Category
@@ -64,7 +63,7 @@ public class ModelFirebase {
 
     public void getCategories(Long lastUpdateDate, GetAllCategoriesListener listener) {
         db.collection(Category.COLLECTION_NAME)
-                .whereEqualTo("deleted", false)
+                .whereGreaterThanOrEqualTo("updateDate", new Timestamp(lastUpdateDate, 0))
                 .get()
                 .addOnCompleteListener(task -> {
                     List<Category> list = new LinkedList<Category>();

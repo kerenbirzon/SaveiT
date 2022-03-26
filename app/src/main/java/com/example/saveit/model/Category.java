@@ -100,7 +100,7 @@ public class Category implements Parcelable {
         Timestamp ts = (Timestamp)json.get("updateDate");
         Long updateDate = ts.getSeconds();
 
-        Category category = new Category(id,categoryTitle,documentTitle,documentType,documentComments,imageUrl,deleted);
+        Category category = new Category(id,categoryTitle,documentTitle,imageUrl,documentType,documentComments,deleted);
         category.setUpdateDate(updateDate);
         return category;
     }
