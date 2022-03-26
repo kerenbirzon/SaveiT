@@ -48,7 +48,6 @@ public class CategoryFragment extends Fragment {
 
         categoryTitle = CategoryFragmentArgs.fromBundle(getArguments()).getCategory().getCategoryTitle();
 
-
         navController = NavHostFragment.findNavController(this);
         titleTxt = view.findViewById(R.id.tv_category_title);
         titleTxt.setText(categoryTitle);
