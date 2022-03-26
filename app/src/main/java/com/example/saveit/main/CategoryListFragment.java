@@ -27,6 +27,7 @@ import com.example.saveit.login.LoginActivity;
 import com.example.saveit.model.Category;
 import com.example.saveit.model.CategoryModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class CategoryListFragment extends Fragment {
     CategoryListViewModel viewModel;
@@ -47,6 +48,12 @@ public class CategoryListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         addCategoryBtn = view.findViewById(R.id.btn_add_category);
+        addCategoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToAddCategory());
+            }
+        });
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
 
         categoryListmAuth = FirebaseAuth.getInstance();
@@ -59,7 +66,7 @@ public class CategoryListFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        categoryAdapter = new CategoryAdapter();//viewModel.getCategories().getValue()
+        categoryAdapter = new CategoryAdapter();
         recyclerView.setAdapter(categoryAdapter);
 
 
@@ -92,12 +99,12 @@ public class CategoryListFragment extends Fragment {
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView title;
+        TextView categoryTitle;
         ImageView image;
 
         public MyViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
-            title = itemView.findViewById(R.id.category_title);
+            categoryTitle = itemView.findViewById(R.id.category_title);
             image = itemView.findViewById(R.id.category_img);
 
 
@@ -111,8 +118,13 @@ public class CategoryListFragment extends Fragment {
         }
 
         void bind(Category category){
-            title.setText(category.getTitle());
-            image.setImageResource(Integer.parseInt(category.getImage()));
+            categoryTitle.setText(category.getCategoryTitle());
+            image.setImageResource(R.drawable.save_it);
+            if (category.getImageUrl() != null && !category.getImageUrl().isEmpty()) {
+                Picasso.get()
+                        .load(category.getImageUrl())
+                        .into(image);
+            }
         }
     }
 
