@@ -158,31 +158,4 @@ public class ModelFirebase {
         return (currentUser != null);
     }
 
-
-    /**
-     * Storage
-     */
-//    public static void uploadImageToFirebaseStorageDB(Bitmap bitmap, Context context, String categoryTitle, String documentTitle, String imageType) {
-//        // Get the data from an ImageView as bytes
-//        StorageReference ref = storageReference.child("Files").
-//                child(MyPreferences.getUserDocumentPathFromPreferences(context)).child(categoryTitle).child(documentTitle).child("image");
-//
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-//        byte[] data = baos.toByteArray();
-//
-//        UploadTask uploadTask = ref.putBytes(data);
-//        uploadTask.addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                Log.e(TAG, "filed to upload the document image to the storage DB");
-//            }
-//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                Log.d(TAG, "successfully uploaded the document image to the storage DB");
-//            }
-//        });
-//    }
-
 }
