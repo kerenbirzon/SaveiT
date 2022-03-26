@@ -48,6 +48,12 @@ public class CategoryListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category_list, container, false);
         addCategoryBtn = view.findViewById(R.id.btn_add_category);
+        addCategoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToAddCategory());
+            }
+        });
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));
 
         categoryListmAuth = FirebaseAuth.getInstance();
@@ -60,7 +66,7 @@ public class CategoryListFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        categoryAdapter = new CategoryAdapter();//viewModel.getCategories().getValue()
+        categoryAdapter = new CategoryAdapter();
         recyclerView.setAdapter(categoryAdapter);
 
 

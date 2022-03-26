@@ -51,6 +51,7 @@ public class AddCategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_category, container, false);
         saveNewCategoryBtn = view.findViewById(R.id.btn_change_action_save);
         cancelNewCategoryBtn = view.findViewById(R.id.btn_change_action_cancel);
+        editCategory = AddCategoryFragmentArgs.fromBundle(getArguments()).getEditCategory();
         cameraBtn = view.findViewById(R.id.camera_btn);
         galleryBtn = view.findViewById(R.id.gallery_btn);
         documentImagePrev = view.findViewById(R.id.document_photo_prev);
@@ -64,14 +65,14 @@ public class AddCategoryFragment extends Fragment {
         cameraBtn.setOnClickListener(v -> openCam());
 
         galleryBtn.setOnClickListener(v -> openGallery());
-        if (editCategory != null) {
-            ((TextView) view.findViewById(R.id.main_title)).setText("Edit Category");
-            categoryNameEt.setText(editCategory.getCategoryTitle());
-            documentNameEt.setText(editCategory.getDocumentTitle());
-            documentTypeEt.setText(editCategory.getDocumentType());
-            documentCommentsEt.setText(editCategory.getDocumentComments());
-            Picasso.get().load(editCategory.getImageUrl()).into(documentImagePrev);
-        }
+//        if (editCategory != null) {
+//            ((TextView) view.findViewById(R.id.main_title)).setText("Edit Category");
+//            categoryNameEt.setText(editCategory.getCategoryTitle());
+//            documentNameEt.setText(editCategory.getDocumentTitle());
+//            documentTypeEt.setText(editCategory.getDocumentType());
+//            documentCommentsEt.setText(editCategory.getDocumentComments());
+//            Picasso.get().load(editCategory.getImageUrl()).into(documentImagePrev);
+//        }
 
         saveNewCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override

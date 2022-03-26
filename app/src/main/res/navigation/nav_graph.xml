@@ -23,7 +23,9 @@
         android:label="SaveIT">
         <argument
             android:name="editCategory"
-            app:argType="com.example.saveit.model.Category" />
+            app:argType="com.example.saveit.model.Category"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
