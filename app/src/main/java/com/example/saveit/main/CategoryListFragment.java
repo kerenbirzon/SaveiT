@@ -51,7 +51,7 @@ public class CategoryListFragment extends Fragment {
         addCategoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(CategoryListFragmentDirections.actionCategoryListToAddCategory());
+                Navigation.findNavController(view).navigate(R.id.action_global_addCategoryFragment);
             }
         });
         addCategoryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_categoryList_to_addCategory));

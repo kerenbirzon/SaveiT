@@ -24,8 +24,10 @@
         <argument
             android:name="editCategory"
             app:argType="com.example.saveit.model.Category"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_addCategoryFragment_to_categoryListFragment"
+            app:popUpTo="@id/categoryListFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
@@ -44,5 +46,5 @@
         android:name="com.example.saveit.common.AboutFragment"
         android:label="SaveIT"
         tools:layout="@layout/fragment_about" />
-    <action android:id="@+id/action_global_aboutFragment" app:destination="@id/aboutFragment" />
+    <action android:id="@+id/action_global_aboutFragment" app:destination="@id/aboutFragment" /><action android:id="@+id/action_global_addCategoryFragment" app:destination="@id/addCategoryFragment"/>
 </navigation>

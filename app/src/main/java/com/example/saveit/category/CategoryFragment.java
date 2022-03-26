@@ -87,15 +87,12 @@ public class CategoryFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.category_delete:
-                new Thread(() -> {
-                    Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-                    AppLocalDb.db.categoryDao().delete(category);
-                    CategoryModel.instance.deleteCategory(category, () -> navController.navigateUp());
-                }).start();
+                Category category = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
+                CategoryModel.instance.deleteCategory(category, () -> navController.navigateUp());
                 break;
             case R.id.category_edit:
                 Category editCategory = CategoryFragmentArgs.fromBundle(getArguments()).getCategory();
-                navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToAddCategoryFragment());
+                navController.navigate(CategoryFragmentDirections.actionCategoryFragmentToAddCategoryFragment(editCategory));
                 break;
         }
         return true;

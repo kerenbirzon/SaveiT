@@ -46,13 +46,18 @@ public class AddCategoryFragment extends Fragment {
     private Category editCategory;
     Bitmap imageBitmap;
 
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_category, container, false);
         saveNewCategoryBtn = view.findViewById(R.id.btn_change_action_save);
         cancelNewCategoryBtn = view.findViewById(R.id.btn_change_action_cancel);
-        editCategory = AddCategoryFragmentArgs.fromBundle(getArguments()).getEditCategory();
+        if (!getArguments().isEmpty()) {
+            editCategory = AddCategoryFragmentArgs.fromBundle(getArguments()).getEditCategory();
+        }else {
+            editCategory = null;
+        }
         cameraBtn = view.findViewById(R.id.camera_btn);
         galleryBtn = view.findViewById(R.id.gallery_btn);
         documentImagePrev = view.findViewById(R.id.document_photo_prev);
