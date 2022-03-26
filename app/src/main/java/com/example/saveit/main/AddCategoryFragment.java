@@ -144,9 +144,6 @@ public class AddCategoryFragment extends Fragment {
             String documentType = documentTypeEt.getText().toString();
             String documentComments = documentCommentsEt.getText().toString();
             Category category = new Category(categoryTitle,documentTitle,"",documentType,documentComments);
-//        CategoryModel.instance.addCategory(category,()->{
-//            Navigation.findNavController(categoryNameEt).navigateUp();
-//        });
             if(editCategory != null){
                 category.setId(editCategory.getId());
                 category.setImageUrl(editCategory.getImageUrl());
