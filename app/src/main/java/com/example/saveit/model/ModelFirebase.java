@@ -51,29 +51,6 @@ public class ModelFirebase {
     }
 
 
-    public static void removeDocument(String categoryTitle, Document document_to_delete) {
-
-        db.document(categoriesRef.getPath() + "/" + categoryTitle).update("docsList", FieldValue.arrayRemove(document_to_delete)).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "successfully deleted document: " + document_to_delete.getTitle() + " from category " + categoryTitle);
-                } else {
-                    Log.e(TAG, "Error while deleting document " + document_to_delete.getTitle() + " from category" + categoryTitle);
-                }
-            }
-        });
-    }
-
-    public static void addNewDocument(String categoryTitle, Document document) {
-        //Map<String, Object> json = document.toJson();
-        //db.collection(Category.COLLECTION_NAME)
-        //        .document(document.getTitle())
-        //        .set(json)
-        //        .addOnSuccessListener(unused -> listener.OnComplete())
-        //        .addOnFailureListener(e -> listener.OnComplete());
-    }
-
     /**
      *
      * Category
@@ -138,54 +115,6 @@ public class ModelFirebase {
                 .addOnFailureListener(e -> lis.OnComplete());
     }
 
-    /**
-     * User
-     */
-
-//    public void createUser(User user, UserModel.AddUserListener listener) {
-//        Map<String, Object> json = user.toJson();
-//        db.collection("User")
-//                .document(user.getPhoneNumber())
-//                .set(json)
-//                .addOnSuccessListener(unused -> listener.onComplete())
-//                .addOnFailureListener(e -> listener.onComplete());
-//    }
-
-//    public void addUser(User user,UserModel.AddUserListener listener){
-//        db.collection("User")
-//                .document(user.getPhoneNumber())
-//                .set(user)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Log.d("tag","user added successfully");
-//                        listener.onComplete();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d("tag","failed added user");
-//                listener.onComplete();
-//            }
-//        });
-//    }
-
-//    public void getUserByPhone(String userPhoneNumber, UserModel.GetUserByPhone listener) {
-//        db.collection("Designer")
-//                .document(userPhoneNumber)
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        User user = null;
-//                        if (task.isSuccessful() & task.getResult()!= null){
-//                            user = User.create(task.getResult().getData());
-//                        }
-//                        listener.onComplete(user);
-//                    }
-//                });
-//
-//    }
 
     /**
      * Authentication
@@ -202,27 +131,27 @@ public class ModelFirebase {
     /**
      * Storage
      */
-    public static void uploadImageToFirebaseStorageDB(Bitmap bitmap, Context context, String categoryTitle, String documentTitle, String imageType) {
-        // Get the data from an ImageView as bytes
-        StorageReference ref = storageReference.child("Files").
-                child(MyPreferences.getUserDocumentPathFromPreferences(context)).child(categoryTitle).child(documentTitle).child("image");
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = ref.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.e(TAG, "filed to upload the document image to the storage DB");
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d(TAG, "successfully uploaded the document image to the storage DB");
-            }
-        });
-    }
+//    public static void uploadImageToFirebaseStorageDB(Bitmap bitmap, Context context, String categoryTitle, String documentTitle, String imageType) {
+//        // Get the data from an ImageView as bytes
+//        StorageReference ref = storageReference.child("Files").
+//                child(MyPreferences.getUserDocumentPathFromPreferences(context)).child(categoryTitle).child(documentTitle).child("image");
+//
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+//        byte[] data = baos.toByteArray();
+//
+//        UploadTask uploadTask = ref.putBytes(data);
+//        uploadTask.addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                Log.e(TAG, "filed to upload the document image to the storage DB");
+//            }
+//        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                Log.d(TAG, "successfully uploaded the document image to the storage DB");
+//            }
+//        });
+//    }
 
 }
