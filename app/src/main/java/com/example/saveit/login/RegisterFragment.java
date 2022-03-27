@@ -95,36 +95,6 @@ public class RegisterFragment extends Fragment {
                 });
         }
 
-//        if (!inputUserName.isEmpty() && !inputPassword.isEmpty() && (inputConfirmPassword.equals(inputPassword)) && (inputUserName.matches(emailPattern))){
-//            progressBar.setVisibility(View.VISIBLE);
-//            signUpBtn.setEnabled(false);
-//
-//            SignUpmAuth.createUserWithEmailAndPassword(inputUserName,inputPassword)
-//                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//                        @Override
-//                        public void onSuccess(AuthResult authResult) {
-//                            Toast.makeText(getContext(), "User created",Toast.LENGTH_SHORT).show();
-//                            progressBar.setVisibility(View.INVISIBLE);
-//                            signUpBtn.setEnabled(true);
-//                            resetValues();
-//                            if (SignUpmAuth.getCurrentUser() != null){
-//                                SignUpmAuth.signOut();
-//                            }
-//                            Navigation.findNavController(userName).navigateUp();
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            progressBar.setVisibility(View.INVISIBLE);
-//                            signUpBtn.setEnabled(true);
-//                            Toast.makeText(getContext(), e.getMessage(),Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//        }else {
-//            Toast.makeText(getContext(),"please fill the fields Correctly",Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     public void resetValues() {
         userName.setText("");
